@@ -1,3 +1,6 @@
+# Nu ne sincronizam baza de date intre noi
+database.db
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
