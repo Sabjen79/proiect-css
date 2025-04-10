@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: Manrope;
+    src: url("assets/fonts/Manrope.woff2") format("woff2");
+}
+
+@theme {
+    --font-manrope: Manrope;
+}
+
+:root {
+    @apply font-manrope
+}
