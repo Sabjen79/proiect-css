@@ -44,7 +44,7 @@ CREATE TABLE Room (
 );
 
 CREATE TABLE FacultyGroup (
-                              group_id INTEGER PRIMARY KEY,
+                              faculty_group_id INTEGER PRIMARY KEY,
                               name TEXT NOT NULL,
                               study_year_id INTEGER NOT NULL,
                               FOREIGN KEY (study_year_id) REFERENCES StudyYear(study_year_id) ON DELETE CASCADE
