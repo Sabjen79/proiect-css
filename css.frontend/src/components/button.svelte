@@ -1,8 +1,10 @@
 <script lang="ts">
     let {
-        label = "Button Test"
+        label = "Button Test",
+        onClick = () => {}
     }: {
-        label?: String
+        label?: String,
+        onClick?: Function
     } = $props();
 
     let hover = $state(false);
@@ -22,6 +24,7 @@
     onmouseleave={() => { hover = false; pressed = false;}}
     onmousedown={() => { pressed = true; }}
     onmouseup={() => { pressed = false; }}
+    onclick={() => onClick()}
 >
     {label}
 </button>

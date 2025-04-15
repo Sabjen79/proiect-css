@@ -5,8 +5,18 @@
     src: url("assets/fonts/Manrope.woff2") format("woff2");
 }
 
+@font-face {
+    font-family: Icons;
+    src: url("assets/fonts/MaterialSymbolsOutlined.woff2") format("woff2");
+}
+
 @theme {
     --font-manrope: Manrope;
+    --font-icons: Icons;
+}
+
+.font-icons {
+    @apply leading-none tracking-normal whitespace-nowrap inline-block [font-variation-settings:"FILL"_0,"wght"_500,"GRAD"_0,"opsz"_24];
 }
 
 :root {
