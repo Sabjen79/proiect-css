@@ -1,12 +1,20 @@
 <script lang="ts">
     import Button from "../components/button.svelte";
+    import Dialog from "../components/dialog.svelte";
     import Input from "../components/input.svelte";
 
     let a = $state("");
+    let dialog: Dialog;
 </script>
 
+<Dialog bind:this={dialog} title="Hello Dialog!">
+    <div class="w-70 wrap-anywhere">
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    </div>
+</Dialog>
+
 <div class={`
-    h-[100vh] w-[100vw]
+    h-full w-full
     flex flex-col justify-center items-center
     bg-amber-100
 `}>
@@ -31,7 +39,12 @@
         flex flex-col z-10 rounded-md
         shadow-md/30 gap-2
     `}>
-        <Button />
+        <Button 
+            label="Open Dialog..."
+            onClick={() => {
+                dialog.open();
+            }}
+        />
         <Input bind:value={a}/>
     </div>
 </div>

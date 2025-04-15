@@ -1,2 +1,2 @@
 cd css.frontend
-npm run dev -- --open
+npm install & npm run dev -- --open
