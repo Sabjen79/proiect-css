@@ -1,3 +1,2 @@
 cd css.frontend
-start "" http://localhost:5173/
-npm run dev
+npm install & npm run dev -- --open
