@@ -34,6 +34,12 @@
         ȘANTIER ÎN LUCRU...
     </p>
 
+    <p class={`
+        font-black text-xl z-10 text-black
+    `}>
+        {Math.ceil((new Date(2025, 4, 7).getTime() - Date.now()) / (1000 * 60 * 60 * 24))} Days Left...
+    </p>
+
     <div class={`
         mt-2 bg-amber-50 px-4 py-3
         flex flex-col z-10 rounded-md
