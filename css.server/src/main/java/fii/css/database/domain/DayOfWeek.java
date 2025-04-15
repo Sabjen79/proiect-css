@@ -1,4 +1,4 @@
-package fii.css.api.domain;
+package fii.css.database.domain;
 
 public enum DayOfWeek {
     Monday,

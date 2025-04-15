@@ -1,4 +1,4 @@
-package fii.css.api.domain;
+package fii.css.database.domain;
 
 public class Discipline {
     private int disciplineId;
