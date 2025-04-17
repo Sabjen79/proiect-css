@@ -1,6 +1,14 @@
 package fii.css.database.persistence.entities;
 
-public class StudyYear {
+import fii.css.database.persistence.DatabaseEntity;
+import fii.css.database.persistence.annotations.Column;
+import fii.css.database.persistence.annotations.Id;
+import fii.css.database.persistence.annotations.Table;
+
+@Table("StudyYear")
+public class StudyYear extends DatabaseEntity {
+    @Id
+    @Column("stu")
     private int studyYearId;
     private String value;
 

@@ -1,27 +1,38 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.persistence.DatabaseEntity;
+import fii.css.database.persistence.annotations.Column;
+import fii.css.database.persistence.annotations.Id;
+import fii.css.database.persistence.annotations.Table;
 
-
-public class Schedule {
+@Table("Schedule")
+public class Schedule extends DatabaseEntity {
+    @Id
+    @Column("schedule_id")
     private int scheduleId;
+
+    @Column("discipline_id")
     private int disciplineId;
+
+    @Column("teacher_id")
     private int teacherId;
+
+    @Column("class_type_id")
     private int classTypeId;
+
+    @Column("room_id")
     private int roomId;
+
+    @Column("time_slot_id")
     private int timeSlotId;
+
+    @Column("study_year_id")
     private int studyYearId;
+
+    @Column("faculty_group_id")
     private int facultyGroupId;
 
-    public Schedule(int scheduleId, int disciplineId, int teacherId, int classTypeId, int roomId, int timeSlotId, int studyYearId, int facultyGroupId) {
-        this.scheduleId = scheduleId;
-        this.disciplineId = disciplineId;
-        this.teacherId = teacherId;
-        this.classTypeId = classTypeId;
-        this.roomId = roomId;
-        this.timeSlotId = timeSlotId;
-        this.studyYearId = studyYearId;
-        this.facultyGroupId = facultyGroupId;
-    }
+    public Schedule() {}
 
     public int getFacultyGroupId() {
         return facultyGroupId;
@@ -83,7 +94,4 @@ public class Schedule {
         return scheduleId;
     }
 
-    public void setScheduleId(int scheduleId) {
-        this.scheduleId = scheduleId;
-    }
 }

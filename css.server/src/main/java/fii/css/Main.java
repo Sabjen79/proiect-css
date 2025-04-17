@@ -12,9 +12,7 @@ public class Main {
 
         // TODO: Delete this example later
         var teacherManager = database.teacherManager;
-
         var teacher = teacherManager.addTeacher("Andrei Andrei", "Assistant");
-
         teacher = teacherManager.updateTeacher(teacher.getTeacherId(), "Andrei Andrei", "Bo$$");
 
         teacherManager.removeTeacher(teacher.getTeacherId());
