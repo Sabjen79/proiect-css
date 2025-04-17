@@ -8,8 +8,10 @@ import fii.css.database.persistence.annotations.Table;
 @Table("StudyYear")
 public class StudyYear extends DatabaseEntity {
     @Id
-    @Column("stu")
+    @Column("study_year")
     private int studyYearId;
+
+    @Column("value")
     private String value;
 
     public StudyYear(int studyYearId, String value) {
