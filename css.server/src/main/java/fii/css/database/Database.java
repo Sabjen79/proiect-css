@@ -1,5 +1,8 @@
 package fii.css.database;
 
+import fii.css.database.persistence.managers.TeacherManager;
+import fii.css.database.persistence.repositories.TeacherRepository;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,8 +22,11 @@ public class Database {
     //======================================================================//
     private Connection connection;
 
-    private Database() {
-    }
+    public TeacherManager teacherManager;
+
+    private Database() {}
+
+    public Connection getConnection() { return connection; }
 
     public void initialize() {
         try {
@@ -32,6 +38,8 @@ public class Database {
             } else {
                 System.out.println("Database already exists. Skipping creation.");
             }
+
+            teacherManager = new TeacherManager();
         } catch (SQLException e) {
             // if the database doesn't exist yet
             System.out.println("Database file does not exist. Creating new database...");
