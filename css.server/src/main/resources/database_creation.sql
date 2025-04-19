@@ -18,7 +18,7 @@ CREATE TABLE Teacher (
 );
 
 CREATE TABLE TeacherDiscipline (
-                        teacher_discipline_id INTEGER PRIMARY KEY
+                        teacher_discipline_id INTEGER PRIMARY KEY,
                         teacher_id INTEGER NOT NULL,
                         discipline_id INTEGER NOT NULL,
                         FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id) ON DELETE CASCADE,
