@@ -21,7 +21,6 @@ public class FacultyGroup extends DatabaseEntity {
         return facultyGroupId;
     }
 
-
     public String getFacultyGroupName() {
         return facultyGroupName;
     }

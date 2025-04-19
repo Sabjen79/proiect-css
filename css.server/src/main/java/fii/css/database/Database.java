@@ -1,5 +1,6 @@
 package fii.css.database;
 
+import fii.css.database.persistence.managers.RoomTypeManager;
 import fii.css.database.persistence.managers.TeacherManager;
 import fii.css.database.persistence.repositories.TeacherRepository;
 
@@ -23,6 +24,7 @@ public class Database {
     private Connection connection;
 
     public TeacherManager teacherManager;
+    public RoomTypeManager roomTypeManager;
 
     private Database() {}
 
@@ -40,6 +42,7 @@ public class Database {
             }
 
             teacherManager = new TeacherManager();
+            roomTypeManager = new RoomTypeManager();
         } catch (SQLException e) {
             // if the database doesn't exist yet
             System.out.println("Database file does not exist. Creating new database...");

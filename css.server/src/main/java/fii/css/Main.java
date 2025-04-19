@@ -11,12 +11,17 @@ public class Main {
         database.initialize();
 
         // TODO: Delete this example later
-        var teacherManager = database.teacherManager;
-        var teacher = teacherManager.addTeacher("Andrei Andrei", "Assistant");
-        teacher = teacherManager.updateTeacher(teacher.getTeacherId(), "Andrei Andrei", "Bo$$");
+//        var teacherManager = database.teacherManager;
+//        var teacher = teacherManager.addTeacher("Andrei Andrei", "Assistant");
+//        teacher = teacherManager.updateTeacher(teacher.getTeacherId(), "Andrei Andrei", "Bo$$");
+//
+//        teacherManager.removeTeacher(teacher.getTeacherId());
 
-        teacherManager.removeTeacher(teacher.getTeacherId());
 
+        var roomTypeManager = database.roomTypeManager;
+        var roomType = roomTypeManager.addRoomType("Equipment");
+        //roomType = roomTypeManager.updateRoomType(roomType.getRoomTypeId(), "Course");
+        //roomTypeManager.removeRoomType(roomType.getRoomTypeId());
         RestApi api = new RestApi();
         api.start();
     }
