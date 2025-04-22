@@ -1,10 +1,24 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.persistence.annotations.Column;
+import fii.css.database.persistence.annotations.Id;
+
 public class Room {
+    @Id
+    @Column("room_id")
     private int roomId;
+
+    @Column("name")
     private String name;
+
+    @Column("capacity")
     private int capacity;
+
+    @Column("room_type_id")
     private int roomTypeId;
+
+    public Room() {
+    }
 
     public Room(int roomId, String name, int capacity, int roomTypeId) {
         this.roomId = roomId;
