@@ -1,9 +1,10 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.persistence.DatabaseEntity;
 import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 
-public class Room {
+public class Room extends DatabaseEntity{
     @Id
     @Column("room_id")
     private int roomId;
@@ -17,22 +18,10 @@ public class Room {
     @Column("room_type_id")
     private int roomTypeId;
 
-    public Room() {
-    }
-
-    public Room(int roomId, String name, int capacity, int roomTypeId) {
-        this.roomId = roomId;
-        this.name = name;
-        this.capacity = capacity;
-        this.roomTypeId = roomTypeId;
-    }
+    public Room() { }
 
     public int getRoomId() {
         return roomId;
-    }
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
     }
 
     public String getName() {
