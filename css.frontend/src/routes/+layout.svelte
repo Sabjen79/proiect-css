@@ -8,8 +8,8 @@
 
 <Navbar>
 	<NavbarButton name="Main Page" url="/"/>
-    <NavbarButton name="Empty Page" url="/page1"/>
-    <NavbarButton name="Secret" url="https://tinyurl.com/2ackkd6t"/>
+    <NavbarButton name="Timetable" url="/schedule"/>
+	<NavbarButton name="Admin Panel" url="/panel"/>
 </Navbar>
 
 <div class="w-[100vw] h-[100vh] flex">
