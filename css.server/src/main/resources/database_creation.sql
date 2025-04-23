@@ -32,10 +32,9 @@ CREATE TABLE ClassType (
 
 CREATE TABLE TimeSlot (
                           time_slot_id INTEGER PRIMARY KEY,
-                          day_of_week TEXT NOT NULL CHECK(day_of_week IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')),
+                          day_of_week TEXT NOT NULL CHECK(day_of_week IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')),
                           start_time TEXT NOT NULL,
-                          end_time TEXT NOT NULL,
-                          CHECK (start_time >= '08:00:00' AND end_time <= '20:00:00')
+                          end_time TEXT NOT NULL
 );
 
 CREATE TABLE RoomType (
@@ -73,20 +72,8 @@ CREATE TABLE Schedule (
                           FOREIGN KEY (room_id) REFERENCES Room(room_id),
                           FOREIGN KEY (time_slot_id) REFERENCES TimeSlot(time_slot_id),
                           FOREIGN KEY (study_year_id) REFERENCES StudyYear(study_year_id),
-                          FOREIGN KEY (faculty_group_id) REFERENCES FacultyGroup(group_id)
+                          FOREIGN KEY (faculty_group_id) REFERENCES FacultyGroup(faculty_group_id)
 );
-
--- default values for roomtype
-INSERT INTO RoomType (type_name) VALUES
-                                     ('Course'),
-                                     ('Laboratory'),
-                                     ('Seminary');
-
--- default values for classtype
-INSERT INTO ClassType (type_name) VALUES
-                                      ('Course'),
-                                      ('Laboratory'),
-                                      ('Seminary');
 
 -- indexes
 CREATE INDEX idx_schedule_teacher ON Schedule(teacher_id);

@@ -23,9 +23,7 @@ public class StudyYearManager extends AbstractEntityManager<StudyYear> {
         if (isDuplicate) throw new RuntimeException("StudyYear already exists");
 
         entity.setValue(value);
-
         repository.persist(entity);
-
         return entity;
     }
 

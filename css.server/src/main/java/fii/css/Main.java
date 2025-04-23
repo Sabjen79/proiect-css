@@ -17,11 +17,6 @@ public class Main {
 //
 //        teacherManager.removeTeacher(teacher.getTeacherId());
 
-
-        var roomTypeManager = database.roomTypeManager;
-        var roomType = roomTypeManager.addRoomType("Equipment");
-        //roomType = roomTypeManager.updateRoomType(roomType.getRoomTypeId(), "Course");
-        //roomTypeManager.removeRoomType(roomType.getRoomTypeId());
         RestApi api = new RestApi();
         api.start();
     }
