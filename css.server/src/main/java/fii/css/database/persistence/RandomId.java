@@ -1,13 +1,19 @@
 package fii.css.database.persistence;
 
+import java.math.BigInteger;
 import java.time.Instant;
+import java.util.Base64;
+import java.util.Random;
 
 public class RandomId {
-    // FIXME: Collisions are VERY unlikely, but a better algorithm is most welcome!
-    // Or change all IDs to String to use GUIDs
-    public static int newId() {
-        int seed = (int) (Math.random() * 1000);
+    private static final Random RANDOM = new Random();
 
-        return Math.abs((int) Instant.now().toEpochMilli() * seed);
+    public static String newId() {
+        var epoch = Instant.now().toEpochMilli();
+        var seed = RANDOM.nextLong(0, Integer.MAX_VALUE);
+
+        return BigInteger.valueOf(epoch).toString(32)
+                + "-"
+                + BigInteger.valueOf(seed).toString(32);
     }
 }

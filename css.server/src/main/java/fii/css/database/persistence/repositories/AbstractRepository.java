@@ -61,9 +61,9 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
         }
     };
 
-    public T getById(int id) {
+    public T getById(String id) {
         for (T entity : getAll()) {
-            if(entity.getIdFromAnnotation() == id) {
+            if(entity.getIdFromAnnotation().equals(id)) {
                 return entity;
             }
         }
@@ -157,6 +157,8 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
             var connection = Database.getInstance().getConnection();
             var stmt = connection.createStatement();
 
+            System.out.println(String.format("INSERT INTO %s (%s) VALUES (%s)", table, columnQuery, valueQuery));
+
             stmt.execute(
                     String.format("INSERT INTO %s (%s) VALUES (%s)", table, columnQuery, valueQuery)
             );
@@ -206,7 +208,7 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
             var stmt = connection.createStatement();
 
             stmt.execute(
-                    String.format("UPDATE %s SET %s WHERE %s = %s", table, partial_query, idColumn, id)
+                    String.format("UPDATE %s SET %s WHERE %s = '%s'", table, partial_query, idColumn, id)
             );
 
             entities.set(entities.indexOf(getById(id)), updatedEntity);
@@ -237,7 +239,7 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
             var stmt = connection.createStatement();
 
             stmt.execute(
-                    String.format("DELETE FROM %s WHERE %s = %s", table, idColumn, id)
+                    String.format("DELETE FROM %s WHERE %s = '%s'", table, idColumn, id)
             );
 
             entities.remove(entity);

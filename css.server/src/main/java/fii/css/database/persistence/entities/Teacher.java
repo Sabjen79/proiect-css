@@ -9,7 +9,7 @@ import fii.css.database.persistence.annotations.Table;
 public class Teacher extends DatabaseEntity {
     @Id
     @Column("teacher_id")
-    private int teacherId;
+    private String teacherId;
 
     @Column("name")
     private String name;
@@ -19,7 +19,7 @@ public class Teacher extends DatabaseEntity {
 
     public Teacher() {}
 
-    public int getTeacherId() {
+    public String getId() {
         return teacherId;
     }
 

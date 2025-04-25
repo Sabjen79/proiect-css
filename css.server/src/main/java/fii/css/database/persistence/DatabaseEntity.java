@@ -11,15 +11,15 @@ public abstract class DatabaseEntity {
         return this.getClass().getAnnotation(Table.class).value();
     }
 
-    public int getIdFromAnnotation() {
+    public String getIdFromAnnotation() {
         for (Field field : getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Id.class)) {
                 field.setAccessible(true);
 
-                int value;
+                String value;
 
                 try {
-                    value = (int) field.get(this);
+                    value = (String) field.get(this);
                 } catch (IllegalAccessException e) {
                     field.setAccessible(false);
                     throw new RuntimeException(e);

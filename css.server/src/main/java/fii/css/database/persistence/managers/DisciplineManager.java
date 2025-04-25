@@ -2,10 +2,25 @@ package fii.css.database.persistence.managers;
 
 import fii.css.database.persistence.entities.Discipline;
 import fii.css.database.persistence.repositories.AbstractRepository;
+import fii.css.database.persistence.repositories.DisciplineRepository;
+
+import java.util.List;
 
 public class DisciplineManager extends AbstractEntityManager<Discipline>{
-    public DisciplineManager(AbstractRepository<Discipline> repo) {
-        super(repo);
+    public DisciplineManager() {
+        super(new DisciplineRepository());
+    }
+
+    @Override
+    public Discipline get(String id) {
+        // TODO: Implement this
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public List<Discipline> getAll() {
+        // TODO: Implement this
+        throw new UnsupportedOperationException();
     }
 
     public Discipline addDiscipline(String name, String description) {
@@ -16,7 +31,7 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
                 .stream()
                 .anyMatch(discipline -> discipline.getName().equals(name));
 
-        if (isDuplicate) throw new RuntimeException("Discipline with name " + name + "already exists.");
+        if (isDuplicate) throw new RuntimeException("Discipline with name " + name + " already exists.");
 
         entity.setName(name);
         entity.setDescription(description);
@@ -26,15 +41,10 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
         return entity;
     }
 
-    public Discipline updateDiscipline(int id, String name, String description) {
+    public Discipline updateDiscipline(String id, String name, String description) {
         var entity = repository.getById(id);
 
-        var isDuplicate = repository
-                .getAll()
-                .stream()
-                .anyMatch(discipline -> discipline.getName().equals(name));
-
-        if (isDuplicate) throw new RuntimeException("Discipline with name " + name + "already exists.");
+        if (entity == null) throw new RuntimeException("Discipline with name " + name + " does not exist.");
 
         entity.setName(name);
         entity.setDescription(description);
@@ -44,7 +54,9 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
         return entity;
     }
 
-    public void removeDiscipline(int id) {
-        repository.delete(repository.getById(id));
+    @Override
+    public void remove(String id) {
+        // TODO: Implement this (remember to delete entities from TeacherDiscipline )
+        throw new UnsupportedOperationException();
     }
 }

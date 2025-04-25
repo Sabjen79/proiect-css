@@ -3,11 +3,13 @@ package fii.css.database.persistence.entities;
 import fii.css.database.persistence.DatabaseEntity;
 import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
+import fii.css.database.persistence.annotations.Table;
 
+@Table("Room")
 public class Room extends DatabaseEntity{
     @Id
     @Column("room_id")
-    private int roomId;
+    private String roomId;
 
     @Column("name")
     private String name;
@@ -15,12 +17,12 @@ public class Room extends DatabaseEntity{
     @Column("capacity")
     private int capacity;
 
-    @Column("room_type_id")
-    private int roomTypeId;
+    @Column("room_type")
+    private int roomType;
 
     public Room() { }
 
-    public int getRoomId() {
+    public String getId() {
         return roomId;
     }
 
@@ -40,11 +42,11 @@ public class Room extends DatabaseEntity{
         this.capacity = capacity;
     }
 
-    public int getRoomTypeId() {
-        return roomTypeId;
+    public RoomType getRoomType() {
+        return RoomType.fromValue(roomType);
     }
 
-    public void setRoomTypeId(int roomTypeId) {
-        this.roomTypeId = roomTypeId;
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType.value;
     }
 }

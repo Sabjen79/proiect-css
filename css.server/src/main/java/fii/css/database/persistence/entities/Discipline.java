@@ -5,11 +5,11 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
-@Table("discipline")
+@Table("Discipline")
 public class Discipline extends DatabaseEntity {
     @Id
     @Column("discipline_id")
-    private int disciplineId;
+    private String disciplineId;
 
     @Column("name")
     private String name;
@@ -19,7 +19,7 @@ public class Discipline extends DatabaseEntity {
 
     public Discipline() {}
 
-    public int getDisciplineId() {
+    public String getId() {
         return disciplineId;
     }
 

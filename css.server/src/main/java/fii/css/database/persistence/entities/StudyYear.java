@@ -8,26 +8,45 @@ import fii.css.database.persistence.annotations.Table;
 @Table("StudyYear")
 public class StudyYear extends DatabaseEntity {
     @Id
-    @Column("study_year")
-    private int studyYearId;
+    @Column("study_year_id")
+    private String studyYearId;
 
-    @Column("value")
-    private String value;
+    @Column("degree")
+    private int degree;
 
-    public StudyYear(int studyYearId, String value) {
-        this.studyYearId = studyYearId;
-        this.value = value;
-    }
+    @Column("specialty")
+    private String specialty;
 
-    public int getStudyYearId() {
+    @Column("max_years")
+    private int maxYears;
+
+    public StudyYear() {}
+
+    public String getId() {
         return studyYearId;
     }
 
-    public String getValue() {
-        return value;
+    public Degree getDegree() {
+        return Degree.fromValue(degree);
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setDegree(Degree degree) {
+        this.degree = degree.value;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public int getMaxYears() {
+        return maxYears;
+    }
+
+    public void setMaxYears(int maxYears) {
+        this.maxYears = maxYears;
     }
 }

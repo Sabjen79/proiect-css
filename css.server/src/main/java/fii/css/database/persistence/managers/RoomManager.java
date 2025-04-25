@@ -3,16 +3,28 @@ package fii.css.database.persistence.managers;
 import fii.css.database.persistence.entities.Room;
 import fii.css.database.persistence.entities.RoomType;
 import fii.css.database.persistence.repositories.AbstractRepository;
+import fii.css.database.persistence.repositories.RoomRepository;
+
+import java.util.List;
 
 public class RoomManager extends AbstractEntityManager<Room> {
-    private final AbstractRepository<RoomType> roomTypeRepository;
-
-    public RoomManager(AbstractRepository<Room> repository, AbstractRepository<RoomType> roomTypeRepository) {
-        super(repository);
-        this.roomTypeRepository = roomTypeRepository;
+    public RoomManager() {
+        super(new RoomRepository());
     }
 
-    public Room addRoom(String name, int capacity, int roomTypeId) {
+    @Override
+    public Room get(String id) {
+        // TODO: Implement this
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public List<Room> getAll() {
+        // TODO: Implement this
+        throw new UnsupportedOperationException();
+    }
+
+    public Room addRoom(String name, int capacity, RoomType roomType) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Room name cannot be empty.");
         }
@@ -31,19 +43,13 @@ public class RoomManager extends AbstractEntityManager<Room> {
         Room room = repository.newEntity();
         room.setName(name);
         room.setCapacity(capacity);
-
-        RoomType roomType = roomTypeRepository.getById(roomTypeId);
-        if (roomType == null) {
-            throw new RuntimeException("Invalid RoomType ID: " + roomTypeId);
-        }
-
-        room.setRoomTypeId(roomTypeId);
+        room.setRoomType(roomType);
 
         repository.persist(room);
         return room;
     }
 
-    public Room updateRoom(int roomId, String name, int capacity, int roomTypeId) {
+    public Room updateRoom(String roomId, String name, int capacity, RoomType roomType) {
         Room room = repository.getById(roomId);
         if (room == null) {
             throw new RuntimeException("Room not found with ID: " + roomId);
@@ -58,7 +64,7 @@ public class RoomManager extends AbstractEntityManager<Room> {
         }
 
         boolean duplicate = repository.getAll().stream()
-                .anyMatch(r -> r.getName().equalsIgnoreCase(name) && r.getRoomId() != roomId);
+                .anyMatch(r -> r.getName().equalsIgnoreCase(name) && !r.getId().equals(roomId));
 
         if (duplicate) {
             throw new RuntimeException("Another room with name '" + name + "' already exists.");
@@ -66,18 +72,24 @@ public class RoomManager extends AbstractEntityManager<Room> {
 
         room.setName(name);
         room.setCapacity(capacity);
-        room.setRoomTypeId(roomTypeId);
+        room.setRoomType(roomType);
 
         repository.merge(room);
         return room;
     }
 
-    public void removeRoom(int roomId) {
+    public void removeRoom(String roomId) {
         Room room = repository.getById(roomId);
         if (room != null) {
             repository.delete(room);
         } else {
             throw new RuntimeException("Room with ID " + roomId + " does not exist.");
         }
+    }
+
+    @Override
+    public void remove(String id) {
+        // TODO: Implement this ( remember to delete entities from Schedule )
+        throw new UnsupportedOperationException();
     }
 }
