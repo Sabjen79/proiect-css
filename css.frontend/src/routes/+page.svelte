@@ -28,9 +28,7 @@
         {/each}
     </p>
 
-    <p class={`
-        font-black text-7xl z-10 text-black stroke-1 text-shadow-lg/20
-    `}>
+    <p class={`font-black text-7xl z-10 text-black stroke-1 text-shadow-lg/20`}>
         ȘANTIER ÎN LUCRU...
     </p>
 
