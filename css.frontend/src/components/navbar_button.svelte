@@ -15,7 +15,7 @@
     let active = $state(false);
 
     $effect(() => {
-        active = (page.url.pathname === url);
+        active = (page.url.pathname.split('/')[1] === url);
     });
 </script>
 
@@ -35,7 +35,7 @@
     onmouseleave={() => { hover = false; pressed = false;}}
     onmousedown={() => { pressed = true; }}
     onmouseup={() => { pressed = false; }}
-    onclick={() => { goto(url); }}
+    onclick={() => { goto("/" + url); }}
 >
     {#if url.startsWith('http')}
         <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
