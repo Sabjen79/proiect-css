@@ -23,10 +23,6 @@ public class StudyYear extends DatabaseEntity {
         return studyYearId;
     }
 
-    public void setStudyYearId(int studyYearId) {
-        this.studyYearId = studyYearId;
-    }
-
     public String getValue() {
         return value;
     }

@@ -71,6 +71,32 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
         return null;
     }
 
+    public T getByName(String name) {
+        for (T entity : getAll()) {
+            for (Field field : clazz.getDeclaredFields()) {
+                if (field.isAnnotationPresent(Column.class)) {
+                    String columnName = field.getAnnotation(Column.class).value();
+                    if (columnName.equalsIgnoreCase("name") || columnName.endsWith("_name")) {
+                        try {
+                            field.setAccessible(true);
+                            Object value = field.get(entity);
+                            field.setAccessible(false);
+
+                            if (value instanceof String && ((String) value).equalsIgnoreCase(name)) {
+                                return entity;
+                            }
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException("Failed to access field", e);
+                        }
+                    }
+                }
+            }
+        }
+
+        return null; // not found
+    }
+
+
     /// Returns a COPY of all entities. Modifications should be persisted manually.
     public List<T> getAll() {
         return List.copyOf(entities);
@@ -95,6 +121,7 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
             throw new RuntimeException(e);
         }
     }
+
 
     public void persist(T entity) {
         try {

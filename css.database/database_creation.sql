@@ -17,6 +17,14 @@ CREATE TABLE Teacher (
                          title TEXT
 );
 
+CREATE TABLE TeacherDiscipline (
+                        teacher_discipline_id INTEGER PRIMARY KEY
+                        teacher_id INTEGER NOT NULL,
+                        discipline_id INTEGER NOT NULL,
+                        FOREIGN KEY (teacher_id) REFERENCES Teacher(teacher_id) ON DELETE CASCADE,
+                        FOREIGN KEY (discipline_id) REFERENCES Discipline(discipline_id) ON DELETE CASCADE
+);
+
 CREATE TABLE ClassType (
                            class_type_id INTEGER PRIMARY KEY,
                            type_name TEXT NOT NULL

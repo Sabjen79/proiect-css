@@ -1,7 +1,6 @@
 package fii.css.database;
 
 import fii.css.database.persistence.managers.TeacherManager;
-import fii.css.database.persistence.repositories.TeacherRepository;
 
 import java.io.*;
 import java.sql.Connection;

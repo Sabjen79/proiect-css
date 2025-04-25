@@ -11,11 +11,11 @@ public class Main {
         database.initialize();
 
         // TODO: Delete this example later
-        var teacherManager = database.teacherManager;
-        var teacher = teacherManager.addTeacher("Andrei Andrei", "Assistant");
-        teacher = teacherManager.updateTeacher(teacher.getTeacherId(), "Andrei Andrei", "Bo$$");
-
-        teacherManager.removeTeacher(teacher.getTeacherId());
+//        var teacherManager = database.teacherManager;
+//        var teacher = teacherManager.addTeacher("Andrei Andrei", "Assistant");
+//        teacher = teacherManager.updateTeacher(teacher.getTeacherId(), "Andrei Andrei", "Bo$$");
+//
+//        teacherManager.removeTeacher(teacher.getTeacherId());
 
         RestApi api = new RestApi();
         api.start();
