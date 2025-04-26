@@ -1,5 +1,6 @@
 package fii.css.database.persistence.managers;
 
+import fii.css.database.Database;
 import fii.css.database.persistence.entities.Discipline;
 import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.DisciplineRepository;
@@ -13,14 +14,12 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
 
     @Override
     public Discipline get(String id) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getById(id);
     }
 
     @Override
     public List<Discipline> getAll() {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getAll();
     }
 
     public Discipline addDiscipline(String name, String description) {
@@ -54,9 +53,23 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
         return entity;
     }
 
-    @Override
     public void remove(String id) {
-        // TODO: Implement this (remember to delete entities from TeacherDiscipline )
-        throw new UnsupportedOperationException();
+        Discipline discipline = repository.getById(id);
+        if (discipline == null) {
+            throw new RuntimeException("Discipline with ID " + id + " does not exist.");
+        }
+
+        // delete teacher discipline associations
+        try {
+            var connection = fii.css.database.Database.getInstance().getConnection();
+            var stmt = connection.prepareStatement("DELETE FROM TeacherDiscipline WHERE discipline_id = ?");
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete teacher-discipline associations for discipline with ID " + id, e);
+        }
+
+        // delete the discipline
+        repository.delete(discipline);
     }
 }

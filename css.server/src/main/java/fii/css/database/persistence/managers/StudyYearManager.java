@@ -24,42 +24,12 @@ public class StudyYearManager extends AbstractEntityManager<StudyYear> {
     public StudyYear addStudyYear(Degree degree, String specialty, int max_years) {
         // TODO: Reimplement this :(
         throw new UnsupportedOperationException();
-//        List<String> allowedTypes = List.of("I1", "I2", "I3", "M1", "M2", "Doctoral School");
-//        if (!allowedTypes.contains(value)) {
-//            throw new RuntimeException("Invalid year type: " + value + ". Must be one of: " + allowedTypes);
-//        }
-//        var entity = repository.newEntity();
-//
-//        var isDuplicate = repository
-//                .getAll()
-//                .stream()
-//                .anyMatch(studyYear -> studyYear.getValue().equals(value));
-//        if (isDuplicate) throw new RuntimeException("StudyYear already exists");
-//
-//        entity.setValue(value);
-//        repository.persist(entity);
-//        return entity;
     }
 
     public StudyYear updateStudyYear(String id, Degree degree, String specialty, int max_years) {
         // TODO: Reimplement this :(
         throw new UnsupportedOperationException();
-//        var entity = repository.getById(id);
-//        List<String> allowedTypes = List.of("I1", "I2", "I3", "M1", "M2", "Doctoral School");
-//        if (!allowedTypes.contains(value)) {
-//            throw new RuntimeException("Invalid year type: " + value + ". Must be one of: " + allowedTypes);
-//        }
-//
-//        var isDuplicate = repository
-//                .getAll()
-//                .stream()
-//                .anyMatch(studyYear -> studyYear.getValue().equals(value));
-//        if (isDuplicate) throw new RuntimeException("StudyYear already exists");
-//
-//        entity.setValue(value);
-//        repository.merge(entity);
-//
-//        return entity;
+
     }
 
     @Override

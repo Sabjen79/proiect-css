@@ -14,14 +14,12 @@ public class RoomManager extends AbstractEntityManager<Room> {
 
     @Override
     public Room get(String id) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getById(id);
     }
 
     @Override
     public List<Room> getAll() {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getAll();
     }
 
     public Room addRoom(String name, int capacity, RoomType roomType) {
@@ -89,7 +87,11 @@ public class RoomManager extends AbstractEntityManager<Room> {
 
     @Override
     public void remove(String id) {
-        // TODO: Implement this ( remember to delete entities from Schedule )
-        throw new UnsupportedOperationException();
+        Room room = repository.getById(id);
+        if (room == null) {
+            throw new RuntimeException("Room with ID " + id + " does not exist.");
+        }
+        // TODO: delete entities from schedule
+        repository.delete(room);
     }
 }

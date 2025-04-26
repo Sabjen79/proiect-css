@@ -1,5 +1,6 @@
 package fii.css.database.persistence.managers;
 
+import fii.css.database.Database;
 import fii.css.database.persistence.entities.FacultyGroup;
 import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.FacultyGroupRepository;
@@ -13,40 +14,18 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
 
     @Override
     public FacultyGroup get(String id) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getById(id);
     }
 
     @Override
     public List<FacultyGroup> getAll() {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getAll();
     }
 
     public FacultyGroup addFacultyGroup(String name, int year, StudyYear studyYear) {
         // TODO: Reimplement this :(
         throw new UnsupportedOperationException();
-//        List<String> allowedPrefixes = List.of("A", "B", "E");
-//
-//        if (!isValidGroupName(name, allowedPrefixes)) {
-//            throw new RuntimeException("Invalid group name: " + name + ". Must start with " + allowedPrefixes + " followed by a number (e.g., A1, B3).");
-//        }
-//
-//        // Validare: sa nu existe deja o grupa cu acelasi nume si an de studiu
-//        boolean duplicate = repository.getAll().stream()
-//                .anyMatch(group -> group.getFacultyGroupName().equalsIgnoreCase(name)
-//                        && group.getStudyYearId() == studyYearId);
-//
-//        if (duplicate) {
-//            throw new RuntimeException("Faculty group '" + name + "' already exists for study year ID " + studyYearId);
-//        }
-//
-//        FacultyGroup entity = repository.newEntity();
-//        entity.setFacultyGroupName(name);
-//        entity.setStudyYearId(studyYearId);
-//
-//        repository.persist(entity);
-//        return entity;
+
     }
 
     private boolean isValidGroupName(String name, List<String> allowedPrefixes) {
@@ -68,29 +47,23 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     public FacultyGroup updateFacultyGroup(String id, String name, int year, StudyYear studyYear) {
         // TODO: Reimplement this :(
         throw new UnsupportedOperationException();
-//        FacultyGroup entity = repository.getById(id);
-//        if (entity == null) {
-//            throw new RuntimeException("Faculty group with ID " + id + " not found.");
-//        }
-//
-//        boolean duplicate = repository.getAll().stream()
-//                .anyMatch(group -> group.getFacultyGroupId() != id &&
-//                        group.getFacultyGroupName().equalsIgnoreCase(newName) &&
-//                        group.getStudyYearId() == newStudyYearId);
-//
-//        if (duplicate) {
-//            throw new RuntimeException("Another faculty group with name '" + newName + "' already exists for study year ID " + newStudyYearId);
-//        }
-//
-//        entity.setFacultyGroupName(newName);
-//        entity.setStudyYearId(newStudyYearId);
-//        repository.merge(entity);
-//        return entity;
+
     }
 
     @Override
     public void remove(String id) {
-        // TODO: Implement this ( remember to delete entities from Schedule )
-        throw new UnsupportedOperationException();
+        FacultyGroup group = repository.getById(id);
+        if (group == null) {
+            throw new RuntimeException("Faculty group with ID " + id + " not found.");
+        }
+
+        // delete schedules for this faculty group
+        var schedules = Database.getInstance().scheduleManager.getAll();
+        schedules.stream()
+                .filter(schedule -> schedule.getFacultyGroup().getId().equals(id))
+                .forEach(schedule -> Database.getInstance().scheduleManager.remove(schedule.getId()));
+
+        // delete the faculty group
+        repository.delete(group);
     }
 }

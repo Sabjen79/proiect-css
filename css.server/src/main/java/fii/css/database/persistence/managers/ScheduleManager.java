@@ -12,14 +12,12 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
 
     @Override
     public Schedule get(String id) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getById(id);
     }
 
     @Override
     public List<Schedule> getAll() {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getAll();
     }
 
     public Schedule addSchedule(

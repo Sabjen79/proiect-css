@@ -3,10 +3,10 @@ package fii.css.database.persistence.managers;
 import fii.css.database.persistence.entities.Discipline;
 import fii.css.database.persistence.entities.Teacher;
 import fii.css.database.persistence.entities.TeacherDiscipline;
-import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TeacherDisciplineManager extends AbstractEntityManager<TeacherDiscipline> {
     public TeacherDisciplineManager() {
@@ -15,29 +15,61 @@ public class TeacherDisciplineManager extends AbstractEntityManager<TeacherDisci
 
     @Override
     public TeacherDiscipline get(String id) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getById(id);
     }
 
     @Override
     public List<TeacherDiscipline> getAll() {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        return repository.getAll();
     }
 
     public TeacherDiscipline createTeacherDiscipline(Teacher teacher, Discipline discipline) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        if (teacher == null || discipline == null) {
+            throw new IllegalArgumentException("Teacher and Discipline must not be null.");
+        }
+
+        var isDuplicate = repository.getAll().stream()
+                .anyMatch(td ->
+                        Objects.equals(td.getTeacher().getId(), teacher.getId()) &&
+                                Objects.equals(td.getDiscipline().getId(), discipline.getId()));
+
+        if (isDuplicate) {
+            throw new RuntimeException("This teacher is already assigned to this discipline.");
+        }
+
+        TeacherDiscipline entity = repository.newEntity();
+        entity.setTeacher(teacher);
+        entity.setDiscipline(discipline);
+
+        repository.persist(entity);
+
+        return entity;
     }
 
     public TeacherDiscipline updateTeacherDiscipline(String id, Teacher teacher, Discipline discipline) {
-        // TODO: Implement this
-        throw new UnsupportedOperationException();
+        TeacherDiscipline entity = repository.getById(id);
+        if (entity == null) {
+            throw new RuntimeException("TeacherDiscipline association with ID " + id + " does not exist.");
+        }
+
+        entity.setTeacher(teacher);
+        entity.setDiscipline(discipline);
+
+        repository.merge(entity);
+
+        return entity;
     }
+
 
     @Override
     public void remove(String id) {
-        // TODO: Implement this ( remember to delete entities from Schedule )
-        throw new UnsupportedOperationException();
+        TeacherDiscipline entity = repository.getById(id);
+        if (entity == null) {
+            throw new RuntimeException("TeacherDiscipline with ID " + id + " does not exist.");
+        }
+
+        //TODO delete from schedule
+
+        repository.delete(entity);
     }
 }
