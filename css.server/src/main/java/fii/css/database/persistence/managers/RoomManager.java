@@ -76,22 +76,25 @@ public class RoomManager extends AbstractEntityManager<Room> {
         return room;
     }
 
-    public void removeRoom(String roomId) {
-        Room room = repository.getById(roomId);
-        if (room != null) {
-            repository.delete(room);
-        } else {
-            throw new RuntimeException("Room with ID " + roomId + " does not exist.");
-        }
-    }
-
     @Override
     public void remove(String id) {
         Room room = repository.getById(id);
         if (room == null) {
             throw new RuntimeException("Room with ID " + id + " does not exist.");
         }
-        // TODO: delete entities from schedule
+
+        try {
+            var connection = fii.css.database.Database.getInstance().getConnection();
+            var stmt = connection.prepareStatement(
+                    "DELETE FROM Schedule WHERE room_id = ?"
+            );
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete schedules for Room with ID " + id, e);
+        }
+
         repository.delete(room);
     }
+
 }

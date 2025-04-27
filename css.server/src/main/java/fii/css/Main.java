@@ -34,8 +34,8 @@ public class Main {
         var room = database.roomManager.addRoom("C2", 200, RoomType.Laboratory);
         database.roomManager.updateRoom(room.getId(), room.getName(), 400, RoomType.Course);
 
-        var studyYear = database.studyYearManager.addStudyYear(Degree.Bachelor, "ISS", 3);
-        database.studyYearManager.updateStudyYear(studyYear.getId(), Degree.Master, studyYear.getSpecialty(), 2);
+        var studyYear = database.studyYearManager.addStudyYear(Degree.Bachelor, "Computer Science", 3);
+        database.studyYearManager.updateStudyYear(studyYear.getId(), Degree.Master, "ISS", 2);
 
         var facultyGroup = database.facultyGroupManager.addFacultyGroup("A1", 1, studyYear);
         database.facultyGroupManager.updateFacultyGroup(facultyGroup.getId(), "X1", facultyGroup.getYear(), facultyGroup.getStudyYear());
@@ -54,7 +54,7 @@ public class Main {
                 ClassType.Seminary,
                 room,
                 facultyGroup,
-                DayOfWeek.Saturday,
+                DayOfWeek.Tuesday,
                 8, 10
         );
 
@@ -66,6 +66,6 @@ public class Main {
 
         // Remove leftovers
         database.disciplineManager.remove(discipline.getId());
-        database.roomManager.removeRoom(room.getId());
+        database.roomManager.remove(room.getId());
     }
 }

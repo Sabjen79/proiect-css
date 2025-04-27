@@ -60,7 +60,6 @@ public class TeacherDisciplineManager extends AbstractEntityManager<TeacherDisci
         return entity;
     }
 
-
     @Override
     public void remove(String id) {
         TeacherDiscipline entity = repository.getById(id);
@@ -68,7 +67,16 @@ public class TeacherDisciplineManager extends AbstractEntityManager<TeacherDisci
             throw new RuntimeException("TeacherDiscipline with ID " + id + " does not exist.");
         }
 
-        //TODO delete from schedule
+        try {
+            var connection = fii.css.database.Database.getInstance().getConnection();
+            var stmt = connection.prepareStatement(
+                    "DELETE FROM Schedule WHERE teacher_discipline_id = ?"
+            );
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete schedules for TeacherDiscipline with ID " + id, e);
+        }
 
         repository.delete(entity);
     }

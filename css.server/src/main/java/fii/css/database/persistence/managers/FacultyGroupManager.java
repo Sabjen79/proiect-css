@@ -1,13 +1,16 @@
 package fii.css.database.persistence.managers;
 
 import fii.css.database.Database;
+import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.FacultyGroup;
 import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.FacultyGroupRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
+    private static final Set<String> ALLOWED_PREFIXES = Set.of("A", "B", "E", "X");
     public FacultyGroupManager() {
         super(new FacultyGroupRepository());
     }
@@ -23,47 +26,97 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     }
 
     public FacultyGroup addFacultyGroup(String name, int year, StudyYear studyYear) {
-        // TODO: Reimplement this :(
-        throw new UnsupportedOperationException();
+        validateFacultyGroup(name, year, studyYear);
 
-    }
+        // check for duplicated
+        boolean duplicate = repository.getAll().stream()
+                .anyMatch(group -> group.getGroupName().equalsIgnoreCase(name)
+                        && group.getStudyYear().getId().equals(studyYear.getId()));
 
-    private boolean isValidGroupName(String name, List<String> allowedPrefixes) {
-        if (name.length() < 2) return false;
-
-        String prefix = name.substring(0, 1).toUpperCase();
-        String numberPart = name.substring(1);
-
-        if (!allowedPrefixes.contains(prefix)) return false;
-
-        try {
-            int number = Integer.parseInt(numberPart);
-            return number >= 1; // sau >= 1 && <= 6 dacă vrei să limitezi
-        } catch (NumberFormatException e) {
-            return false;
+        if (duplicate) {
+            throw new RuntimeException("Faculty group '" + name + "' already exists for the specified study year.");
         }
+
+        FacultyGroup entity = repository.newEntity();
+        entity.setGroupName(name);
+        entity.setYear(year);
+        entity.setStudyYear(studyYear);
+
+        repository.persist(entity);
+        return entity;
     }
+
 
     public FacultyGroup updateFacultyGroup(String id, String name, int year, StudyYear studyYear) {
-        // TODO: Reimplement this :(
-        throw new UnsupportedOperationException();
+        FacultyGroup entity = repository.getById(id);
+        if (entity == null) {
+            throw new RuntimeException("Faculty group with ID " + id + " not found.");
+        }
 
+        validateFacultyGroup(name, year, studyYear);
+
+        boolean duplicate = repository.getAll().stream()
+                .anyMatch(group -> !group.getId().equals(id) &&
+                        group.getGroupName().equalsIgnoreCase(name) &&
+                        group.getStudyYear().getId().equals(studyYear.getId()));
+
+        if (duplicate) {
+            throw new RuntimeException("Another faculty group with name '" + name + "' already exists for the specified study year.");
+        }
+
+        entity.setGroupName(name);
+        entity.setYear(year);
+        entity.setStudyYear(studyYear);
+
+        repository.merge(entity);
+        return entity;
     }
 
     @Override
     public void remove(String id) {
-        FacultyGroup group = repository.getById(id);
-        if (group == null) {
-            throw new RuntimeException("Faculty group with ID " + id + " not found.");
+        FacultyGroup facultyGroup = repository.getById(id);
+        if (facultyGroup == null) {
+            throw new RuntimeException("Faculty group with ID " + id + " does not exist.");
         }
 
-        // delete schedules for this faculty group
-        var schedules = Database.getInstance().scheduleManager.getAll();
-        schedules.stream()
-                .filter(schedule -> schedule.getFacultyGroup().getId().equals(id))
-                .forEach(schedule -> Database.getInstance().scheduleManager.remove(schedule.getId()));
+        // delete schedules from this faculty group
+        try {
+            var connection = Database.getInstance().getConnection();
+            var stmt = connection.prepareStatement("DELETE FROM Schedule WHERE faculty_group_id = ?");
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to delete schedules for faculty group with ID " + id, e);
+        }
 
-        // delete the faculty group
-        repository.delete(group);
+        repository.delete(facultyGroup);
+    }
+    private void validateFacultyGroup(String name, int year, StudyYear studyYear) {
+        if (name.length() != 2) {
+            throw new RuntimeException("Group name must have exactly 2 characters.");
+        }
+
+        String prefix = name.substring(0, 1).toUpperCase();
+        String numberPart = name.substring(1);
+
+        if (!ALLOWED_PREFIXES.contains(prefix)) {
+            throw new RuntimeException("Group name must start with one of " + ALLOWED_PREFIXES);
+        }
+
+        try {
+            Integer.parseInt(numberPart);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Second character of group name must be a number (0-9).");
+        }
+
+        Degree degree = studyYear.getDegree();
+        if (degree == Degree.Bachelor && (year < 1 || year > studyYear.getMaxYears())) {
+            throw new RuntimeException("Bachelor group must have year between 1 and 3.");
+        } else if (degree == Degree.Master && (year < 1 || year > studyYear.getMaxYears())) {
+            throw new RuntimeException("Master group must have year between 1 and 2.");
+        } else if (degree == Degree.PhD) {
+            // TODO
+            // i suppose phd doesn't have year restrictions?
+        }
     }
 }
