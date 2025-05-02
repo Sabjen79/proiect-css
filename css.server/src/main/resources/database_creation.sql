@@ -3,7 +3,9 @@
 CREATE TABLE Discipline (
     discipline_id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    description TEXT
+    description TEXT,
+    year INT NOT NULL,
+    study_year_id TEXT NOT NULL
 );
 
 CREATE TABLE Teacher (

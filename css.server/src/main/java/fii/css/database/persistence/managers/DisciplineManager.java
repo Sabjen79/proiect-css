@@ -2,6 +2,7 @@ package fii.css.database.persistence.managers;
 
 import fii.css.database.Database;
 import fii.css.database.persistence.entities.Discipline;
+import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.DisciplineRepository;
 
@@ -22,7 +23,7 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
         return repository.getAll();
     }
 
-    public Discipline addDiscipline(String name, String description) {
+    public Discipline addDiscipline(String name, String description, int year, StudyYear studyYear) {
         var entity = repository.newEntity();
 
         var isDuplicate = repository
@@ -34,19 +35,23 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
 
         entity.setName(name);
         entity.setDescription(description);
+        entity.setYear(year);
+        entity.setStudyYearId(studyYear.getId());
 
         repository.persist(entity);
 
         return entity;
     }
 
-    public Discipline updateDiscipline(String id, String name, String description) {
+    public Discipline updateDiscipline(String id, String name, String description, int year, StudyYear studyYear) {
         var entity = repository.getById(id);
 
         if (entity == null) throw new RuntimeException("Discipline with name " + name + " does not exist.");
 
         entity.setName(name);
         entity.setDescription(description);
+        entity.setYear(year);
+        entity.setStudyYearId(studyYear.getId());
 
         repository.merge(entity);
 
