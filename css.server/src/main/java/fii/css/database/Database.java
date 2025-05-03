@@ -1,5 +1,8 @@
 package fii.css.database;
 
+import fii.css.database.persistence.entities.Discipline;
+import fii.css.database.persistence.managers.*;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,8 +22,16 @@ public class Database {
     //======================================================================//
     private Connection connection;
 
-    private Database() {
-    }
+    public DisciplineManager disciplineManager;
+    public TeacherManager teacherManager;
+    public RoomManager roomManager;
+    public StudyYearManager studyYearManager;
+    public FacultyGroupManager facultyGroupManager;
+    public ScheduleManager scheduleManager;
+
+    private Database() {}
+
+    public Connection getConnection() { return connection; }
 
     public void initialize() {
         try {
@@ -32,6 +43,14 @@ public class Database {
             } else {
                 System.out.println("Database already exists. Skipping creation.");
             }
+
+            disciplineManager = new DisciplineManager();
+            teacherManager = new TeacherManager();
+            roomManager = new RoomManager();
+            studyYearManager = new StudyYearManager();
+            facultyGroupManager = new FacultyGroupManager();
+            scheduleManager = new ScheduleManager();
+
         } catch (SQLException e) {
             // if the database doesn't exist yet
             System.out.println("Database file does not exist. Creating new database...");
