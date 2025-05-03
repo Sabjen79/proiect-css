@@ -49,4 +49,16 @@ public class StudyYear extends DatabaseEntity {
     public void setMaxYears(int maxYears) {
         this.maxYears = maxYears;
     }
+
+    @Override
+    public DatabaseEntity clone() {
+        var studyYear = new StudyYear();
+
+        studyYear.studyYearId = this.studyYearId;
+        studyYear.degree = this.degree;
+        studyYear.specialty = this.specialty;
+        studyYear.maxYears = this.maxYears;
+
+        return studyYear;
+    }
 }

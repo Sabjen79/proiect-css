@@ -1,14 +1,17 @@
 package fii.css.database.persistence.managers;
 
 import fii.css.database.Database;
+import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Discipline;
 import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.DisciplineRepository;
+import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
 import java.util.List;
 
-public class DisciplineManager extends AbstractEntityManager<Discipline>{
+public class DisciplineManager extends AbstractEntityManager<Discipline> {
+    private TeacherDisciplineRepository tdRepository;
     public DisciplineManager() {
         super(new DisciplineRepository());
     }
@@ -23,39 +26,32 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
         return repository.getAll();
     }
 
-    public Discipline addDiscipline(String name, String description, int year, StudyYear studyYear) {
+    public void addDiscipline(String name, String description, int year, String studyYearId) {
         var entity = repository.newEntity();
 
-        var isDuplicate = repository
-                .getAll()
-                .stream()
-                .anyMatch(discipline -> discipline.getName().equals(name));
-
-        if (isDuplicate) throw new RuntimeException("Discipline with name " + name + " already exists.");
-
-        entity.setName(name);
-        entity.setDescription(description);
+        entity.setName(name.trim());
+        entity.setDescription(description.trim());
         entity.setYear(year);
-        entity.setStudyYearId(studyYear.getId());
+        entity.setStudyYearId(studyYearId.trim());
+
+        validate(entity);
 
         repository.persist(entity);
-
-        return entity;
     }
 
-    public Discipline updateDiscipline(String id, String name, String description, int year, StudyYear studyYear) {
+    public void updateDiscipline(String id, String name, String description, int year, String studyYearId) {
         var entity = repository.getById(id);
 
-        if (entity == null) throw new RuntimeException("Discipline with name " + name + " does not exist.");
+        if (entity == null) throw new DatabaseException("Discipline with name " + name + " does not exist.");
 
-        entity.setName(name);
-        entity.setDescription(description);
+        entity.setName(name.trim());
+        entity.setDescription(description.trim());
         entity.setYear(year);
-        entity.setStudyYearId(studyYear.getId());
+        entity.setStudyYearId(studyYearId.trim());
+
+        validate(entity);
 
         repository.merge(entity);
-
-        return entity;
     }
 
     public void remove(String id) {
@@ -64,17 +60,40 @@ public class DisciplineManager extends AbstractEntityManager<Discipline>{
             throw new RuntimeException("Discipline with ID " + id + " does not exist.");
         }
 
-        // delete teacher discipline associations
-        try {
-            var connection = fii.css.database.Database.getInstance().getConnection();
-            var stmt = connection.prepareStatement("DELETE FROM TeacherDiscipline WHERE discipline_id = ?");
-            stmt.setString(1, id);
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to delete teacher-discipline associations for discipline with ID " + id, e);
+        var tdRepo = new TeacherDisciplineRepository();
+        tdRepo.getAll().forEach(td -> {
+            if(td.getDisciplineId().equals(id)) {
+                tdRepo.delete(td);
+            }
+        });
+
+        repository.delete(discipline);
+    }
+
+    private void validate(Discipline discipline) {
+        if(discipline.getName() == null || discipline.getName().isBlank()) {
+            throw new DatabaseException("Discipline name cannot be empty.");
         }
 
-        // delete the discipline
-        repository.delete(discipline);
+        if(discipline.getDescription() == null || discipline.getDescription().isBlank()) {
+            throw new DatabaseException("Discipline description cannot be empty.");
+        }
+
+        var studyYear = discipline.getStudyYear();
+
+        if(studyYear == null) {
+            throw new DatabaseException("The specified study year does not exist.");
+        }
+
+        if(discipline.getYear() < 1 || discipline.getYear() > discipline.getStudyYear().getMaxYears()) {
+            throw new DatabaseException("Study year must be between 1 and " + (studyYear.getMaxYears()));
+        }
+
+        for(var d : getAll()) {
+            if (!d.getId().equalsIgnoreCase(discipline.getId())
+                    && d.getName().equalsIgnoreCase(discipline.getName())) {
+                throw new DatabaseException("Discipline with name '" + discipline.getName() + "' already exists.");
+            }
+        }
     }
 }

@@ -1,18 +1,17 @@
 package fii.css.database.persistence.managers;
 
+import fii.css.database.Database;
+import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.StudyYearRepository;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 public class StudyYearManager extends AbstractEntityManager<StudyYear> {
-    // TODO: add others necessary here, I couldn't think of anything else for now :))
-    private static final Set<String> MASTER_SPECIALTIES = Set.of("ISS", "SD", "IAO", "SI", "Advanced Studies");
-
-    public StudyYearManager() {super(new StudyYearRepository());}
+    public StudyYearManager() {
+        super(new StudyYearRepository());
+    }
 
     @Override
     public StudyYear get(String id) {
@@ -24,93 +23,67 @@ public class StudyYearManager extends AbstractEntityManager<StudyYear> {
         return repository.getAll();
     }
 
-    public StudyYear addStudyYear(Degree degree, String specialty, int maxYears) {
-        validateStudyYear(degree, specialty, maxYears);
-
+    public void addStudyYear(Degree degree, String specialty, int maxYears) {
         StudyYear entity = repository.newEntity();
         entity.setDegree(degree);
-        entity.setSpecialty(specialty);
+        entity.setSpecialty(specialty.trim());
         entity.setMaxYears(maxYears);
+
+        validate(entity);
 
         repository.persist(entity);
-        return entity;
     }
 
-    public StudyYear updateStudyYear(String id, Degree degree, String specialty, int maxYears) {
+    public void updateStudyYear(String id, Degree degree, String specialty, int maxYears) {
         StudyYear entity = repository.getById(id);
-        if (entity == null) {
-            throw new RuntimeException("Study year with ID " + id + " does not exist.");
-        }
 
-        validateStudyYear(degree, specialty, maxYears);
+        if (entity == null) {
+            throw new DatabaseException("Study year with ID '" + id + "' does not exist.");
+        }
 
         entity.setDegree(degree);
-
-        //poti face update doar daca specializarea ramane aceeasi
-        if(!Objects.equals(entity.getSpecialty(), specialty)){
-            throw new RuntimeException("Can't update study year from specialty '" + entity.getSpecialty() + "' to '" + specialty+ "'.");
-        }else{
-            entity.setSpecialty(specialty);
-        }
+        entity.setSpecialty(specialty.trim());
         entity.setMaxYears(maxYears);
 
+        validate(entity);
+
         repository.merge(entity);
-        return entity;
     }
 
     @Override
     public void remove(String id) {
         StudyYear studyYear = repository.getById(id);
         if (studyYear == null) {
-            throw new RuntimeException("Study year with ID " + id + " does not exist.");
+            throw new DatabaseException("Study year with ID '" + id + "' does not exist.");
         }
 
-        // delete associated faculty groups
-        try {
-            var connection = fii.css.database.Database.getInstance().getConnection();
-            var stmt = connection.prepareStatement("DELETE FROM FacultyGroup WHERE study_year_id = ?");
-            stmt.setString(1, id);
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to delete faculty groups for study year with ID " + id, e);
-        }
+        var fgManager = Database.getInstance().facultyGroupManager;
+        fgManager.getAll().forEach(fg -> {
+            if(fg.getStudyYear().getId().equals(id)) {
+                fgManager.remove(fg.getId());
+            }
+        });
 
-        // delete the study year
         repository.delete(studyYear);
     }
 
-    private void validateStudyYear(Degree degree, String specialty, int maxYears) {
+    private void validate(StudyYear sy) {
+        // Being an enum, degree is always correct
 
-        var isDuplicate = repository
-                .getAll()
-                .stream()
-                .anyMatch(studyYear -> studyYear.getSpecialty().equals(specialty) && studyYear.getDegree().equals(degree));
+        if(sy.getSpecialty() == null || sy.getSpecialty().trim().isEmpty()) {
+            throw new DatabaseException("Specialty cannot be empty");
+        }
 
-        if (isDuplicate) throw new RuntimeException("Can't add study year again.");
+        if(sy.getMaxYears() < 1) {
+            throw new DatabaseException("Max years must be greater than 0");
+        }
 
-        if (degree == Degree.Bachelor) {
-            if (!specialty.equalsIgnoreCase("Computer Science")) {
-                throw new RuntimeException("Bachelor degree must have specialty 'Computer Science'.");
+        for(StudyYear studyYear : getAll()) {
+            if(!studyYear.getId().equals(sy.getId())
+                    && studyYear.getDegree().equals(sy.getDegree())
+                    && studyYear.getSpecialty().trim().equalsIgnoreCase(sy.getSpecialty())) {
+                throw new DatabaseException("Specialty '" + sy.getSpecialty() + "' already exists for this degree.");
             }
-            if (maxYears != 3) {
-                throw new RuntimeException("Bachelor degree must have exactly 3 years.");
-            }
-        } else if (degree == Degree.Master) {
-            if (!MASTER_SPECIALTIES.contains(specialty)) {
-                throw new RuntimeException("Master degree must have a specialty from: " + MASTER_SPECIALTIES);
-            }
-            if (maxYears != 2) {
-                throw new RuntimeException("Master degree must have exactly 2 years.");
-            }
-        } else if (degree == Degree.PhD) {
-            // TODO
-            // i suppose that phd can have any specialty and any number of years
-            // if im wrong, please correct me
-            if (maxYears <= 0) {
-                throw new RuntimeException("PhD degree must have a positive number of years.");
-            }
-        } else {
-            throw new RuntimeException("Unsupported degree type: " + degree);
         }
     }
 }

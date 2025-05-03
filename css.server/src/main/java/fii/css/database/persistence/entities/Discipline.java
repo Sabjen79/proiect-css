@@ -1,5 +1,6 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.Database;
 import fii.css.database.persistence.DatabaseEntity;
 import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
@@ -53,11 +54,24 @@ public class Discipline extends DatabaseEntity {
         this.year = year;
     }
 
-    public String getStudyYearId() {
-        return studyYearId;
+    public StudyYear getStudyYear() {
+        return Database.getInstance().studyYearManager.get(studyYearId);
     }
 
     public void setStudyYearId(String studyYearId) {
         this.studyYearId = studyYearId;
+    }
+
+    @Override
+    public DatabaseEntity clone() {
+        var discipline = new Discipline();
+
+        discipline.disciplineId = disciplineId;
+        discipline.name = name;
+        discipline.description = description;
+        discipline.year = year;
+        discipline.studyYearId = studyYearId;
+
+        return discipline;
     }
 }

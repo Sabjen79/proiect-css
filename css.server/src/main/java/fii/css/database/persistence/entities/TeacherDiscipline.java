@@ -24,25 +24,29 @@ public class TeacherDiscipline extends DatabaseEntity {
         return teacherDisciplineId;
     }
 
-    public Teacher getTeacher() {
-        return Database
-            .getInstance()
-            .teacherManager
-            .get(teacherId);
+    public String getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacherId = teacher.getId();
+    public void setTeacherId(String id) {
+        this.teacherId = id;
     }
 
-    public Discipline getDiscipline() {
-        return Database
-            .getInstance()
-            .disciplineManager
-            .get(disciplineId);
+    public String getDisciplineId() {
+        return disciplineId;
     }
 
-    public void setDiscipline(Discipline discipline) {
-        this.disciplineId = discipline.getId();
+    public void setDisciplineId(String id) {
+        this.disciplineId = id;
+    }
+
+    @Override
+    public DatabaseEntity clone() {
+        var teacherDiscipline = new TeacherDiscipline();
+
+        teacherDiscipline.teacherId = this.teacherId;
+        teacherDiscipline.disciplineId = this.disciplineId;
+
+        return teacherDiscipline;
     }
 }

@@ -1,5 +1,7 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.DatabaseException;
+
 public enum Degree {
     Bachelor(0),
     Master(1),
@@ -12,6 +14,10 @@ public enum Degree {
     }
 
     public static Degree fromValue(int value) {
-        return values()[value];
+        try {
+            return values()[value];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DatabaseException("Invalid degree value: " + value);
+        }
     }
 }
