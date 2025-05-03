@@ -1,0 +1,345 @@
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+--- a/.idea/workspace.xml	(revision 8f92b776202ce718f45d82764daf3818e3384e5f)
++++ /dev/null	(revision 8f92b776202ce718f45d82764daf3818e3384e5f)
+@@ -1,218 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+-  <component name="ChangeListManager">
+-    <list default="true" id="e197fd33-595e-45c6-93c6-d43a1df40dc4" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/../css.database/database_css.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/../css.database/database_css.drawio.png" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../css.database/database_views.sql" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/StudyYearManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/StudyYearManager.java" afterDir="false" />
+-    </list>
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Enum" />
+-        <option value="Class" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+-  </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;,
+-    &quot;assignee&quot;: &quot;stefanaciudin&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/Sabjen79/proiect-css.git&quot;,
+-    &quot;accountId&quot;: &quot;751b0cde-66a5-4409-aecc-f2e88cdd3621&quot;
+-  }
+-}</component>
+-  <component name="ProjectColorInfo">{
+-  &quot;customColor&quot;: &quot;&quot;,
+-  &quot;associatedIndex&quot;: 7
+-}</component>
+-  <component name="ProjectId" id="2wDHny56AovdRf7SRPsmXxOdjST" />
+-  <component name="ProjectLevelVcsManager">
+-    <ConfirmationsSetting value="1" id="Add" />
+-  </component>
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;persistence&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+-  },
+-  &quot;keyToStringList&quot;: {
+-    &quot;DatabaseDriversLRU&quot;: [
+-      &quot;sqlite&quot;
+-    ]
+-  }
+-}</component>
+-  <component name="RunManager">
+-    <configuration name="Main" type="Application" factoryName="Application">
+-      <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
+-      <module name="proiect-css" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-  </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="e197fd33-595e-45c6-93c6-d43a1df40dc4" name="Changes" comment="" />
+-      <created>1745569396034</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1745569396034</updated>
+-      <workItem from="1745569397209" duration="13345000" />
+-      <workItem from="1745610835323" duration="5000" />
+-      <workItem from="1745610851049" duration="522000" />
+-      <workItem from="1745611887620" duration="736000" />
+-      <workItem from="1745663291060" duration="5295000" />
+-      <workItem from="1745671874753" duration="69000" />
+-      <workItem from="1745686839672" duration="6159000" />
+-      <workItem from="1745746482202" duration="233000" />
+-      <workItem from="1745746723689" duration="1312000" />
+-      <workItem from="1746189508906" duration="285000" />
+-      <workItem from="1746195270892" duration="4776000" />
+-      <workItem from="1746202294416" duration="3707000" />
+-      <workItem from="1746290287706" duration="130000" />
+-      <workItem from="1746290512904" duration="5849000" />
+-      <workItem from="1746299897432" duration="830000" />
+-      <workItem from="1746307427216" duration="3726000" />
+-    </task>
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>63</line>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>24</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>25</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>32</line>
+-          <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>33</line>
+-          <option name="timeStamp" value="5" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>35</line>
+-          <option name="timeStamp" value="6" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>36</line>
+-          <option name="timeStamp" value="7" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>38</line>
+-          <option name="timeStamp" value="8" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>39</line>
+-          <option name="timeStamp" value="9" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>41</line>
+-          <option name="timeStamp" value="10" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>42</line>
+-          <option name="timeStamp" value="11" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>44</line>
+-          <option name="timeStamp" value="12" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>45</line>
+-          <option name="timeStamp" value="15" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>66</line>
+-          <option name="timeStamp" value="16" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>69</line>
+-          <option name="timeStamp" value="17" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
+-          <line>70</line>
+-          <option name="timeStamp" value="18" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: ../css.database/database_views.sql
+===================================================================
+diff --git a/../css.database/database_views.sql b/../css.database/database_views.sql
+deleted file mode 100644
+--- a/../css.database/database_views.sql	(revision 8f92b776202ce718f45d82764daf3818e3384e5f)
++++ /dev/null	(revision 8f92b776202ce718f45d82764daf3818e3384e5f)
+@@ -1,112 +0,0 @@
+--- Create a view to easily check schedule conflicts for rooms
+-CREATE VIEW IF NOT EXISTS RoomConflicts AS
+-SELECT 
+-    s1.schedule_id AS schedule1_id,
+-    s2.schedule_id AS schedule2_id,
+-    r.name AS room_name,
+-    t1.day_of_week,
+-    t1.start_time AS time1_start,
+-    t1.end_time AS time1_end,
+-    t2.start_time AS time2_start,
+-    t2.end_time AS time2_end
+-FROM 
+-    Schedule s1
+-    JOIN Schedule s2 ON s1.room_id = s2.room_id AND s1.schedule_id < s2.schedule_id
+-    JOIN Room r ON s1.room_id = r.room_id
+-    JOIN TimeSlot t1 ON s1.time_slot_id = t1.time_slot_id
+-    JOIN TimeSlot t2 ON s2.time_slot_id = t2.time_slot_id
+-WHERE 
+-    t1.day_of_week = t2.day_of_week
+-    AND ((t1.start_time <= t2.start_time AND t1.end_time > t2.start_time)
+-    OR (t2.start_time <= t1.start_time AND t2.end_time > t1.start_time));
+-
+--- Create a view to easily check schedule conflicts for teachers
+-CREATE VIEW IF NOT EXISTS TeacherConflicts AS
+-SELECT 
+-    s1.schedule_id AS schedule1_id,
+-    s2.schedule_id AS schedule2_id,
+-    t.name AS teacher_name,
+-    ts1.day_of_week,
+-    ts1.start_time AS time1_start,
+-    ts1.end_time AS time1_end,
+-    ts2.start_time AS time2_start,
+-    ts2.end_time AS time2_end
+-FROM 
+-    Schedule s1
+-    JOIN Schedule s2 ON s1.teacher_id = s2.teacher_id AND s1.schedule_id < s2.schedule_id
+-    JOIN Teacher t ON s1.teacher_id = t.teacher_id
+-    JOIN TimeSlot ts1 ON s1.time_slot_id = ts1.time_slot_id
+-    JOIN TimeSlot ts2 ON s2.time_slot_id = ts2.time_slot_id
+-WHERE 
+-    ts1.day_of_week = ts2.day_of_week
+-    AND ((ts1.start_time <= ts2.start_time AND ts1.end_time > ts2.start_time)
+-    OR (ts2.start_time <= ts1.start_time AND ts2.end_time > ts1.start_time));
+-
+--- Create a view for checking room type compatibility with class type
+-CREATE VIEW IF NOT EXISTS RoomClassCompatibility AS
+-SELECT 
+-    s.schedule_id AS schedule_id,
+-    r.name AS room_name,
+-    rt.type_name AS room_type,
+-    ct.type_name AS class_type,
+-    CASE 
+-        WHEN (ct.type_name = 'Course' AND rt.type_name != 'Course') THEN 'Incompatible: Course must be in Course room'
+-        WHEN (ct.type_name = 'Laboratory' AND rt.type_name != 'Laboratory') THEN 'Incompatible: Laboratory must be in Laboratory room'
+-        ELSE 'Compatible'
+-    END AS compatibility_status
+-FROM 
+-    Schedule s
+-    JOIN Room r ON s.room_id = r.room_id
+-    JOIN RoomType rt ON r.room_type_id = rt.room_type_id
+-    JOIN ClassType ct ON s.class_type_id = ct.class_type_id
+-WHERE 
+-    (ct.type_name = 'Course' AND rt.type_name != 'Course')
+-    OR (ct.type_name = 'Laboratory' AND rt.type_name != 'Laboratory');
+-
+--- Create a view for group scheduling
+-CREATE VIEW IF NOT EXISTS GroupSchedule AS
+-SELECT 
+-    g.name AS group_name,
+-    sy.value AS study_year,
+-    d.name AS discipline,
+-    ct.type_name AS class_type,
+-    t.name AS teacher,
+-    r.name AS room,
+-    ts.day_of_week,
+-    ts.start_time,
+-    ts.end_time
+-FROM 
+-    Schedule s
+-    JOIN FacultyGroup g ON s.faculty_group_id = g.faculty_group_id
+-    JOIN StudyYear sy ON g.study_year_id = sy.study_year_id
+-    JOIN Discipline d ON s.discipline_id = d.discipline_id
+-    JOIN ClassType ct ON s.class_type_id = ct.class_type_id
+-    JOIN Teacher t ON s.teacher_id = t.teacher_id
+-    JOIN Room r ON s.room_id = r.room_id
+-    JOIN TimeSlot ts ON s.time_slot_id = ts.time_slot_id
+-ORDER BY 
+-    g.name, ts.day_of_week, ts.start_time;
+-
+--- Create a view for study year course schedule
+-CREATE VIEW IF NOT EXISTS StudyYearCourseSchedule AS
+-SELECT 
+-    sy.value AS study_year,
+-    d.name AS discipline,
+-    t.name AS teacher,
+-    r.name AS room,
+-    ts.day_of_week,
+-    ts.start_time,
+-    ts.end_time
+-FROM 
+-    Schedule s
+-    JOIN StudyYear sy ON s.study_year_id = sy.study_year_id
+-    JOIN Discipline d ON s.discipline_id = d.discipline_id
+-    JOIN ClassType ct ON s.class_type_id = ct.class_type_id
+-    JOIN Teacher t ON s.teacher_id = t.teacher_id
+-    JOIN Room r ON s.room_id = r.room_id
+-    JOIN TimeSlot ts ON s.time_slot_id = ts.time_slot_id
+-WHERE 
+-    s.faculty_group_id IS NULL
+-    AND ct.type_name = 'Course'
+-ORDER BY 
+-    sy.value, ts.day_of_week, ts.start_time;
