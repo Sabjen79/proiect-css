@@ -49,4 +49,16 @@ public class Room extends DatabaseEntity{
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType.value;
     }
+
+    @Override
+    public DatabaseEntity clone() {
+        var room = new Room();
+
+        room.roomId = this.roomId;
+        room.name = this.name;
+        room.capacity = this.capacity;
+        room.roomType = this.roomType;
+
+        return room;
+    }
 }

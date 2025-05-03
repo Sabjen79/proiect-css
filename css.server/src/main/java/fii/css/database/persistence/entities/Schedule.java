@@ -12,8 +12,11 @@ public class Schedule extends DatabaseEntity {
     @Column("schedule_id")
     private String scheduleId;
 
-    @Column("teacher_discipline_id")
-    private String teacherDisciplineId;
+    @Column("teacher_id")
+    private String teacherId;
+
+    @Column("discipline_id")
+    private String disciplineId;
 
     @Column("class_type")
     private int classType;
@@ -37,15 +40,26 @@ public class Schedule extends DatabaseEntity {
 
     public String getId() { return scheduleId; }
 
-    public TeacherDiscipline getTeacherDiscipline() {
+    public Teacher getTeacher() {
         return Database
-            .getInstance()
-            .teacherDisciplineManager
-            .get(teacherDisciplineId);
+                .getInstance()
+                .teacherManager
+                .get(teacherId);
     }
 
-    public void setTeacherDiscipline(TeacherDiscipline teacherDiscipline) {
-        this.teacherDisciplineId = teacherDiscipline.getId();
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Discipline getDiscipline() {
+        return Database
+                .getInstance()
+                .disciplineManager
+                .get(disciplineId);
+    }
+
+    public void setDisciplineId(String disciplineId) {
+        this.disciplineId = disciplineId;
     }
 
     public ClassType getClassType() {
@@ -63,8 +77,8 @@ public class Schedule extends DatabaseEntity {
             .get(roomId);
     }
 
-    public void setRoom(Room room) {
-        this.roomId = room.getId();
+    public void setRoomId(String id) {
+        this.roomId = id;
     }
 
     public FacultyGroup getFacultyGroup() {
@@ -74,8 +88,8 @@ public class Schedule extends DatabaseEntity {
             .get(facultyGroupId);
     }
 
-    public void setFacultyGroup(FacultyGroup facultyGroup) {
-        this.facultyGroupId = facultyGroup.getId();
+    public void setFacultyGroupId(String id) {
+        this.facultyGroupId = id;
     }
 
     public DayOfWeek getDayOfWeek() {
@@ -100,5 +114,22 @@ public class Schedule extends DatabaseEntity {
 
     public void setEndHour(int endHour) {
         this.endHour = endHour;
+    }
+
+    @Override
+    public DatabaseEntity clone() {
+        var schedule = new Schedule();
+
+        schedule.scheduleId = this.scheduleId;
+        schedule.teacherId = this.teacherId;
+        schedule.disciplineId = this.disciplineId;
+        schedule.classType = this.classType;
+        schedule.roomId = this.roomId;
+        schedule.facultyGroupId = this.facultyGroupId;
+        schedule.dayOfWeek = this.dayOfWeek;
+        schedule.startHour = this.startHour;
+        schedule.endHour = this.endHour;
+
+        return schedule;
     }
 }

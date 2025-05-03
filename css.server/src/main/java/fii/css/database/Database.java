@@ -24,7 +24,6 @@ public class Database {
 
     public DisciplineManager disciplineManager;
     public TeacherManager teacherManager;
-    public TeacherDisciplineManager teacherDisciplineManager;
     public RoomManager roomManager;
     public StudyYearManager studyYearManager;
     public FacultyGroupManager facultyGroupManager;
@@ -47,7 +46,6 @@ public class Database {
 
             disciplineManager = new DisciplineManager();
             teacherManager = new TeacherManager();
-            teacherDisciplineManager = new TeacherDisciplineManager();
             roomManager = new RoomManager();
             studyYearManager = new StudyYearManager();
             facultyGroupManager = new FacultyGroupManager();

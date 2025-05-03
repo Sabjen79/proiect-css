@@ -1,5 +1,7 @@
 package fii.css.database.persistence.managers;
 
+import fii.css.database.Database;
+import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Room;
 import fii.css.database.persistence.entities.RoomType;
 import fii.css.database.persistence.repositories.AbstractRepository;
@@ -22,79 +24,64 @@ public class RoomManager extends AbstractEntityManager<Room> {
         return repository.getAll();
     }
 
-    public Room addRoom(String name, int capacity, RoomType roomType) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Room name cannot be empty.");
-        }
-
-        if (capacity <= 0) {
-            throw new IllegalArgumentException("Room capacity must be positive.");
-        }
-
-        boolean nameExists = repository.getAll().stream()
-                .anyMatch(room -> room.getName().equalsIgnoreCase(name));
-
-        if (nameExists) {
-            throw new RuntimeException("Room with name '" + name + "' already exists.");
-        }
-
+    public void addRoom(String name, int capacity, RoomType roomType) {
         Room room = repository.newEntity();
         room.setName(name);
         room.setCapacity(capacity);
         room.setRoomType(roomType);
 
+        validate(room);
+
         repository.persist(room);
-        return room;
     }
 
-    public Room updateRoom(String roomId, String name, int capacity, RoomType roomType) {
+    public void updateRoom(String roomId, String name, int capacity, RoomType roomType) {
         Room room = repository.getById(roomId);
+
         if (room == null) {
             throw new RuntimeException("Room not found with ID: " + roomId);
-        }
-
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Room name cannot be empty.");
-        }
-
-        if (capacity <= 0) {
-            throw new IllegalArgumentException("Room capacity must be positive.");
-        }
-
-        boolean duplicate = repository.getAll().stream()
-                .anyMatch(r -> r.getName().equalsIgnoreCase(name) && !r.getId().equals(roomId));
-
-        if (duplicate) {
-            throw new RuntimeException("Another room with name '" + name + "' already exists.");
         }
 
         room.setName(name);
         room.setCapacity(capacity);
         room.setRoomType(roomType);
 
+        validate(room);
+
         repository.merge(room);
-        return room;
     }
 
     @Override
     public void remove(String id) {
         Room room = repository.getById(id);
         if (room == null) {
-            throw new RuntimeException("Room with ID " + id + " does not exist.");
+            throw new DatabaseException("Room with ID " + id + " does not exist.");
         }
 
-        try {
-            var connection = fii.css.database.Database.getInstance().getConnection();
-            var stmt = connection.prepareStatement(
-                    "DELETE FROM Schedule WHERE room_id = ?"
-            );
-            stmt.setString(1, id);
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to delete schedules for Room with ID " + id, e);
-        }
+        var sManager = Database.getInstance().scheduleManager;
+        sManager.getAll().forEach(s -> {
+            if(s.getRoom().getId().equals(id)) {
+                sManager.remove(s.getId());
+            }
+        });
 
         repository.delete(room);
     }
 
+    private void validate(Room room) {
+        if (room.getName() == null || room.getName().isBlank()) {
+            throw new DatabaseException("Room name cannot be empty.");
+        }
+
+        if (room.getCapacity() <= 0) {
+            throw new DatabaseException("Room capacity must be positive.");
+        }
+
+        for(var r : getAll()) {
+            if (!r.getId().equalsIgnoreCase(room.getId())
+                && r.getName().equalsIgnoreCase(room.getName())) {
+                throw new DatabaseException("Room with name '" + room.getName() + "' already exists.");
+            }
+        }
+    }
 }

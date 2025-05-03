@@ -64,7 +64,7 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
     public T getById(String id) {
         for (T entity : getAll()) {
             if(entity.getIdFromAnnotation().equals(id)) {
-                return entity;
+                return (T) entity.clone();
             }
         }
 
@@ -211,7 +211,11 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
                     String.format("UPDATE %s SET %s WHERE %s = '%s'", table, partial_query, idColumn, id)
             );
 
-            entities.set(entities.indexOf(getById(id)), updatedEntity);
+            for(int i = 0; i < entities.size(); i++) {
+                if(entities.get(i).getIdFromAnnotation().equals(id)) {
+                    entities.set(i, updatedEntity);
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -242,7 +246,11 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
                     String.format("DELETE FROM %s WHERE %s = '%s'", table, idColumn, id)
             );
 
-            entities.remove(entity);
+            for(int i = 0; i < entities.size(); i++) {
+                if(entities.get(i).getIdFromAnnotation().equals(id)) {
+                    entities.remove(entities.get(i));
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

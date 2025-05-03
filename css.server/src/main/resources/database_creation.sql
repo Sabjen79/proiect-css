@@ -49,10 +49,11 @@ CREATE TABLE FacultyGroup (
 
 CREATE TABLE Schedule (
     schedule_id TEXT PRIMARY KEY,
-    teacher_discipline_id INTEGER NOT NULL, -- Contains a teacher and a discipline
+    teacher_id TEXT NOT NULL,
+    discipline_id TEXT NOT NULL,
     class_type INTEGER NOT NULL, -- Hardcoded value
-    room_id INTEGER NOT NULL,
-    faculty_group_id INTEGER NOT NULL, -- Contains the year, specialty and group
+    room_id TEXT NOT NULL,
+    faculty_group_id TEXT NOT NULL, -- Contains the year, specialty and group
     day_of_week INTEGER NOT NULL, -- Hardcoded value
     start_hour INTEGER NOT NULL,
     end_hour INTEGER NOT NULL

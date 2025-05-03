@@ -1,5 +1,7 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.DatabaseException;
+
 public enum RoomType {
     Course(0),
     Seminary(1),
@@ -14,6 +16,10 @@ public enum RoomType {
     }
 
     public static RoomType fromValue(int value) {
-        return values()[value];
+        try {
+            return values()[value];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DatabaseException("Invalid room type value: " + value);
+        }
     }
 }

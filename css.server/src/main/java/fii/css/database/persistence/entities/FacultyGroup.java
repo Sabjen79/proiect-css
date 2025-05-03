@@ -31,7 +31,7 @@ public class FacultyGroup extends DatabaseEntity {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setName(String groupName) {
         this.groupName = groupName;
     }
 
@@ -42,8 +42,8 @@ public class FacultyGroup extends DatabaseEntity {
             .get(studyYearId);
     }
 
-    public void setStudyYear(StudyYear studyYear) {
-        studyYearId = studyYear.getId();
+    public void setStudyYearId(String id) {
+        studyYearId = id;
     }
 
     public int getYear() {
@@ -52,5 +52,17 @@ public class FacultyGroup extends DatabaseEntity {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    @Override
+    public DatabaseEntity clone() {
+        var facultyGroup = new FacultyGroup();
+
+        facultyGroup.facultyGroupId = facultyGroupId;
+        facultyGroup.groupName = groupName;
+        facultyGroup.year = year;
+        facultyGroup.studyYearId = studyYearId;
+
+        return facultyGroup;
     }
 }

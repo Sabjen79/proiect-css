@@ -1,5 +1,7 @@
 package fii.css.database.persistence.entities;
 
+import fii.css.database.DatabaseException;
+
 public enum ClassType {
     Course(0),
     Laboratory(1),
@@ -13,6 +15,10 @@ public enum ClassType {
     }
 
     public static ClassType fromValue(int value) {
-        return values()[value];
+        try {
+            return values()[value];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new DatabaseException("Invalid class type value: " + value);
+        }
     }
 }
