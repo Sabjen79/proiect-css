@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class StudyYearManager extends AbstractEntityManager<StudyYear> {
     // TODO: add others necessary here, I couldn't think of anything else for now :))
-    private static final Set<String> MASTER_SPECIALTIES = Set.of("ISS", "SD", "IAO", "SI", "Advanced Studies");
+    private static final Set<String> MASTER_SPECIALTIES = Set.of("ISS", "SD", "IAO", "SI", "SAI", "MLC");
 
     public StudyYearManager() {super(new StudyYearRepository());}
 

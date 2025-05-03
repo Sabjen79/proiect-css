@@ -8,14 +8,7 @@
       <change beforePath="$PROJECT_DIR$/../css.database/database_css.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/../css.database/database_css.drawio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../css.database/database_views.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/StudyYearManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/StudyYearManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,27 +50,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Debug",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#4 on persistence",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;persistence&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
@@ -111,7 +104,14 @@
       <workItem from="1745671874753" duration="69000" />
       <workItem from="1745686839672" duration="6159000" />
       <workItem from="1745746482202" duration="233000" />
-      <workItem from="1745746723689" duration="405000" />
+      <workItem from="1745746723689" duration="1312000" />
+      <workItem from="1746189508906" duration="285000" />
+      <workItem from="1746195270892" duration="4776000" />
+      <workItem from="1746202294416" duration="3707000" />
+      <workItem from="1746290287706" duration="130000" />
+      <workItem from="1746290512904" duration="5849000" />
+      <workItem from="1746299897432" duration="830000" />
+      <workItem from="1746307427216" duration="3726000" />
     </task>
     <servers />
   </component>
@@ -134,7 +134,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>61</line>
+          <line>63</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -149,77 +149,67 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>27</line>
+          <line>32</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>28</line>
+          <line>33</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>30</line>
+          <line>35</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>31</line>
+          <line>36</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>33</line>
+          <line>38</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>34</line>
+          <line>39</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>36</line>
+          <line>41</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>37</line>
+          <line>42</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>39</line>
+          <line>44</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>50</line>
+          <line>45</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>64</line>
+          <line>66</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>67</line>
+          <line>69</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fii/css/Main.java</url>
-          <line>68</line>
+          <line>70</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
