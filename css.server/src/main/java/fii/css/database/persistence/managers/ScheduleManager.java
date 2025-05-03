@@ -5,6 +5,11 @@ import fii.css.database.persistence.entities.*;
 import fii.css.database.persistence.repositories.ScheduleRepository;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class ScheduleManager extends AbstractEntityManager<Schedule> {
     public ScheduleManager() {
@@ -155,6 +160,75 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
                 }
             }
         }
+
+        // Obține toate grupele asociate anului de studiu
+        int year = teacherDiscipline.getDiscipline().getYear();
+        List<FacultyGroup> groupsForYear = Database.getInstance()
+                .facultyGroupManager
+                .getAll()
+                .stream()
+                .filter(group -> group.getYear() == year)
+                .toList();
+
+        if (classType == ClassType.Laboratory || classType == ClassType.Seminary) {
+            // Verifică dacă există un laborator/seminar pentru fiecare grupă
+            for (FacultyGroup group : groupsForYear) {
+                long count = Database.getInstance()
+                        .scheduleManager
+                        .getAll()
+                        .stream()
+                        .filter(schedule -> schedule.getTeacherDiscipline().getId().equals(teacherDiscipline.getId()))
+                        .filter(schedule -> schedule.getClassType() == classType)
+                        .filter(schedule -> schedule.getFacultyGroup().getId().equals(group.getId()))
+                        .count();
+
+                // TODO: please check my logic, i am tired and this may be very stupid
+//                if (excludeId!=null && count == 0) {
+//                    throw new RuntimeException("Each group must have at least one " + classType + " scheduled.");
+//                }
+            }
+        } else if (classType == ClassType.Course) {
+            // Verifică dacă toate grupele dintr-un prefix sunt libere pentru curs
+            Set<String> prefixes = groupsForYear.stream()
+                    .map(group -> group.getGroupName().substring(0, 1).toUpperCase())
+                    .collect(Collectors.toSet());
+
+            for (String prefix : prefixes) {
+                boolean allGroupsFree = groupsForYear.stream()
+                        .filter(group -> group.getGroupName().startsWith(prefix))
+                        .allMatch(group -> Database.getInstance()
+                                .scheduleManager
+                                .getAll()
+                                .stream()
+                                .noneMatch(schedule -> schedule.getFacultyGroup().getId().equals(group.getId()) &&
+                                        schedule.getClassType() == ClassType.Laboratory &&
+                                        schedule.getTeacherDiscipline().getId().equals(teacherDiscipline.getId())));
+
+//                if (!allGroupsFree) {
+//                    throw new RuntimeException("Cannot schedule course: not all groups with prefix " + prefix + " are free.");
+//                }
+            }
+        }
+
+        //verifica ca grupa are acelasi an ca si materia la ca care vreau sa o programez
+        String goupsId = facultyGroup.getStudyYear().getId();
+        String studyYearIdFromTeacher = teacherDiscipline.getDiscipline().getStudyYearId();
+        //caut studyYear care are id ul asta si vedem ce specializare are
+
+
+        System.out.println("groups year: " + facultyGroup.getYear());
+        System.out.println("disciplines year: " + year);
+        //&& !Objects.equals(goupsId, studyYearIdFromTeacher)
+        if (facultyGroup.getYear() != year ) {
+            throw new RuntimeException("The faculty group year does not match the discipline year.");
+        }
+
+        if(!Objects.equals(goupsId, studyYearIdFromTeacher)){
+            throw new RuntimeException("The faculty group specialty does not match the discipline specialty.");
+        }
+
+
+
 
         // courses should be scheduled at study year level, not group level
         if (classType == ClassType.Course) {

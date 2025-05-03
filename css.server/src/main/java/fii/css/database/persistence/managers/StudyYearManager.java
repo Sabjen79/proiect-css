@@ -5,6 +5,7 @@ import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.StudyYearRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class StudyYearManager extends AbstractEntityManager<StudyYear> {
@@ -44,7 +45,13 @@ public class StudyYearManager extends AbstractEntityManager<StudyYear> {
         validateStudyYear(degree, specialty, maxYears);
 
         entity.setDegree(degree);
-        entity.setSpecialty(specialty);
+
+        //poti face update doar daca specializarea ramane aceeasi
+        if(!Objects.equals(entity.getSpecialty(), specialty)){
+            throw new RuntimeException("Can't update study year from specialty '" + entity.getSpecialty() + "' to '" + specialty+ "'.");
+        }else{
+            entity.setSpecialty(specialty);
+        }
         entity.setMaxYears(maxYears);
 
         repository.merge(entity);
@@ -73,6 +80,14 @@ public class StudyYearManager extends AbstractEntityManager<StudyYear> {
     }
 
     private void validateStudyYear(Degree degree, String specialty, int maxYears) {
+
+        var isDuplicate = repository
+                .getAll()
+                .stream()
+                .anyMatch(studyYear -> studyYear.getSpecialty().equals(specialty) && studyYear.getDegree().equals(degree));
+
+        if (isDuplicate) throw new RuntimeException("Can't add study year again.");
+
         if (degree == Degree.Bachelor) {
             if (!specialty.equalsIgnoreCase("Computer Science")) {
                 throw new RuntimeException("Bachelor degree must have specialty 'Computer Science'.");

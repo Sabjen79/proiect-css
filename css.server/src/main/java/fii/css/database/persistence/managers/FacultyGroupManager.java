@@ -7,6 +7,7 @@ import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.FacultyGroupRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
@@ -40,7 +41,16 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
         FacultyGroup entity = repository.newEntity();
         entity.setGroupName(name);
         entity.setYear(year);
-        entity.setStudyYear(studyYear);
+
+        //daca numele grupei e de 2 litere => licenta, daca nu e master
+        if(name.length() == 2 && studyYear.getSpecialty().equals("Computer Science")){
+            entity.setStudyYear(studyYear);
+        }else if(name.length() == 3 && studyYear.getSpecialty().length()>=3){
+            entity.setStudyYear(studyYear);
+        }else {
+            throw new RuntimeException("Can't combine bachelor and masters.");
+        }
+
 
         repository.persist(entity);
         return entity;

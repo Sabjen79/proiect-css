@@ -17,6 +17,12 @@ public class Discipline extends DatabaseEntity {
     @Column("description")
     private String description;
 
+    @Column("year")
+    private int year;
+
+    @Column("study_year_id")
+    private String studyYearId;
+
     public Discipline() {}
 
     public String getId() {
@@ -37,5 +43,21 @@ public class Discipline extends DatabaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getStudyYearId() {
+        return studyYearId;
+    }
+
+    public void setStudyYearId(String studyYearId) {
+        this.studyYearId = studyYearId;
     }
 }
