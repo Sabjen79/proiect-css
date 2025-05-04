@@ -2,16 +2,16 @@ package fii.css.api.controllers;
 
 import fii.css.api.Query;
 import fii.css.database.Database;
-import fii.css.database.persistence.managers.StudyYearManager;
+import fii.css.database.persistence.managers.SemiYearManager;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-public class StudyYearController extends AbstractController {
-    private final StudyYearManager manager;
+public class SemiYearController extends AbstractController {
+    private final SemiYearManager manager;
 
-    public StudyYearController() {
-        super("studyYears");
-        manager = Database.getInstance().studyYearManager;
+    public SemiYearController() {
+        super("semiYears");
+        manager = Database.getInstance().semiYearManager;
     }
 
     @Override
@@ -42,9 +42,9 @@ public class StudyYearController extends AbstractController {
 
     public void create(Context ctx) {
         manager.addStudyYear(
+                Query.stringParam(ctx, "name"),
                 Query.degreeParam(ctx, "degree"),
-                Query.stringParam(ctx, "specialty"),
-                Query.integerParam(ctx, "maxYears")
+                Query.integerParam(ctx, "year")
         );
 
         ctx.status(201);
@@ -53,9 +53,9 @@ public class StudyYearController extends AbstractController {
     public void update(Context ctx) {
         manager.updateStudyYear(
                 Query.idPathParam(ctx),
+                Query.stringParam(ctx, "name"),
                 Query.degreeParam(ctx, "degree"),
-                Query.stringParam(ctx, "specialty"),
-                Query.integerParam(ctx, "maxYears")
+                Query.integerParam(ctx, "year")
         );
 
         ctx.status(204);

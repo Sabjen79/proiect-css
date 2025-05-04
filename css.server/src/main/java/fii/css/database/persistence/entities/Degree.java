@@ -4,8 +4,7 @@ import fii.css.database.DatabaseException;
 
 public enum Degree {
     Bachelor(0),
-    Master(1),
-    PhD(2);
+    Master(1);
 
     public final int value;
 

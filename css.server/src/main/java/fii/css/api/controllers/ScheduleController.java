@@ -49,10 +49,9 @@ public class ScheduleController extends AbstractController {
                 Query.stringParam(ctx, "disciplineId"),
                 Query.classTypeParam(ctx, "classType"),
                 Query.stringParam(ctx, "roomId"),
-                Query.stringParam(ctx, "facultyGroupId"),
+                Query.stringParam(ctx, "studentsId"),
                 Query.dayOfWeekParam(ctx, "dayOfWeek"),
-                Query.integerParam(ctx, "startHour"),
-                Query.integerParam(ctx, "endHour")
+                Query.integerParam(ctx, "startHour")
         );
 
         ctx.status(201);
@@ -65,10 +64,9 @@ public class ScheduleController extends AbstractController {
                 Query.stringParam(ctx, "disciplineId"),
                 Query.classTypeParam(ctx, "classType"),
                 Query.stringParam(ctx, "roomId"),
-                Query.stringParam(ctx, "facultyGroupId"),
+                Query.stringParam(ctx, "studentsId"),
                 Query.dayOfWeekParam(ctx, "dayOfWeek"),
-                Query.integerParam(ctx, "startHour"),
-                Query.integerParam(ctx, "endHour")
+                Query.integerParam(ctx, "startHour")
         );
 
         ctx.status(204);

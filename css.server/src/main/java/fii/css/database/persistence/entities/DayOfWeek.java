@@ -7,8 +7,7 @@ public enum DayOfWeek {
     Tuesday(1),
     Wednesday(2),
     Thursday(3),
-    Friday(4),
-    Saturday(5);
+    Friday(4);
 
     public final int value;
 

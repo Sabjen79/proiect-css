@@ -2,16 +2,17 @@ package fii.css.api.controllers;
 
 import fii.css.api.Query;
 import fii.css.database.Database;
-import fii.css.database.persistence.managers.RoomManager;
+import fii.css.database.persistence.managers.TeacherDisciplineManager;
+import fii.css.database.persistence.managers.TeacherManager;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-public class RoomController extends AbstractController{
-    private final RoomManager manager;
+public class TeacherDisciplineController extends AbstractController {
+    private final TeacherDisciplineManager manager;
 
-    public RoomController() {
-        super("rooms");
-        manager = Database.getInstance().roomManager;
+    public TeacherDisciplineController() {
+        super("teacherDisciplines");
+        manager = Database.getInstance().teacherDisciplineManager;
     }
 
     @Override
@@ -19,7 +20,6 @@ public class RoomController extends AbstractController{
         app.get(path + "/{id}", this::get);
         app.get(path, this::getAll);
         app.post(path, this::create);
-        app.patch(path + "/{id}", this::update);
         app.delete(path + "/{id}", this::delete);
     }
 
@@ -41,24 +41,12 @@ public class RoomController extends AbstractController{
     }
 
     public void create(Context ctx) {
-        manager.addRoom(
-                Query.stringParam(ctx, "name"),
-                Query.integerParam(ctx, "capacity"),
-                Query.roomTypeParam(ctx, "roomType")
+        manager.addTeacherDiscipline(
+                Query.stringParam(ctx, "teacher_id"),
+                Query.stringParam(ctx, "discipline_id")
         );
 
         ctx.status(201);
-    }
-
-    public void update(Context ctx) {
-        manager.updateRoom(
-                Query.idPathParam(ctx),
-                Query.stringParam(ctx, "name"),
-                Query.integerParam(ctx, "capacity"),
-                Query.roomTypeParam(ctx, "roomType")
-        );
-
-        ctx.status(204);
     }
 
     public void delete(Context ctx) {

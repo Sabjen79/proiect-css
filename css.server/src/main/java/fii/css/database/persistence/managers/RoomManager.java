@@ -26,6 +26,7 @@ public class RoomManager extends AbstractEntityManager<Room> {
 
     public void addRoom(String name, int capacity, RoomType roomType) {
         Room room = repository.newEntity();
+
         room.setName(name);
         room.setCapacity(capacity);
         room.setRoomType(roomType);
@@ -61,7 +62,7 @@ public class RoomManager extends AbstractEntityManager<Room> {
         var sManager = Database.getInstance().scheduleManager;
         sManager.getAll().forEach(s -> {
             if(s.getRoom().getId().equals(id)) {
-                sManager.remove(s.getId());
+                throw new DatabaseException("Room is still referenced in schedule.");
             }
         });
 
@@ -81,6 +82,14 @@ public class RoomManager extends AbstractEntityManager<Room> {
             if (!r.getId().equalsIgnoreCase(room.getId())
                 && r.getName().equalsIgnoreCase(room.getName())) {
                 throw new DatabaseException("Room with name '" + room.getName() + "' already exists.");
+            }
+        }
+
+        for(var s : Database.getInstance().scheduleManager.getAll()) {
+            if(s.getRoom().getId().equals(room.getId())) {
+                if(s.getRoom().getRoomType() != room.getRoomType()) {
+                    throw new DatabaseException("Room type cannot be changed while it is still referenced in schedule.");
+                }
             }
         }
     }

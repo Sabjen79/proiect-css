@@ -9,8 +9,8 @@ import fii.css.database.persistence.annotations.Table;
 @Table("TeacherDiscipline")
 public class TeacherDiscipline extends DatabaseEntity {
     @Id
-    @Column("teacher_discipline_id")
-    private String teacherDisciplineId;
+    @Column("id")
+    private String id;
 
     @Column("teacher_id")
     private String teacherId;
@@ -21,7 +21,7 @@ public class TeacherDiscipline extends DatabaseEntity {
     public TeacherDiscipline() {}
 
     public String getId() {
-        return teacherDisciplineId;
+        return id;
     }
 
     public String getTeacherId() {
@@ -44,6 +44,7 @@ public class TeacherDiscipline extends DatabaseEntity {
     public DatabaseEntity clone() {
         var teacherDiscipline = new TeacherDiscipline();
 
+        teacherDiscipline.id = id;
         teacherDiscipline.teacherId = this.teacherId;
         teacherDiscipline.disciplineId = this.disciplineId;
 

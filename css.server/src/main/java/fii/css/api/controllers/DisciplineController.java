@@ -3,7 +3,6 @@ package fii.css.api.controllers;
 import fii.css.api.Query;
 import fii.css.database.Database;
 import fii.css.database.persistence.managers.DisciplineManager;
-import fii.css.database.persistence.managers.StudyYearManager;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
@@ -44,9 +43,8 @@ public class DisciplineController extends AbstractController {
     public void create(Context ctx) {
         manager.addDiscipline(
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "description"),
-                Query.integerParam(ctx, "year"),
-                Query.stringParam(ctx, "studyYearId")
+                Query.degreeParam(ctx, "degree"),
+                Query.integerParam(ctx, "year")
         );
 
         ctx.status(201);
@@ -56,9 +54,8 @@ public class DisciplineController extends AbstractController {
         manager.updateDiscipline(
                 Query.idPathParam(ctx),
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "description"),
-                Query.integerParam(ctx, "year"),
-                Query.stringParam(ctx, "studyYearId")
+                Query.degreeParam(ctx, "degree"),
+                Query.integerParam(ctx, "year")
         );
 
         ctx.status(204);

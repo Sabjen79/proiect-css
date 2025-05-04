@@ -5,27 +5,107 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../css.database/database_css.drawio.png" beforeDir="false" afterPath="$PROJECT_DIR$/../css.database/database_css.drawio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/DisciplineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/DisciplineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/StudyYearController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/SemiYearController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Discipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Discipline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/FacultyGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/FacultyGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/StudyYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/SemiYear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/TeacherDiscipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/TeacherDiscipline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/StudyYearManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/SemiYearManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/repositories/StudyYearRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/repositories/SemiYearRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database_creation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database_creation.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2wdScOy1nUzfJE2G1fgfBnbu3pH" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "persistence",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/stefa/Desktop/calitatea sist software/proiect-css",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
+      <module name="proiect-css" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="" />
+      <created>1746370038091</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746370038091</updated>
+      <workItem from="1746370039473" duration="13852000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

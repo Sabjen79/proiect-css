@@ -2,9 +2,8 @@ package fii.css.database.persistence.managers;
 
 import fii.css.database.Database;
 import fii.css.database.DatabaseException;
+import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.Discipline;
-import fii.css.database.persistence.entities.StudyYear;
-import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.DisciplineRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
@@ -26,28 +25,26 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
         return repository.getAll();
     }
 
-    public void addDiscipline(String name, String description, int year, String studyYearId) {
+    public void addDiscipline(String name, Degree degree, int year) {
         var entity = repository.newEntity();
 
         entity.setName(name.trim());
-        entity.setDescription(description.trim());
+        entity.setDegree(degree);
         entity.setYear(year);
-        entity.setStudyYearId(studyYearId.trim());
 
         validate(entity);
 
         repository.persist(entity);
     }
 
-    public void updateDiscipline(String id, String name, String description, int year, String studyYearId) {
+    public void updateDiscipline(String id, String name, Degree degree, int year) {
         var entity = repository.getById(id);
 
         if (entity == null) throw new DatabaseException("Discipline with name " + name + " does not exist.");
 
         entity.setName(name.trim());
-        entity.setDescription(description.trim());
+        entity.setDegree(degree);
         entity.setYear(year);
-        entity.setStudyYearId(studyYearId.trim());
 
         validate(entity);
 
@@ -60,12 +57,19 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             throw new RuntimeException("Discipline with ID " + id + " does not exist.");
         }
 
-        var tdRepo = new TeacherDisciplineRepository();
-        tdRepo.getAll().forEach(td -> {
+        var tdRepo = Database.getInstance().teacherDisciplineManager;
+        for(var td : tdRepo.getAll()) {
             if(td.getDisciplineId().equals(id)) {
-                tdRepo.delete(td);
+                throw new DatabaseException("Discipline is still associated with a teacher.");
             }
-        });
+        }
+
+        var sManager = Database.getInstance().scheduleManager;
+        for(var s : sManager.getAll()) {
+            if(s.getDiscipline().getId().equals(id)) {
+                throw new DatabaseException("Discipline is still referenced in schedule.");
+            }
+        }
 
         repository.delete(discipline);
     }
@@ -75,23 +79,21 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             throw new DatabaseException("Discipline name cannot be empty.");
         }
 
-        if(discipline.getDescription() == null || discipline.getDescription().isBlank()) {
-            throw new DatabaseException("Discipline description cannot be empty.");
+        if(discipline.getYear() < 1) {
+            throw new DatabaseException("Year must be greater than 0");
         }
 
-        var studyYear = discipline.getStudyYear();
-
-        if(studyYear == null) {
-            throw new DatabaseException("The specified study year does not exist.");
+        if(discipline.getDegree() == Degree.Bachelor && discipline.getYear() > 3) {
+            throw new DatabaseException("Year must be less or equal than 3");
         }
 
-        if(discipline.getYear() < 1 || discipline.getYear() > discipline.getStudyYear().getMaxYears()) {
-            throw new DatabaseException("Study year must be between 1 and " + (studyYear.getMaxYears()));
+        if(discipline.getDegree() == Degree.Master && discipline.getYear() > 2) {
+            throw new DatabaseException("Year must be less or equal than 2");
         }
 
         for(var d : getAll()) {
             if (!d.getId().equalsIgnoreCase(discipline.getId())
-                    && d.getName().equalsIgnoreCase(discipline.getName())) {
+                && d.getName().equalsIgnoreCase(discipline.getName())) {
                 throw new DatabaseException("Discipline with name '" + discipline.getName() + "' already exists.");
             }
         }
