@@ -43,29 +43,19 @@ public class TeacherController extends AbstractController {
     }
 
     public void create(Context ctx) {
-        var disciplines = Arrays.stream(Query.stringParam(ctx, "disciplines").split(","))
-                .map(String::trim)
-                .toList();
-
         manager.addTeacher(
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "title"),
-                disciplines
+                Query.stringParam(ctx, "title")
         );
 
         ctx.status(201);
     }
 
     public void update(Context ctx) {
-        var disciplines = Arrays.stream(Query.stringParam(ctx, "disciplines").split(","))
-                .map(String::trim)
-                .toList();
-
         manager.updateTeacher(
                 Query.idPathParam(ctx),
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "title"),
-                disciplines
+                Query.stringParam(ctx, "title")
         );
 
         ctx.status(204);

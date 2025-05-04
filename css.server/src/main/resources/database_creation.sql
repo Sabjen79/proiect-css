@@ -1,29 +1,7 @@
 ------------------------------------------------------------------------------
 
-CREATE TABLE Discipline (
-    discipline_id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    description TEXT,
-    year INT NOT NULL,
-    study_year_id TEXT NOT NULL
-);
-
-CREATE TABLE Teacher (
-    teacher_id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    title TEXT NOT NULL
-);
-
-CREATE TABLE TeacherDiscipline (
-    teacher_discipline_id TEXT PRIMARY KEY,
-    teacher_id TEXT NOT NULL,
-    discipline_id TEXT NOT NULL
-);
-
-------------------------------------------------------------------------------
-
 CREATE TABLE Room (
-    room_id TEXT PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     capacity INTEGER NOT NULL,
     room_type INTEGER NOT NULL -- Hardcoded value
@@ -31,35 +9,54 @@ CREATE TABLE Room (
 
 ------------------------------------------------------------------------------
 
-CREATE TABLE StudyYear (
-    study_year_id TEXT PRIMARY KEY,
-    degree INTEGER NOT NULL, -- Hardcoded value for Bachelors, Masters, PhD
-    specialty TEXT NOT NULL,
-    max_years INTEGER NOT NULL
+CREATE TABLE SemiYear (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    degree INTEGER NOT NULL, -- Hardcoded value for Bachelors, Masters
+    year INTEGER NOT NULL
 );
 
 CREATE TABLE FacultyGroup (
-    faculty_group_id TEXT PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    year INTEGER NOT NULL,
-    study_year_id INTEGER NOT NULL
+    semi_year_id TEXT NOT NULL
+);
+
+------------------------------------------------------------------------------
+
+CREATE TABLE Discipline (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    degree INTEGER NOT NULL,
+    year INTEGER NOT NULL
+);
+
+CREATE TABLE Teacher (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    title TEXT NOT NULL
+);
+
+CREATE TABLE TeacherDiscipline (
+    id TEXT PRIMARY KEY,
+    teacher_id TEXT NOT NULL,
+    discipline_id TEXT NOT NULL
 );
 
 ------------------------------------------------------------------------------
 
 CREATE TABLE Schedule (
-    schedule_id TEXT PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     teacher_id TEXT NOT NULL,
     discipline_id TEXT NOT NULL,
     class_type INTEGER NOT NULL, -- Hardcoded value
+    students_id TEXT NOT NULL, -- References a SemiYear for COURSES, or FacultyGroup for LABS/SEMINARIES
     room_id TEXT NOT NULL,
-    faculty_group_id TEXT NOT NULL, -- Contains the year, specialty and group
     day_of_week INTEGER NOT NULL, -- Hardcoded value
-    start_hour INTEGER NOT NULL,
-    end_hour INTEGER NOT NULL
+    start_hour INTEGER NOT NULL
 );
 
 -- indexes
-CREATE INDEX idx_schedule_teacher_discipline ON Schedule(teacher_discipline_id);
-CREATE INDEX idx_schedule_room ON Schedule(room_id);
-CREATE INDEX idx_group_faculty_group ON FacultyGroup(faculty_group_id);
+CREATE INDEX idx_schedule_teacher_discipline ON Schedule(id);
+CREATE INDEX idx_schedule_room ON Schedule(id);
+CREATE INDEX idx_group_faculty_group ON FacultyGroup(id);

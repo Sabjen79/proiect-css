@@ -12,12 +12,13 @@ public class RestApi {
     public RestApi() {
         app = Javalin.create();
 
-        registerController(StudyYearController.class);
+        registerController(SemiYearController.class);
         registerController(FacultyGroupController.class);
         registerController(RoomController.class);
         registerController(DisciplineController.class);
         registerController(TeacherController.class);
         registerController(ScheduleController.class);
+        registerController(TeacherDisciplineController.class);
 
         app.exception(DatabaseException.class, (e, ctx) -> {
             ctx.result(e.getMessage()).status(400);

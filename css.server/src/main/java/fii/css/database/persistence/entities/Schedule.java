@@ -9,8 +9,8 @@ import fii.css.database.persistence.annotations.Table;
 @Table("Schedule")
 public class Schedule extends DatabaseEntity {
     @Id
-    @Column("schedule_id")
-    private String scheduleId;
+    @Column("id")
+    private String id;
 
     @Column("teacher_id")
     private String teacherId;
@@ -24,8 +24,8 @@ public class Schedule extends DatabaseEntity {
     @Column("room_id")
     private String roomId;
 
-    @Column("faculty_group_id")
-    private String facultyGroupId;
+    @Column("students_id")
+    private String students_id;
 
     @Column("day_of_week")
     private int dayOfWeek;
@@ -33,12 +33,9 @@ public class Schedule extends DatabaseEntity {
     @Column("start_hour")
     private int startHour;
 
-    @Column("end_hour")
-    private int endHour;
-
     public Schedule() {}
 
-    public String getId() { return scheduleId; }
+    public String getId() { return id; }
 
     public Teacher getTeacher() {
         return Database
@@ -81,15 +78,22 @@ public class Schedule extends DatabaseEntity {
         this.roomId = id;
     }
 
-    public FacultyGroup getFacultyGroup() {
-        return Database
-            .getInstance()
-            .facultyGroupManager
-            .get(facultyGroupId);
+    public DatabaseEntity getGroup() {
+        var manager = (getClassType() == ClassType.Course)
+                ? Database.getInstance().semiYearManager
+                : Database.getInstance().facultyGroupManager;
+
+        return manager.get(students_id);
     }
 
-    public void setFacultyGroupId(String id) {
-        this.facultyGroupId = id;
+    public SemiYear getSemiYear() {
+        return (getClassType() == ClassType.Course)
+                ? (SemiYear) getGroup()
+                : Database.getInstance().semiYearManager.get(((FacultyGroup) getGroup()).getSemiYearId());
+    }
+
+    public void setStudentsId(String id) {
+        this.students_id = id;
     }
 
     public DayOfWeek getDayOfWeek() {
@@ -108,27 +112,18 @@ public class Schedule extends DatabaseEntity {
         this.startHour = startHour;
     }
 
-    public int getEndHour() {
-        return endHour;
-    }
-
-    public void setEndHour(int endHour) {
-        this.endHour = endHour;
-    }
-
     @Override
     public DatabaseEntity clone() {
         var schedule = new Schedule();
 
-        schedule.scheduleId = this.scheduleId;
+        schedule.id = this.id;
         schedule.teacherId = this.teacherId;
         schedule.disciplineId = this.disciplineId;
         schedule.classType = this.classType;
         schedule.roomId = this.roomId;
-        schedule.facultyGroupId = this.facultyGroupId;
+        schedule.students_id = this.students_id;
         schedule.dayOfWeek = this.dayOfWeek;
         schedule.startHour = this.startHour;
-        schedule.endHour = this.endHour;
 
         return schedule;
     }

@@ -5,8 +5,7 @@ import fii.css.database.DatabaseException;
 public enum ClassType {
     Course(0),
     Laboratory(1),
-    Seminary(2),
-    Exam(3);
+    Seminary(2);
 
     public final int value;
 

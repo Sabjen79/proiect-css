@@ -8,7 +8,7 @@ import fii.css.database.persistence.annotations.Table;
 @Table("Room")
 public class Room extends DatabaseEntity{
     @Id
-    @Column("room_id")
+    @Column("id")
     private String roomId;
 
     @Column("name")

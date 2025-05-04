@@ -9,59 +9,44 @@ import fii.css.database.persistence.annotations.Table;
 @Table("FacultyGroup")
 public class FacultyGroup extends DatabaseEntity {
     @Id
-    @Column("faculty_group_id")
-    private String facultyGroupId;
+    @Column("id")
+    private String id;
 
     @Column("name")
-    private String groupName;
+    private String name;
 
-    @Column("year")
-    private int year;
-
-    @Column("study_year_id")
-    private String studyYearId;
+    @Column("semi_year_id")
+    private String semiYearId;
 
     public FacultyGroup() {}
 
     public String getId() {
-        return facultyGroupId;
+        return id;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getName() {
+        return name;
     }
 
     public void setName(String groupName) {
-        this.groupName = groupName;
+        this.name = groupName;
     }
 
-    public StudyYear getStudyYear() {
-        return Database
-            .getInstance()
-            .studyYearManager
-            .get(studyYearId);
+    public String getSemiYearId() {
+        return semiYearId;
     }
 
-    public void setStudyYearId(String id) {
-        studyYearId = id;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+    public void setSemiYearId(String id) {
+        semiYearId = id;
     }
 
     @Override
     public DatabaseEntity clone() {
         var facultyGroup = new FacultyGroup();
 
-        facultyGroup.facultyGroupId = facultyGroupId;
-        facultyGroup.groupName = groupName;
-        facultyGroup.year = year;
-        facultyGroup.studyYearId = studyYearId;
+        facultyGroup.id = this.id;
+        facultyGroup.name = this.name;
+        facultyGroup.semiYearId = this.semiYearId;
 
         return facultyGroup;
     }

@@ -6,8 +6,10 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
-@Table("Discipline")
-public class Discipline extends DatabaseEntity {
+import java.util.List;
+
+@Table("SemiYear")
+public class SemiYear extends DatabaseEntity {
     @Id
     @Column("id")
     private String id;
@@ -21,7 +23,7 @@ public class Discipline extends DatabaseEntity {
     @Column("year")
     private int year;
 
-    public Discipline() {}
+    public SemiYear() {}
 
     public String getId() {
         return id;
@@ -51,15 +53,23 @@ public class Discipline extends DatabaseEntity {
         this.year = year;
     }
 
+    public List<FacultyGroup> getFacultyGroups() {
+        return Database.getInstance().facultyGroupManager
+                .getAll()
+                .stream()
+                .filter(fg -> fg.getSemiYearId().equals(id))
+                .toList();
+    }
+
     @Override
     public DatabaseEntity clone() {
-        var discipline = new Discipline();
+        var studyYear = new SemiYear();
 
-        discipline.id = id;
-        discipline.name = name;
-        discipline.degree = degree;
-        discipline.year = year;
+        studyYear.id = this.id;
+        studyYear.name = this.name;
+        studyYear.degree = this.degree;
+        studyYear.year = this.year;
 
-        return discipline;
+        return studyYear;
     }
 }

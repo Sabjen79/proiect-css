@@ -12,8 +12,8 @@ import java.util.List;
 @Table("Teacher")
 public class Teacher extends DatabaseEntity {
     @Id
-    @Column("teacher_id")
-    private String teacherId;
+    @Column("id")
+    private String id;
 
     @Column("name")
     private String name;
@@ -21,12 +21,10 @@ public class Teacher extends DatabaseEntity {
     @Column("title")
     private String title;
 
-    private List<String> disciplineIds = new ArrayList<>();
-
     public Teacher() {}
 
     public String getId() {
-        return teacherId;
+        return id;
     }
 
     public String getName() {
@@ -45,22 +43,11 @@ public class Teacher extends DatabaseEntity {
         this.title = title;
     }
 
-    public List<Discipline> getDisciplines() {
-        return disciplineIds
-                .stream()
-                .map(id -> Database.getInstance().disciplineManager.get(id))
-                .toList();
-    }
-
-    public void setDisciplineIds(List<String> ids) {
-        disciplineIds = ids;
-    }
-
     @Override
     public DatabaseEntity clone() {
         var teacher = new Teacher();
 
-        teacher.teacherId = this.teacherId;
+        teacher.id = this.id;
         teacher.name = this.name;
         teacher.title = this.title;
 

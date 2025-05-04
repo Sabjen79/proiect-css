@@ -2,9 +2,7 @@ package fii.css.database.persistence.managers;
 
 import fii.css.database.Database;
 import fii.css.database.DatabaseException;
-import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.FacultyGroup;
-import fii.css.database.persistence.entities.StudyYear;
 import fii.css.database.persistence.repositories.FacultyGroupRepository;
 
 import java.util.List;
@@ -27,19 +25,18 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
         return repository.getAll();
     }
 
-    public void addFacultyGroup(String name, int year, String studyYearId) {
+    public void addFacultyGroup(String name, String semiYearId) {
         FacultyGroup entity = repository.newEntity();
 
         entity.setName(name.trim());
-        entity.setYear(year);
-        entity.setStudyYearId(studyYearId.trim());
+        entity.setSemiYearId(semiYearId.trim());
 
         validate(entity);
 
         repository.persist(entity);
     }
 
-    public void updateFacultyGroup(String id, String name, int year, String studyYearId) {
+    public void updateFacultyGroup(String id, String name, String semiYearId) {
         FacultyGroup entity = repository.getById(id);
         
         if (entity == null) {
@@ -47,8 +44,7 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
         }
 
         entity.setName(name.trim());
-        entity.setYear(year);
-        entity.setStudyYearId(studyYearId.trim());
+        entity.setSemiYearId(semiYearId.trim());
 
         validate(entity);
 
@@ -65,8 +61,8 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
 
         var sManager = Database.getInstance().scheduleManager;
         sManager.getAll().forEach(s -> {
-            if(s.getFacultyGroup().getId().equals(id)) {
-                sManager.remove(s.getId());
+            if(s.getGroup().getIdFromAnnotation().equals(id)) {
+                throw new DatabaseException("Group is still referenced in schedule.");
             }
         });
 
@@ -74,38 +70,29 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     }
     
     private void validate(FacultyGroup fg) {
-        var studyYear = Database.getInstance().studyYearManager.get(fg.getStudyYear().getId());
+        var semiyear = Database.getInstance().semiYearManager.get(fg.getSemiYearId());
         
-        if(studyYear == null) {
-            throw new DatabaseException("Study year with ID " + fg.getStudyYear().getId() + " does not exist.");
+        if(semiyear == null) {
+            throw new DatabaseException("Semi-year with ID " + fg.getSemiYearId() + " does not exist.");
         }
 
-        if(fg.getGroupName().length() != 2) {
-            throw new DatabaseException("Faculty group name must have 2 characters.");
-        }
-
-        String prefix = fg.getGroupName().substring(0, 1).toUpperCase();
-        String numberPart = fg.getGroupName().substring(1);
-
-        if (!ALLOWED_PREFIXES.contains(prefix)) {
-            throw new DatabaseException("Group name must start with one of " + ALLOWED_PREFIXES);
-        }
-
-        try {
-            Integer.parseInt(numberPart);
-        } catch (NumberFormatException e) {
-            throw new DatabaseException("Second character of group name must be a number (0-9).");
-        }
-
-        if(fg.getYear() < 1 || fg.getYear() > studyYear.getMaxYears()) {
-            throw new DatabaseException("Study year must be between 1 and " + (studyYear.getMaxYears()));
+        if(fg.getName() == null || fg.getName().isBlank()) {
+            throw new DatabaseException("Faculty group name must not be empty.");
         }
 
         for(var group : repository.getAll()) {
             if(!group.getId().equals(fg.getId())
-                    && group.getGroupName().equalsIgnoreCase(fg.getGroupName())
-                    && group.getStudyYear().getId().equalsIgnoreCase(fg.getStudyYear().getId())) {
-                throw new DatabaseException("Faculty group already exists for this study year.");
+                    && group.getName().equalsIgnoreCase(fg.getName())
+                    && group.getSemiYearId().equalsIgnoreCase(fg.getSemiYearId())) {
+                throw new DatabaseException("Faculty group already exists for this semi-year.");
+            }
+        }
+
+        for(var s : Database.getInstance().scheduleManager.getAll()) {
+            if(s.getGroup() instanceof FacultyGroup group) {
+                if(group.getId().equals(fg.getId())) {
+                    throw new DatabaseException("Semi-year cannot be changed while this faculty group is still referenced in schedule.");
+                }
             }
         }
     }

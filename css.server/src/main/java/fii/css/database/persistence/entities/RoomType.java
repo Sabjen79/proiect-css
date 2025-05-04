@@ -4,10 +4,7 @@ import fii.css.database.DatabaseException;
 
 public enum RoomType {
     Course(0),
-    Seminary(1),
-    Laboratory(2),
-    Office(3),
-    Equipment(4);
+    Laboratory(1);
 
     public final int value;
 
