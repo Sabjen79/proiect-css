@@ -29,7 +29,7 @@ public class Query {
     }
 
     public static Integer integerParam(Context ctx, String name) {
-        var param = ctx.queryParam(name);
+        var param = ctx.formParam(name);
 
         if (param == null) {
             throw new DatabaseException("Query parameter '" + name + "' not found");
@@ -43,7 +43,7 @@ public class Query {
     }
 
     public static String stringParam(Context ctx, String name) {
-        var param = ctx.queryParam(name);
+        var param = ctx.formParam(name);
 
         if (param == null) {
             throw new DatabaseException("Query parameter '" + name + "' not found");

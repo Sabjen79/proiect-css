@@ -57,13 +57,21 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
         repository.delete(td);
     }
 
-    private void validate(TeacherDiscipline td) {
-        if(Database.getInstance().teacherManager.get(td.getTeacherId()) == null) {
-            throw new DatabaseException("Teacher with ID '" + td.getTeacherId() + "' does not exist.");
+    private void validate(TeacherDiscipline teacherDiscipline) {
+        if(Database.getInstance().teacherManager.get(teacherDiscipline.getTeacherId()) == null) {
+            throw new DatabaseException("Teacher with ID '" + teacherDiscipline.getTeacherId() + "' does not exist.");
         }
 
-        if(Database.getInstance().disciplineManager.get(td.getDisciplineId()) == null) {
-            throw new DatabaseException("Discipline with ID '" + td.getDisciplineId() + "' does not exist.");
+        if(Database.getInstance().disciplineManager.get(teacherDiscipline.getDisciplineId()) == null) {
+            throw new DatabaseException("Discipline with ID '" + teacherDiscipline.getDisciplineId() + "' does not exist.");
+        }
+
+        for(var td : getAll()) {
+            if(!td.getId().equals(teacherDiscipline.getId())
+            && td.getDisciplineId().equals(teacherDiscipline.getDisciplineId())
+            && td.getTeacherId().equals(teacherDiscipline.getTeacherId())) {
+                throw new DatabaseException("This association already exists.");
+            }
         }
     }
 }

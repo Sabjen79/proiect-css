@@ -1,5 +1,6 @@
 package fii.css.database.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import fii.css.database.DatabaseException;
 
 public enum DayOfWeek {
@@ -21,5 +22,10 @@ public enum DayOfWeek {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DatabaseException("Invalid day of week value: " + value);
         }
+    }
+
+    @JsonValue
+    public int toValue() {
+        return value;
     }
 }

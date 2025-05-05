@@ -42,8 +42,8 @@ public class TeacherDisciplineController extends AbstractController {
 
     public void create(Context ctx) {
         manager.addTeacherDiscipline(
-                Query.stringParam(ctx, "teacher_id"),
-                Query.stringParam(ctx, "discipline_id")
+                Query.stringParam(ctx, "teacherId"),
+                Query.stringParam(ctx, "disciplineId")
         );
 
         ctx.status(201);

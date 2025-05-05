@@ -1,5 +1,6 @@
 package fii.css.database.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import fii.css.database.DatabaseException;
 
 public enum Degree {
@@ -18,5 +19,10 @@ public enum Degree {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DatabaseException("Invalid degree value: " + value);
         }
+    }
+
+    @JsonValue
+    public int toValue() {
+        return value;
     }
 }
