@@ -59,7 +59,7 @@
             id="dialog" 
             class={`
                 absolute flex flex-col justify-center
-                m-0 p-0 bg-amber-50 shadow-container
+                m-0 p-0 bg-blue-100 shadow-container
                 border-1 border-white rounded-sm
                 duration-250 ease-out w-auto h-auto 
                 ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}
@@ -70,7 +70,7 @@
                     absolute top-3 right-3
                     bg-transparent border-0
                     duration-200 ease-out
-                    text-gray-700 hover:text-amber-500
+                    text-gray-700 hover:text-blue-500
                     hover:cursor-pointer
                 `}
                 onclick={close}

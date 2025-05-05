@@ -2,8 +2,10 @@
     import Button from "../components/button.svelte";
     import Dialog from "../components/dialog.svelte";
     import Input from "../components/input.svelte";
+    import Select from "../components/select.svelte";
 
     let a = $state("");
+    let b = $state("2");
     let dialog: Dialog;
 </script>
 
@@ -16,7 +18,7 @@
 <div class={`
     h-full w-full
     flex flex-col justify-center items-center
-    bg-amber-100
+    bg-blue-100
 `}>
     <p class={`
         absolute overflow-hidden inset-0
@@ -39,7 +41,7 @@
     </p>
 
     <div class={`
-        mt-2 bg-amber-50 px-4 py-3
+        mt-2 bg-blue-50 px-4 py-3
         flex flex-col z-10 rounded-md
         shadow-md/30 gap-2
     `}>
@@ -50,5 +52,10 @@
             }}
         />
         <Input bind:value={a}/>
+        <Select bind:value={b} options={[
+            { label: "Option 1", value: "1" },
+            { label: "Option 2", value: "2" },
+            { label: "Option 3", value: "3" }
+        ]}/>
     </div>
 </div>

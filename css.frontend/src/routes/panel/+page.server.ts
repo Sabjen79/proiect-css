@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export function load() {
-	redirect(308, '/panel/timetable');
+	redirect(308, '/panel/schedule');
 }

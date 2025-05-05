@@ -1,5 +1,6 @@
 package fii.css.database.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import fii.css.database.DatabaseException;
 
 public enum RoomType {
@@ -19,5 +20,10 @@ public enum RoomType {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DatabaseException("Invalid room type value: " + value);
         }
+    }
+
+    @JsonValue
+    public int toValue() {
+        return value;
     }
 }

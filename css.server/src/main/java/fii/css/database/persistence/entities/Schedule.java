@@ -1,5 +1,6 @@
 package fii.css.database.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fii.css.database.Database;
 import fii.css.database.persistence.DatabaseEntity;
 import fii.css.database.persistence.annotations.Column;
@@ -37,6 +38,7 @@ public class Schedule extends DatabaseEntity {
 
     public String getId() { return id; }
 
+    @JsonIgnore
     public Teacher getTeacher() {
         return Database
                 .getInstance()
@@ -44,16 +46,21 @@ public class Schedule extends DatabaseEntity {
                 .get(teacherId);
     }
 
+    public String getTeacherId() { return teacherId; }
+
     public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
 
+    @JsonIgnore
     public Discipline getDiscipline() {
         return Database
                 .getInstance()
                 .disciplineManager
                 .get(disciplineId);
     }
+
+    public String getDisciplineId() { return disciplineId; }
 
     public void setDisciplineId(String disciplineId) {
         this.disciplineId = disciplineId;
@@ -67,6 +74,7 @@ public class Schedule extends DatabaseEntity {
         this.classType = classType.value;
     }
 
+    @JsonIgnore
     public Room getRoom() {
         return Database
             .getInstance()
@@ -74,10 +82,13 @@ public class Schedule extends DatabaseEntity {
             .get(roomId);
     }
 
+    public String getRoomId() { return roomId; }
+
     public void setRoomId(String id) {
         this.roomId = id;
     }
 
+    @JsonIgnore
     public DatabaseEntity getGroup() {
         var manager = (getClassType() == ClassType.Course)
                 ? Database.getInstance().semiYearManager
@@ -86,10 +97,15 @@ public class Schedule extends DatabaseEntity {
         return manager.get(students_id);
     }
 
+    @JsonIgnore
     public SemiYear getSemiYear() {
         return (getClassType() == ClassType.Course)
                 ? (SemiYear) getGroup()
                 : Database.getInstance().semiYearManager.get(((FacultyGroup) getGroup()).getSemiYearId());
+    }
+
+    public String getStudentsId() {
+        return students_id;
     }
 
     public void setStudentsId(String id) {

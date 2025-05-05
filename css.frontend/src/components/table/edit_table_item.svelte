@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext } from "svelte";
-    import type { EditTableData } from "./edit_table_data";
     import EditTableButton from "./edit_table_button.svelte";
+    import type { TableHeader } from "./table_data";
 
     let {
         columns,
@@ -15,7 +15,7 @@
         onDelete: Function
     } = $props();
 
-    let data = getContext<EditTableData[]>('table-data');
+    let data = getContext<TableHeader[]>('table-data');
 
     let hover = $state(false);
     let deleteHover = $state(false);
@@ -25,7 +25,7 @@
 <button 
     class={`
         w-full h-10 flex items-center border-b-1 border-stone-400
-        duration-200 hover:bg-amber-100 hover:cursor-pointer
+        duration-200 hover:bg-blue-100 hover:cursor-pointer
         ${index % 2 == 0 ? "bg-white" : "bg-stone-100"}
     `}
     onmouseenter={() => { hover = true  }}

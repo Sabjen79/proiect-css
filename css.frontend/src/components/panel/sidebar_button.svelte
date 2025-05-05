@@ -19,7 +19,7 @@
     let active = $state(false);
 
     $effect(() => {
-        active = (page.url.pathname.split('/').at(-1) == url)
+        active = (page.url.pathname == url)
     });
 </script>
 
@@ -32,7 +32,7 @@
     style="color: color-mix(in lab, {color} {active ? "100%" :hover ? "80%" : "0"}, black)"
     onmouseenter={() => { hover = true  }}
     onmouseleave={() => { hover = false }}
-    onclick={() => {goto("/panel/" + url)}}
+    onclick={() => {goto(url)}}
 >
     <div class={`flex items-center`}>
         <p class={`font-icons text-2xl ![font-variation-settings:"FILL"_1,"wght"_500,"GRAD"_0,"opsz"_24]`}>

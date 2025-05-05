@@ -44,7 +44,7 @@ public class FacultyGroupController extends AbstractController {
     public void create(Context ctx) {
         manager.addFacultyGroup(
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "studyYearId")
+                Query.stringParam(ctx, "semiYearId")
         );
 
         ctx.status(201);
@@ -54,7 +54,7 @@ public class FacultyGroupController extends AbstractController {
         manager.updateFacultyGroup(
                 Query.idPathParam(ctx),
                 Query.stringParam(ctx, "name"),
-                Query.stringParam(ctx, "studyYearId")
+                Query.stringParam(ctx, "semiYearId")
         );
 
         ctx.status(204);

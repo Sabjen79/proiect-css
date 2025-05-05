@@ -5,21 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/discipline.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/facultygroup.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/semiyear.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/teacher.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/teacherdiscipline.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/+layout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/+layout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/panel/disciplines/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/panel/disciplines/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/disciplines.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/disciplines.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/discipline.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/facultygroup.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/room.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/room.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/studyyear.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/teacher.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/csv_data_files/teacherdiscipline.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,18 +37,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "stefanaciudin"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Sabjen79/proiect-css.git",
-    "accountId": "751b0cde-66a5-4409-aecc-f2e88cdd3621"
-  }
-}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -60,29 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/stefa/Desktop/calitatea sist software/proiect-css",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sabjen/frontend&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stefa/Desktop/calitatea sist software/proiect-css&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\stefa\Desktop\calitatea sist software\proiect-css\css.server\src\main\resources" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
@@ -109,7 +90,8 @@
       <option name="presentableId" value="Default" />
       <updated>1746370038091</updated>
       <workItem from="1746370039473" duration="13852000" />
-      <workItem from="1746436342795" duration="10567000" />
+      <workItem from="1746392464899" duration="4315000" />
+      <workItem from="1746426750059" duration="14532000" />
     </task>
     <servers />
   </component>

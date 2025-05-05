@@ -10,8 +10,7 @@
 </script>
 
 <Navbar>
-	<NavbarButton name="Main Page" url=""/>
-    <NavbarButton name="Timetable" url="schedule"/>
+    <NavbarButton name="Timetable" url="timetable"/>
 	<NavbarButton name="Admin Panel" url="panel"/>
 </Navbar>
 

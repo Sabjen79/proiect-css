@@ -97,5 +97,16 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
                 throw new DatabaseException("Discipline with name '" + discipline.getName() + "' already exists.");
             }
         }
+
+        for(var s : Database.getInstance().scheduleManager.getAll()) {
+            if(s.getDiscipline().getId().equals(discipline.getId())) {
+                if(s.getDiscipline().getYear() != discipline.getYear()) {
+                    throw new DatabaseException("Year cannot be changed while the discipline is still referenced in schedule.");
+                }
+                if(s.getDiscipline().getDegree() != discipline.getDegree()) {
+                    throw new DatabaseException("Degree be changed while the discipline is still referenced in schedule.");
+                }
+            }
+        }
     }
 }

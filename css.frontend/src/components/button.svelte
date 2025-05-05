@@ -16,9 +16,9 @@
         w-fit h-6 px-3 py-4 flex items-center
         rounded-md border-1 duration-200
         hover:cursor-pointer select-none
-        ${pressed ? "bg-amber-600 border-amber-500" 
-        : hover ? "bg-amber-500 border-amber-400" 
-        : "bg-amber-400 border-amber-300"}
+        ${pressed ? "bg-blue-600 border-blue-500" 
+        : hover ? "bg-blue-500 border-blue-400" 
+        : "bg-blue-400 border-blue-300"}
     `}
     onmouseenter={() => { hover = true; }}
     onmouseleave={() => { hover = false; pressed = false;}}

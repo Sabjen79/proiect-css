@@ -3,6 +3,7 @@ package fii.css.api;
 import fii.css.api.controllers.*;
 import fii.css.database.DatabaseException;
 import io.javalin.Javalin;
+import io.javalin.plugin.bundled.CorsPluginConfig;
 
 /// The REST API server responsible for communicating with the UI.
 /// Its purpose is to expose methods from the Database object, NOT to implement logic.
@@ -10,7 +11,11 @@ public class RestApi {
     private final Javalin app;
 
     public RestApi() {
-        app = Javalin.create();
+        app = Javalin.create(config -> {
+            config.bundledPlugins.enableCors(cors -> {
+                cors.addRule(CorsPluginConfig.CorsRule::anyHost);
+            });
+        });
 
         registerController(SemiYearController.class);
         registerController(FacultyGroupController.class);

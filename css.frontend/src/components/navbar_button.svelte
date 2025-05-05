@@ -26,9 +26,9 @@
         hover:cursor-pointer select-none
         text-xl font-bold
         ${active || hover ? "border-b-3" : ""}
-        ${active ? "border-amber-500 text-amber-500" 
-        : pressed ? "border-amber-600 text-amber-600"
-        : hover ? "border-amber-700 text-amber-700" : ""}
+        ${active ? "border-blue-500 text-blue-500" 
+        : pressed ? "border-blue-600 text-blue-600"
+        : hover ? "border-blue-700 text-blue-700" : ""}
         
     `}
     onmouseenter={() => { hover = true; }}
