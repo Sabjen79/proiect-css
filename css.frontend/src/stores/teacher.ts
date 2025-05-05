@@ -35,7 +35,7 @@ export async function refreshTeachers() {
 
 export function getTeachersAsOptions() {
     return get(teacherStore).map(t => {
-        return { label: `${t.title} ${t.name}`, value: t.id }
+        return { label: t.name, value: t.id }
     });
 }
 

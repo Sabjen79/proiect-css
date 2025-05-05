@@ -32,9 +32,11 @@ export async function refreshSemiYears() {
         });
     });
 
-    semiYearStore.set(array.sort((a, b) => 
-        (a.degree - b.degree)*5 + (a.year - b.year)*3 + a.name.localeCompare(b.name)
-    ));
+    semiYearStore.set(array.sort((a, b) => {
+        if(a.degree != b.degree) return a.degree - b.degree;
+            if(a.year != b.year) return a.year - b.year;
+            return a.name.localeCompare(b.name);
+    }));
 }
 
 export function getSemiYearsAsOptions() {

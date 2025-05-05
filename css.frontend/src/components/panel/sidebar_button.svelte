@@ -26,7 +26,7 @@
 <button
     class={`
         flex justify-start items-center
-        w-full h-10 select-none duration-150
+        w-full h-fit min-h-10 select-none duration-150
         hover:cursor-pointer
     `}
     style="color: color-mix(in lab, {color} {active ? "100%" :hover ? "80%" : "0"}, black)"
@@ -39,7 +39,7 @@
             {icon}
         </p>
     </div>
-    <p class={`ml-2 font-bold text-xl`}>
+    <p class={`ml-2 font-bold text-lg truncate`}>
         {name}
     </p>
 </button>

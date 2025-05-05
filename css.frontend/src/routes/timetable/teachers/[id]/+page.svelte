@@ -14,12 +14,12 @@
     let teacher: Teacher = $derived(getTeacher(page.params.id));
 
     let list: Schedule[] = $derived($scheduleStore
-            .filter(s => s.teacherId == teacher.id)
-            .sort((a, b) => a.dayOfWeek < b.dayOfWeek ? -1 : a.startHour - b.startHour));
+            .filter(s => s.teacherId == teacher.id));
 </script>
 
 <div class="w-full h-full flex justify-center items-center">
-    <div class="max-w-300 w-[90%] h-full py-10">
+    <div class="max-w-300 w-[90%] h-full py-10 relative">
+        <p class="absolute -left-4 top-2.5 font-semibold">{teacher.name}</p>
         <ViewTable 
             items={list}
             header={[

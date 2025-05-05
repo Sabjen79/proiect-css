@@ -14,8 +14,7 @@
     let facultyGroup: FacultyGroup = $derived(getFacultyGroup(page.params.id));
 
     let list: Schedule[] = $derived($scheduleStore
-            .filter(s => (s.studentsId == facultyGroup.id || getSemiYearOrNull(s.studentsId)?.id == facultyGroup.semiYearId))
-            .sort((a, b) => a.dayOfWeek < b.dayOfWeek ? -1 : a.startHour - b.startHour));
+            .filter(s => (s.studentsId == facultyGroup.id || getSemiYearOrNull(s.studentsId)?.id == facultyGroup.semiYearId)));
 </script>
 
 <div class="w-full h-full flex justify-center items-center">

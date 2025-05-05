@@ -14,8 +14,7 @@
     let room: Room = $derived(getRoom(page.params.id));
 
     let list: Schedule[] = $derived($scheduleStore
-            .filter(s => s.roomId == room.id)
-            .sort((a, b) => a.dayOfWeek < b.dayOfWeek ? -1 : a.startHour - b.startHour));
+            .filter(s => s.roomId == room.id));
 </script>
 
 <div class="w-full h-full flex justify-center items-center">

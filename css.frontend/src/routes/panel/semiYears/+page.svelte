@@ -1,14 +1,11 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import FormDialog from "../../../components/form_dialog.svelte";
     import Input from "../../../components/input.svelte";
     import EditTable from "../../../components/table/edit_table.svelte";
-    import type { EditTableData } from "../../../components/table/table_data";
-    import { createSemiYear, deleteSemiYear, semiYearStore, refreshSemiYears, updateSemiYears, type SemiYear } from "../../../stores/semiYears";
+    import { createSemiYear, deleteSemiYear, semiYearStore, updateSemiYears, type SemiYear } from "../../../stores/semiYears";
     import { Degree, getEnumAsOptions } from "../../../stores/enums";
     import Select from "../../../components/select.svelte";
-    import Dialog from "../../../components/dialog.svelte";
-
+    
     let editDialog: FormDialog;
 
     let formSemiYear: SemiYear = $state({

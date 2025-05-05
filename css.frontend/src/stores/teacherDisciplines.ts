@@ -54,24 +54,6 @@ export async function createTeacherDiscipline(teacherDiscipline: TeacherDiscipli
     refreshTeacherDisciplines();
 }
 
-export async function updateTeacherDisciplines(teacherDiscipline: TeacherDiscipline) {
-    const formData = new FormData();
-
-    formData.append("teacherId", teacherDiscipline.teacherId);
-    formData.append("disciplineId", teacherDiscipline.disciplineId);
-
-    const response = await fetch(`http://localhost:8080/teacherDisciplines/${teacherDiscipline.id}`, {
-        method: 'PATCH',
-        body:formData
-    });
-
-    if(!response.ok) {
-        throw new Error(await response.text());
-    }
-
-    refreshTeacherDisciplines();
-}
-
 export async function deleteTeacherDiscipline(id: String) {
     const response = await fetch(`http://localhost:8080/teacherDisciplines/${id}`, {
         method: 'DELETE',

@@ -35,8 +35,10 @@ export async function refreshFacultyGroups() {
         array.sort((a, b) => {
             let aS = getSemiYear(a.semiYearId);
             let bS = getSemiYear(b.semiYearId);
-
-            return (aS.degree - bS.degree)*5 + (aS.year - bS.year)*3 + a.name.localeCompare(b.name);
+            
+            if(aS.degree != bS.degree) return aS.degree - bS.degree;
+            if(aS.year != bS.year) return aS.year - bS.year;
+            return a.name.localeCompare(b.name);
         })
     )
 }

@@ -40,7 +40,10 @@ export async function refreshSchedules() {
         });
     });
 
-    scheduleStore.set(array.sort((a, b) => (a.dayOfWeek - b.dayOfWeek)*2 + (a.startHour - b.startHour)));
+    scheduleStore.set(array.sort((a, b) => {
+        if(a.dayOfWeek != b.dayOfWeek) return a.dayOfWeek - b.dayOfWeek;
+        return a.startHour - b.startHour;
+    }));
 }
 
 export async function createSchedule(schedule: Schedule) {

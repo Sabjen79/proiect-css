@@ -4,7 +4,7 @@
     import EditTable from "../../../components/table/edit_table.svelte";
     import { getDiscipline, getDisciplinesAsOptions, refreshDisciplines } from "../../../stores/disciplines";
     import Select from "../../../components/select.svelte";
-    import { createTeacherDiscipline, deleteTeacherDiscipline, refreshTeacherDisciplines, teacherDisciplineStore, updateTeacherDisciplines, type TeacherDiscipline } from "../../../stores/teacherDisciplines";
+    import { createTeacherDiscipline, deleteTeacherDiscipline, refreshTeacherDisciplines, teacherDisciplineStore, type TeacherDiscipline } from "../../../stores/teacherDisciplines";
     import { getTeacher, getTeachersAsOptions, refreshTeachers } from "../../../stores/teacher";
 
     let editDialog: FormDialog;
@@ -24,11 +24,7 @@
             editDialog.setError(err);
         })
     }}
-    onSubmitEdit={async () => {
-        updateTeacherDisciplines(formTeacherDiscipline).then(editDialog.close).catch((err) => {
-            editDialog.setError(err);
-        })
-    }}
+    onSubmitEdit={async () => {}}
 >
     <Select 
         bind:value={formTeacherDiscipline.teacherId} 
@@ -64,11 +60,7 @@
 
                 editDialog.openCreate();
             }}
-            onEdit={(item) => {
-                Object.assign(formTeacherDiscipline, item);
-
-                editDialog.openEdit();
-            }}
+            onEdit={(item) => {}}
             onDelete={(item) => {
                 deleteTeacherDiscipline(item.id).catch((err) => {
                     editDialog.openDelete(err.toString());

@@ -5,22 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../css.frontend/src/lib/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/+layout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/+layout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/panel/disciplines/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/panel/disciplines/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/components/panel/sidebar_button.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/components/panel/sidebar_button.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/panel/semiYears/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/panel/semiYears/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/panel/teacherDisciplines/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/panel/teacherDisciplines/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/disciplines/[id]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/disciplines/[id]/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/facultyGroups/[id]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/facultyGroups/[id]/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/rooms/[id]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/rooms/[id]/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/semiYears/[id]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/semiYears/[id]/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/teachers/[id]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/routes/timetable/teachers/[id]/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/disciplines.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/disciplines.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/enums.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/facultyGroups.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/facultyGroups.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/schedule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/schedule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/semiYears.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/semiYears.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/teacher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/teacher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css.frontend/src/stores/teacherDisciplines.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../css.frontend/src/stores/teacherDisciplines.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/Query.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/RestApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/DayOfWeek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Degree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/RoomType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
