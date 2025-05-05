@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
-    private static final Set<String> ALLOWED_PREFIXES = Set.of("A", "B", "E", "X");
     
     public FacultyGroupManager() {
         super(new FacultyGroupRepository());
