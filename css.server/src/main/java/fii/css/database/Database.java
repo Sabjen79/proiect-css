@@ -36,45 +36,83 @@ public class Database {
     public void initialize() {
         try {
             this.connection = DriverManager.getConnection(DB_URL);
+
+            // setting auto commit for batch operations
+            this.connection.setAutoCommit(false);
+
+            // check if database is empty
             if (isDatabaseEmpty()) {
-                System.out.println("Database does not exist. Running creation script...");
+                System.out.println("Database is empty. Creating tables...");
                 String dbPath = "/database_creation.sql";
-                executeSqlScript(dbPath); // create the database
+                executeSqlScript(dbPath); // create the database tables
+                this.connection.commit();
+
+                System.out.println("Importing initial data...");
+                importInitialData(); // add initial database info
+
+                // commit all data changes
+                this.connection.commit();
+                System.out.println("All data committed to database successfully");
             } else {
-                System.out.println("Database already exists. Skipping creation.");
+                System.out.println("Database already exists with tables. Skipping creation.");
             }
 
-            disciplineManager = new DisciplineManager();
-            teacherManager = new TeacherManager();
-            roomManager = new RoomManager();
-            semiYearManager = new SemiYearManager();
-            facultyGroupManager = new FacultyGroupManager();
-            scheduleManager = new ScheduleManager();
-            teacherDisciplineManager = new TeacherDisciplineManager();
+            // reset auto-commit to true for normal operations
+            this.connection.setAutoCommit(true);
+
+            // initialize managers
+            initializeManagers();
 
         } catch (SQLException e) {
-            // if the database doesn't exist yet
-            System.out.println("Database file does not exist. Creating new database...");
-            String dbPath = "/database_creation.sql";
-            executeSqlScript(dbPath);
+            System.err.println("Error connecting to database: " + e.getMessage());
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                    System.err.println("Transaction rolled back due to error");
+                }
+            } catch (SQLException rollbackEx) {
+                System.err.println("Error during rollback: " + rollbackEx.getMessage());
+            }
+            throw new RuntimeException("Failed to initialize database", e);
+        } catch (IOException e) {
+            System.err.println("Error importing initial data: " + e.getMessage());
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                    System.err.println("Transaction rolled back due to error");
+                }
+            } catch (SQLException rollbackEx) {
+                System.err.println("Error during rollback: " + rollbackEx.getMessage());
+            }
+            throw new RuntimeException("Failed to import initial data", e);
         }
+    }
+
+    private void initializeManagers() {
+        disciplineManager = new DisciplineManager();
+        teacherManager = new TeacherManager();
+        roomManager = new RoomManager();
+        semiYearManager = new SemiYearManager();
+        facultyGroupManager = new FacultyGroupManager();
+        scheduleManager = new ScheduleManager();
+        teacherDisciplineManager = new TeacherDisciplineManager();
     }
 
     private boolean isDatabaseEmpty() {
         // query to check if there are any tables in the database
-        String checkQuery = "SELECT name FROM sqlite_master WHERE type='table';";
+        String checkQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
         try (Statement stmt = connection.createStatement()) {
             var rs = stmt.executeQuery(checkQuery);
-            return !rs.next();
+            return !rs.next(); // if result set is empty, database has no tables
         } catch (SQLException e) {
-            // if there's an error (e.g., the database file doesn't exist), assume the database is empty
-            return true;
+            System.err.println("Error checking if database is empty: " + e.getMessage());
+            return true; // assume empty if there's an error
         }
     }
 
-
     private void executeSqlScript(String resourcePath) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream(resourcePath))))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream(resourcePath))))) {
 
             StringBuilder script = new StringBuilder();
             String line;
@@ -82,18 +120,71 @@ public class Database {
                 script.append(line).append("\n");
             }
 
-            String[] statements = script.toString().split("(?m);\\s*\n"); // split on semicolon followed by newline
+            // split the script into individual statements
+            String[] statements = script.toString().split(";\\s*[\r\n]+");
 
-            for (String statement : statements) {
-                statement = statement.trim();
-                if (!statement.isEmpty()) {
-                    try (Statement stmt = connection.createStatement()) {
-                        stmt.execute(statement);
+            // execute each statement
+            try (Statement stmt = connection.createStatement()) {
+                for (String statement : statements) {
+                    statement = statement.trim();
+                    if (!statement.isEmpty()) {
+                        try {
+                            stmt.execute(statement);
+                        } catch (SQLException e) {
+                            System.err.println("Error executing SQL statement: " + statement);
+                            throw e;
+                        }
                     }
                 }
             }
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void importInitialData() throws SQLException, IOException {
+        var conn = getConnection();
+
+        try {
+            // debug to verify resources are being found
+            System.out.println("Loading teacher.csv from resources...");
+            InputStream teacherStream = getClass().getResourceAsStream("/teacher.csv");
+            if (teacherStream == null) {
+                System.err.println("WARNING: teacher.csv resource not found!");
+            } else {
+                teacherStream.close();
+            }
+
+            // import data with explicit transaction handling
+            CsvDataImporter.importTeachers(conn, "/teacher.csv");
+            // force commit after each import to ensure data is saved
+            conn.commit();
+            System.out.println("Teachers committed to database");
+
+            CsvDataImporter.importTeacherDiscipline(conn, "/teacherdiscipline.csv");
+            conn.commit();
+            System.out.println("Teacher disciplines committed to database");
+
+            CsvDataImporter.importDisciplines(conn, "/discipline.csv");
+            conn.commit();
+            System.out.println("Disciplines committed to database");
+
+            CsvDataImporter.importRoom(conn, "/room.csv");
+            conn.commit();
+            System.out.println("Rooms committed to database");
+
+            CsvDataImporter.importSemiYear(conn, "/semiyear.csv");
+            conn.commit();
+            System.out.println("Semi-years committed to database");
+
+            CsvDataImporter.importFacultyGroups(conn, "/facultygroup.csv");
+            conn.commit();
+            System.out.println("Faculty groups committed to database");
+
+        } catch (SQLException | IOException e) {
+            System.err.println("Error during data import: " + e.getMessage());
+            conn.rollback(); // roll back on any error
+            throw e;
         }
     }
 }

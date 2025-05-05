@@ -1,4 +1,4 @@
-room_id,name,capacity,room_type
+id,name,capacity,room_type
 1iqc1ea0l-1k25ct,C216,5,Office
 1iqc1ea0l-ncjc73,C902,5,Office
 1iqc1ea0l-189r5vn,Laptop,1,Equipment
