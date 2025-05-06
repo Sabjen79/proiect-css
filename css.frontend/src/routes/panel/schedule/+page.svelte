@@ -29,7 +29,7 @@
 
 <FormDialog
     bind:this={editDialog}
-    name={"Faculty Group"}
+    name={"Schedule"}
     onSubmitCreate={async () => {
         createSchedule(formSchedule).then(editDialog.close).catch((err) => {
             editDialog.setError(err);

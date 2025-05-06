@@ -16,7 +16,7 @@
 
 <FormDialog
     bind:this={editDialog}
-    name={"Discipline"}
+    name={"Teacher"}
     onSubmitCreate={async () => {
         createTeacher(formTeacher).then(editDialog.close).catch((err) => {
             editDialog.setError(err);
