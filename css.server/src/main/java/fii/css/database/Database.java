@@ -187,4 +187,32 @@ public class Database {
             throw e;
         }
     }
+
+    public DisciplineManager getDisciplineManager() {
+        return disciplineManager;
+    }
+
+    public TeacherManager getTeacherManager() {
+        return teacherManager;
+    }
+
+    public RoomManager getRoomManager() {
+        return roomManager;
+    }
+
+    public SemiYearManager getSemiYearManager() {
+        return semiYearManager;
+    }
+
+    public FacultyGroupManager getFacultyGroupManager() {
+        return facultyGroupManager;
+    }
+
+    public ScheduleManager getScheduleManager() {
+        return scheduleManager;
+    }
+
+    public TeacherDisciplineManager getTeacherDisciplineManager() {
+        return teacherDisciplineManager;
+    }
 }

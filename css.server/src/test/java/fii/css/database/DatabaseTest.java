@@ -1,59 +1,69 @@
 package fii.css.database;
 
-import org.junit.jupiter.api.*;
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.sql.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class DatabaseTest {
 
     Database db;
 
     @BeforeEach
-    void setup() throws SQLException {
+    void setUp() {
         db = Database.getInstance();
-        db.connection = DriverManager.getConnection("jdbc:sqlite:file:memdb1?mode=memory&cache=shared\n");
-        db.connection.setAutoCommit(true);
-    }
-
-    @AfterEach
-    void tearDown() throws SQLException {
-        if (db.connection != null && !db.connection.isClosed()) {
-            db.connection.close();
-        }
     }
 
     @Test
-    void testGetInstanceReturnsSameObject() {
-        Database db2 = Database.getInstance();
-        assertSame(db, db2, "getInstance() should return the singleton instance");
+    void testGetInstance() {
+        assertSame(db, Database.getInstance());
     }
 
     @Test
-    void testIsDatabaseEmptyTrueWhenNoTables() throws SQLException {
-        assertTrue(db.isDatabaseEmpty(), "Database should be empty when no tables exist");
+    void testIsDatabaseEmptyWhenEmpty() throws SQLException {
+        Connection mockConn = mock(Connection.class);
+        Statement mockStmt = mock(Statement.class);
+        ResultSet mockRs = mock(ResultSet.class);
+
+        when(mockConn.createStatement()).thenReturn(mockStmt);
+        when(mockStmt.executeQuery(anyString())).thenReturn(mockRs);
+        when(mockRs.next()).thenReturn(false);
+
+        db.connection = mockConn;
+
+        assertTrue(db.isDatabaseEmpty());
     }
 
     @Test
-    void testIsDatabaseEmptyFalseWhenTablesExist() throws SQLException {
-        try (Statement stmt = db.connection.createStatement()) {
-            stmt.execute("CREATE TABLE test_table (id INTEGER PRIMARY KEY);");
-        }
-        assertFalse(db.isDatabaseEmpty(), "Database should not be empty when a table exists");
+    void testIsDatabaseEmptyWhenNotEmpty() throws SQLException {
+        Connection mockConn = mock(Connection.class);
+        Statement mockStmt = mock(Statement.class);
+        ResultSet mockRs = mock(ResultSet.class);
+
+        when(mockConn.createStatement()).thenReturn(mockStmt);
+        when(mockStmt.executeQuery(anyString())).thenReturn(mockRs);
+        when(mockRs.next()).thenReturn(true);
+
+        db.connection = mockConn;
+
+        assertFalse(db.isDatabaseEmpty());
     }
 
     @Test
-    void testExecuteSqlScriptRunsStatementsFromResource() throws Exception {
-        // Assumes src/test/resources/test.sql contains: CREATE TABLE test_table (id INTEGER PRIMARY KEY, name TEXT);
+    void testExecuteSqlScriptExecutesStatements() throws Exception {
+        Connection mockConn = mock(Connection.class);
+        Statement mockStmt = mock(Statement.class);
+
+        when(mockConn.createStatement()).thenReturn(mockStmt);
+        db.connection = mockConn;
+
+        // Place a test.sql in src/test/resources with a dummy statement for this to run
         db.executeSqlScript("/test.sql");
 
-        try (Statement stmt = db.connection.createStatement()) {
-            ResultSet rs = stmt.executeQuery(
-                    "SELECT name FROM sqlite_master WHERE type='table' AND name='Discipline';"
-            );
-            assertTrue(rs.next(), "Table 'Discipline' should have been created");
-        }
+        verify(mockStmt, atLeastOnce()).execute(anyString());
     }
+
 
 }

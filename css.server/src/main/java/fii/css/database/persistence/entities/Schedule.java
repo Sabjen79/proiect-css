@@ -42,7 +42,7 @@ public class Schedule extends DatabaseEntity {
     public Teacher getTeacher() {
         return Database
                 .getInstance()
-                .teacherManager
+                .getTeacherManager()
                 .get(teacherId);
     }
 
@@ -56,7 +56,7 @@ public class Schedule extends DatabaseEntity {
     public Discipline getDiscipline() {
         return Database
                 .getInstance()
-                .disciplineManager
+                .getDisciplineManager()
                 .get(disciplineId);
     }
 
@@ -78,7 +78,7 @@ public class Schedule extends DatabaseEntity {
     public Room getRoom() {
         return Database
             .getInstance()
-            .roomManager
+            .getRoomManager()
             .get(roomId);
     }
 
@@ -91,8 +91,8 @@ public class Schedule extends DatabaseEntity {
     @JsonIgnore
     public DatabaseEntity getGroup() {
         var manager = (getClassType() == ClassType.Course)
-                ? Database.getInstance().semiYearManager
-                : Database.getInstance().facultyGroupManager;
+                ? Database.getInstance().getSemiYearManager()
+                : Database.getInstance().getFacultyGroupManager();
 
         return manager.get(students_id);
     }
@@ -101,7 +101,7 @@ public class Schedule extends DatabaseEntity {
     public SemiYear getSemiYear() {
         return (getClassType() == ClassType.Course)
                 ? (SemiYear) getGroup()
-                : Database.getInstance().semiYearManager.get(((FacultyGroup) getGroup()).getSemiYearId());
+                : Database.getInstance().getSemiYearManager().get(((FacultyGroup) getGroup()).getSemiYearId());
     }
 
     public String getStudentsId() {
