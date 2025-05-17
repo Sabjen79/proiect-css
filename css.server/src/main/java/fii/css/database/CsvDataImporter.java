@@ -189,7 +189,7 @@ public class CsvDataImporter {
     }
 
     // helper method to properly parse CSV lines (handles quoted fields)
-    private static String[] parseCsvLine(String line) {
+    static String[] parseCsvLine(String line) {
         List<String> fields = new ArrayList<>();
         StringBuilder currentField = new StringBuilder();
         boolean inQuotes = false;

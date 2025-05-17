@@ -10,7 +10,7 @@ public enum ClassType {
 
     public final int value;
 
-    private ClassType(int value) {
+    ClassType(int value) {
         this.value = value;
     }
 
