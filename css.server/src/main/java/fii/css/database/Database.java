@@ -29,7 +29,7 @@ public class Database {
     public ScheduleManager scheduleManager;
     public TeacherDisciplineManager teacherDisciplineManager;
 
-    private Database() {}
+    Database() {}
 
     public Connection getConnection() { return connection; }
 
