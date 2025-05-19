@@ -24,6 +24,12 @@ public class Teacher extends DatabaseEntity {
 
     public Teacher() {}
 
+    public Teacher(String id, String name, String title) {
+        this.id = id;
+        this.name = name;
+        this.title = title;
+    }
+
     public String getId() {
         return id;
     }

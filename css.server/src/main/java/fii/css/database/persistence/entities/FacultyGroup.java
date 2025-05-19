@@ -20,6 +20,12 @@ public class FacultyGroup extends DatabaseEntity {
 
     public FacultyGroup() {}
 
+    public FacultyGroup(String id, String name, String semiYearId) {
+        this.id = id;
+        this.name = name;
+        this.semiYearId = semiYearId;
+    }
+
     public String getId() {
         return id;
     }

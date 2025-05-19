@@ -3,6 +3,7 @@ package fii.css.database.persistence.managers;
 import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.FacultyGroup;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.FacultyGroupRepository;
 
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.Set;
 
 public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     
-    public FacultyGroupManager() {
-        super(new FacultyGroupRepository());
+    public FacultyGroupManager(AbstractRepository<FacultyGroup> repository) {
+        super(repository);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     }
 
     public void updateFacultyGroup(String id, String name, String semiYearId) {
-        FacultyGroup entity = repository.getById(id);
+        FacultyGroup entity = get(id);
         
         if (entity == null) {
             throw new DatabaseException("Faculty group with ID " + id + " not found.");
@@ -52,13 +53,13 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
 
     @Override
     public void remove(String id) {
-        FacultyGroup facultyGroup = repository.getById(id);
+        FacultyGroup facultyGroup = get(id);
         
         if (facultyGroup == null) {
             throw new DatabaseException("Faculty group with ID " + id + " does not exist.");
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         sManager.getAll().forEach(s -> {
             if(s.getGroup().getIdFromAnnotation().equals(id)) {
                 throw new DatabaseException("Group is still referenced in schedule.");
@@ -69,17 +70,17 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     }
     
     private void validate(FacultyGroup fg) {
-        var semiyear = Database.getInstance().semiYearManager.get(fg.getSemiYearId());
+        var semiyear = Database.getInstance().getSemiYearManager().get(fg.getSemiYearId());
         
         if(semiyear == null) {
             throw new DatabaseException("Semi-year with ID " + fg.getSemiYearId() + " does not exist.");
         }
 
-        if(fg.getName() == null || fg.getName().isBlank()) {
+        if(fg.getName().isBlank()) {
             throw new DatabaseException("Faculty group name must not be empty.");
         }
 
-        for(var group : repository.getAll()) {
+        for(var group : getAll()) {
             if(!group.getId().equals(fg.getId())
                     && group.getName().equalsIgnoreCase(fg.getName())
                     && group.getSemiYearId().equalsIgnoreCase(fg.getSemiYearId())) {
@@ -87,7 +88,7 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
             }
         }
 
-        for(var s : Database.getInstance().scheduleManager.getAll()) {
+        for(var s : Database.getInstance().getScheduleManager().getAll()) {
             if(s.getGroup() instanceof FacultyGroup group) {
                 if(group.getId().equals(fg.getId())) {
                     throw new DatabaseException("Semi-year cannot be changed while this faculty group is still referenced in schedule.");

@@ -1,6 +1,10 @@
 package fii.css.database;
 
 import fii.css.database.persistence.managers.*;
+import fii.css.database.persistence.repositories.FacultyGroupRepository;
+import fii.css.database.persistence.repositories.RoomRepository;
+import fii.css.database.persistence.repositories.ScheduleRepository;
+import fii.css.database.persistence.repositories.SemiYearRepository;
 
 import java.io.*;
 import java.sql.Connection;
@@ -119,10 +123,10 @@ public class Database {
     void initializeManagers() {
         disciplineManager = new DisciplineManager();
         teacherManager = new TeacherManager();
-        roomManager = new RoomManager();
-        semiYearManager = new SemiYearManager();
-        facultyGroupManager = new FacultyGroupManager();
-        scheduleManager = new ScheduleManager();
+        roomManager = new RoomManager(new RoomRepository());
+        semiYearManager = new SemiYearManager(new SemiYearRepository());
+        facultyGroupManager = new FacultyGroupManager(new FacultyGroupRepository());
+        scheduleManager = new ScheduleManager(new ScheduleRepository());
         teacherDisciplineManager = new TeacherDisciplineManager();
     }
 

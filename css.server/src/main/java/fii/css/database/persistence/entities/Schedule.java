@@ -38,6 +38,17 @@ public class Schedule extends DatabaseEntity {
 
     public Schedule() {}
 
+    public Schedule(String id, String teacherId, String disciplineId, int classType, String roomId, String students_id, int dayOfWeek, int startHour) {
+        this.id = id;
+        this.teacherId = teacherId;
+        this.disciplineId = disciplineId;
+        this.classType = classType;
+        this.roomId = roomId;
+        this.students_id = students_id;
+        this.dayOfWeek = dayOfWeek;
+        this.startHour = startHour;
+    }
+
     public String getId() { return id; }
 
     public void setId() {

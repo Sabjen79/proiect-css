@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ScheduleManager extends AbstractEntityManager<Schedule> {
-    public ScheduleManager() {
-        super(new ScheduleRepository());
+    public ScheduleManager(AbstractRepository<Schedule> repository) {
+        super(repository);
     }
 
     public ScheduleManager(AbstractRepository<Schedule> repository) {
@@ -46,10 +46,10 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
     }
 
     public void updateSchedule(String id, String teacherId, String disciplineId, ClassType classType, String roomId, String studentsId, DayOfWeek dayOfWeek, int startHour) {
-        var entity = repository.getById(id);
+        var entity = get(id);
 
         if (entity == null) {
-            throw new RuntimeException("Schedule with ID " + id + " does not exist.");
+            throw new DatabaseException("Schedule with ID " + id + " does not exist.");
         }
 
         entity.setTeacherId(teacherId);
@@ -113,7 +113,7 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
         }
 
         // Discipline-Teacher
-        var tdManager = Database.getInstance().teacherDisciplineManager;
+        var tdManager = Database.getInstance().getTeacherDisciplineManager();
         boolean found = tdManager
                 .getAll()
                 .stream()

@@ -11,7 +11,7 @@ public class DisciplineController extends AbstractController {
 
     public DisciplineController() {
         super("disciplines");
-        manager = Database.getInstance().disciplineManager;
+        manager = Database.getInstance().getDisciplineManager();
     }
 
     @Override

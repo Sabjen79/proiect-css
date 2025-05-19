@@ -13,7 +13,7 @@ public class TeacherController extends AbstractController {
 
     public TeacherController() {
         super("teachers");
-        manager = Database.getInstance().teacherManager;
+        manager = Database.getInstance().getTeacherManager();
     }
 
     @Override

@@ -22,6 +22,12 @@ public class TeacherDiscipline extends DatabaseEntity {
 
     public TeacherDiscipline() {}
 
+    public TeacherDiscipline(String id, String teacherId, String disciplineId) {
+        this.id = id;
+        this.teacherId = teacherId;
+        this.disciplineId = disciplineId;
+    }
+
     public String getId() {
         return id;
     }

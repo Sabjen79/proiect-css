@@ -4,11 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="" />
+    <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/DisciplineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/DisciplineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/FacultyGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/SemiYearController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/SemiYearController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/api/controllers/TeacherDisciplineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Discipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Discipline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/FacultyGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/FacultyGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/SemiYear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/SemiYear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/TeacherDiscipline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/entities/TeacherDiscipline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/DisciplineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/FacultyGroupManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/RoomManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/ScheduleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/SemiYearManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/SemiYearManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherDisciplineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/managers/TeacherManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/repositories/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fii/css/database/persistence/repositories/AbstractRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fii/css/database/persistence/repositories/AbstractRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fii/css/database/persistence/repositories/AbstractRepositoryTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -20,18 +51,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "stefanaciudin"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;stefanaciudin&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Sabjen79/proiect-css.git",
-    "accountId": "751b0cde-66a5-4409-aecc-f2e88cdd3621"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Sabjen79/proiect-css.git&quot;,
+    &quot;accountId&quot;: &quot;751b0cde-66a5-4409-aecc-f2e88cdd3621&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -47,19 +78,30 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Unnamed.executor": "Run",
+    "JUnit.FacultyManagerTest.executor": "Coverage",
+    "JUnit.FacultyManagerTest.testAdd.executor": "Coverage",
+    "JUnit.RoomManagerTest.testAddRoomSuccess.executor": "Run",
+    "JUnit.ScheduleManagerTest.executor": "Coverage",
+    "JUnit.SemiYearManagerTest.executor": "Coverage",
+    "JUnit.SemiYearManagerTest.testAdd.executor": "Run",
+    "JUnit.SemiYearManagerTest.testRemove.executor": "Coverage",
+    "JUnit.SemiYearManagerTest.testUpdate.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "diana/testing",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/stefa/Desktop/calitatea sist software/proiect-css",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.Unnamed">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
       <module name="proiect-css" />
@@ -67,6 +109,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="proiect-css" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.Unnamed" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -93,5 +149,26 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/css_server$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1747675171092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest_testUpdate.ic" NAME="SemiYearManagerTest.testUpdate Coverage Results" MODIFIED="1747686389438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$ScheduleManagerTest.ic" NAME="ScheduleManagerTest Coverage Results" MODIFIED="1747691915854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest_testRemove.ic" NAME="SemiYearManagerTest.testRemove Coverage Results" MODIFIED="1747684136392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest.ic" NAME="SemiYearManagerTest Coverage Results" MODIFIED="1747687952834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest_testAdd.ic" NAME="FacultyManagerTest.testAdd Coverage Results" MODIFIED="1747687828524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest.ic" NAME="FacultyManagerTest Coverage Results" MODIFIED="1747688724301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
   </component>
 </project>

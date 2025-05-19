@@ -11,7 +11,7 @@ public class RoomController extends AbstractController{
 
     public RoomController() {
         super("rooms");
-        manager = Database.getInstance().roomManager;
+        manager = Database.getInstance().getRoomManager();
     }
 
     @Override

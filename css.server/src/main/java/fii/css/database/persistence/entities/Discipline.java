@@ -25,6 +25,13 @@ public class Discipline extends DatabaseEntity {
 
     public Discipline() {}
 
+    public Discipline(String id, String name, int degree, int year) {
+        this.id = id;
+        this.name = name;
+        this.degree = degree;
+        this.year = year;
+    }
+
     public String getId() {
         return id;
     }

@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-class AbstractRepositoryTest {
+public class AbstractRepositoryTest {
 
     @Mock
     private Database mockDatabase;

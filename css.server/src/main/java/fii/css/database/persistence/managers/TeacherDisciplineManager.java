@@ -49,7 +49,7 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
             throw new DatabaseException("TeacherDiscipline with ID '" + id + "' does not exist.");
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
 
         // Because disciplines and teachers are always correlated in schedule,
         // we can only check for one of them
@@ -63,11 +63,11 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
     }
 
     private void validate(TeacherDiscipline teacherDiscipline) {
-        if(Database.getInstance().teacherManager.get(teacherDiscipline.getTeacherId()) == null) {
+        if(Database.getInstance().getTeacherDisciplineManager().get(teacherDiscipline.getTeacherId()) == null) {
             throw new DatabaseException("Teacher with ID '" + teacherDiscipline.getTeacherId() + "' does not exist.");
         }
 
-        if(Database.getInstance().disciplineManager.get(teacherDiscipline.getDisciplineId()) == null) {
+        if(Database.getInstance().getDisciplineManager().get(teacherDiscipline.getDisciplineId()) == null) {
             throw new DatabaseException("Discipline with ID '" + teacherDiscipline.getDisciplineId() + "' does not exist.");
         }
 

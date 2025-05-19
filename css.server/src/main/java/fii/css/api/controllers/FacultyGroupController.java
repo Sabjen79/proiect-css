@@ -12,7 +12,7 @@ public class FacultyGroupController extends AbstractController {
 
     public FacultyGroupController() {
         super("facultyGroups");
-        manager = Database.getInstance().facultyGroupManager;
+        manager = Database.getInstance().getFacultyGroupManager();
     }
 
     @Override

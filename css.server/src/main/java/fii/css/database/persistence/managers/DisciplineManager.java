@@ -62,14 +62,14 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             throw new RuntimeException("Discipline with ID " + id + " does not exist.");
         }
 
-        var tdRepo = Database.getInstance().teacherDisciplineManager;
+        var tdRepo = Database.getInstance().getTeacherDisciplineManager();
         for(var td : tdRepo.getAll()) {
             if(td.getDisciplineId().equals(id)) {
                 throw new DatabaseException("Discipline is still associated with a teacher.");
             }
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         for(var s : sManager.getAll()) {
             if(s.getDiscipline().getId().equals(id)) {
                 throw new DatabaseException("Discipline is still referenced in schedule.");
@@ -103,7 +103,7 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             }
         }
 
-        for(var s : Database.getInstance().scheduleManager.getAll()) {
+        for(var s : Database.getInstance().getScheduleManager().getAll()) {
             if(s.getDiscipline().getId().equals(discipline.getId())) {
                 if(s.getDiscipline().getYear() != discipline.getYear()) {
                     throw new DatabaseException("Year cannot be changed while the discipline is still referenced in schedule.");

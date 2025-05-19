@@ -58,14 +58,14 @@ public class TeacherManager extends AbstractEntityManager<Teacher> {
             throw new DatabaseException("Teacher with ID " + id + " does not exist.");
         }
 
-        var tdRepo = Database.getInstance().teacherDisciplineManager;
+        var tdRepo = Database.getInstance().getTeacherDisciplineManager();
         for(var td : tdRepo.getAll()) {
             if(td.getTeacherId().equals(id)) {
                 throw new DatabaseException("Teacher is still associated with a discipline.");
             }
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         for(var s : sManager.getAll()) {
             if(s.getTeacher().getId().equals(id)) {
                 throw new DatabaseException("Teacher is still referenced in schedule.");
