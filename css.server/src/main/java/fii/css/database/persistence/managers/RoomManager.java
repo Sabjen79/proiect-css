@@ -15,10 +15,6 @@ public class RoomManager extends AbstractEntityManager<Room> {
         super(repository);
     }
 
-    public RoomManager(AbstractRepository<Room> repository) {
-        this.repository = repository;
-    }
-
     @Override
     public Room get(String id) {
         return repository.getById(id);

@@ -15,10 +15,6 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
         super(repository);
     }
 
-    public ScheduleManager(AbstractRepository<Schedule> repository) {
-        this.repository = repository;
-    }
-
     @Override
     public Schedule get(String id) {
         return repository.getById(id);
