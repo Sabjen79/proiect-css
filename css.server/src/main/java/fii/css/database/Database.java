@@ -19,7 +19,7 @@ public class Database {
     }
 
     //======================================================================//
-    private Connection connection;
+    Connection connection;
 
     public DisciplineManager disciplineManager;
     public TeacherManager teacherManager;
@@ -29,7 +29,7 @@ public class Database {
     public ScheduleManager scheduleManager;
     public TeacherDisciplineManager teacherDisciplineManager;
 
-    private Database() {}
+    Database() {}
 
     public Connection getConnection() { return connection; }
 
@@ -88,7 +88,7 @@ public class Database {
         }
     }
 
-    private void initializeManagers() {
+    void initializeManagers() {
         disciplineManager = new DisciplineManager();
         teacherManager = new TeacherManager();
         roomManager = new RoomManager();
@@ -98,7 +98,7 @@ public class Database {
         teacherDisciplineManager = new TeacherDisciplineManager();
     }
 
-    private boolean isDatabaseEmpty() {
+    boolean isDatabaseEmpty() {
         // query to check if there are any tables in the database
         String checkQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
         try (Statement stmt = connection.createStatement()) {
@@ -110,7 +110,7 @@ public class Database {
         }
     }
 
-    private void executeSqlScript(String resourcePath) {
+    void executeSqlScript(String resourcePath) {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream(resourcePath))))) {
 
@@ -142,7 +142,7 @@ public class Database {
         }
     }
 
-    private void importInitialData() throws SQLException, IOException {
+    void importInitialData() throws SQLException, IOException {
         var conn = getConnection();
 
         try {
@@ -186,5 +186,33 @@ public class Database {
             conn.rollback(); // roll back on any error
             throw e;
         }
+    }
+
+    public DisciplineManager getDisciplineManager() {
+        return disciplineManager;
+    }
+
+    public TeacherManager getTeacherManager() {
+        return teacherManager;
+    }
+
+    public RoomManager getRoomManager() {
+        return roomManager;
+    }
+
+    public SemiYearManager getSemiYearManager() {
+        return semiYearManager;
+    }
+
+    public FacultyGroupManager getFacultyGroupManager() {
+        return facultyGroupManager;
+    }
+
+    public ScheduleManager getScheduleManager() {
+        return scheduleManager;
+    }
+
+    public TeacherDisciplineManager getTeacherDisciplineManager() {
+        return teacherDisciplineManager;
     }
 }
