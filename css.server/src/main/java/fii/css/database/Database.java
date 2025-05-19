@@ -29,6 +29,34 @@ public class Database {
     public ScheduleManager scheduleManager;
     public TeacherDisciplineManager teacherDisciplineManager;
 
+    public void setDisciplineManager(DisciplineManager dm) {
+        this.disciplineManager = dm;
+    }
+
+    public void setTeacherManager(TeacherManager tm) {
+        this.teacherManager = tm;
+    }
+
+    public void setTeacherDisciplineManager(TeacherDisciplineManager tdm) {
+        this.teacherDisciplineManager = tdm;
+    }
+
+    public void setScheduleManager(ScheduleManager sm) {
+        this.scheduleManager = sm;
+    }
+
+    public void setRoomManager(RoomManager rm) {
+        this.roomManager = rm;
+    }
+
+    public void setSemiYearManager(SemiYearManager sm) {
+        this.semiYearManager = sm;
+    }
+
+    public void setFacultyGroupManager(FacultyGroupManager fgm) {
+        this.facultyGroupManager = fgm;
+    }
+
     Database() {}
 
     public Connection getConnection() { return connection; }

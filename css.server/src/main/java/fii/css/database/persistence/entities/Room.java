@@ -5,6 +5,8 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
+import java.util.UUID;
+
 @Table("Room")
 public class Room extends DatabaseEntity{
     @Id
@@ -24,6 +26,10 @@ public class Room extends DatabaseEntity{
 
     public String getId() {
         return roomId;
+    }
+
+    public void setId() {
+        roomId = UUID.randomUUID().toString();
     }
 
     public String getName() {

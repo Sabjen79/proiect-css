@@ -7,6 +7,8 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
+import java.util.UUID;
+
 @Table("Schedule")
 public class Schedule extends DatabaseEntity {
     @Id
@@ -37,6 +39,10 @@ public class Schedule extends DatabaseEntity {
     public Schedule() {}
 
     public String getId() { return id; }
+
+    public void setId() {
+        id = UUID.randomUUID().toString();
+    }
 
     @JsonIgnore
     public Teacher getTeacher() {

@@ -5,6 +5,7 @@ import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.SemiYear;
 import fii.css.database.persistence.entities.TeacherDiscipline;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.SemiYearRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
@@ -13,6 +14,10 @@ import java.util.List;
 public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDiscipline> {
     public TeacherDisciplineManager() {
         super(new TeacherDisciplineRepository());
+    }
+
+    public TeacherDisciplineManager(AbstractRepository<TeacherDiscipline> repository) {
+        this.repository = repository;
     }
 
     @Override

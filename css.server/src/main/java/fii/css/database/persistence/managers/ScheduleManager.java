@@ -3,6 +3,7 @@ package fii.css.database.persistence.managers;
 import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.*;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.ScheduleRepository;
 
 import java.util.ArrayList;
@@ -12,6 +13,10 @@ import java.util.stream.Stream;
 public class ScheduleManager extends AbstractEntityManager<Schedule> {
     public ScheduleManager() {
         super(new ScheduleRepository());
+    }
+
+    public ScheduleManager(AbstractRepository<Schedule> repository) {
+        this.repository = repository;
     }
 
     @Override

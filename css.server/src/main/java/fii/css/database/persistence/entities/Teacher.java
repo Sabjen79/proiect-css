@@ -8,6 +8,7 @@ import fii.css.database.persistence.annotations.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Table("Teacher")
 public class Teacher extends DatabaseEntity {
@@ -25,6 +26,10 @@ public class Teacher extends DatabaseEntity {
 
     public String getId() {
         return id;
+    }
+
+    public void setId() {
+        id = UUID.randomUUID().toString();
     }
 
     public String getName() {

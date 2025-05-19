@@ -6,10 +6,14 @@ import fii.css.database.persistence.repositories.AbstractRepository;
 import java.util.List;
 
 public abstract class AbstractEntityManager<T extends DatabaseEntity> {
-    protected final AbstractRepository<T> repository;
+    protected AbstractRepository<T> repository;
 
     public AbstractEntityManager(AbstractRepository<T> repo) {
         this.repository = repo;
+    }
+
+    public AbstractEntityManager() {
+
     }
 
     abstract public T get(String id);

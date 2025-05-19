@@ -4,6 +4,7 @@ import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Room;
 import fii.css.database.persistence.entities.RoomType;
+import fii.css.database.persistence.entities.Teacher;
 import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.RoomRepository;
 
@@ -12,6 +13,10 @@ import java.util.List;
 public class RoomManager extends AbstractEntityManager<Room> {
     public RoomManager() {
         super(new RoomRepository());
+    }
+
+    public RoomManager(AbstractRepository<Room> repository) {
+        this.repository = repository;
     }
 
     @Override
