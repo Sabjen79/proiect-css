@@ -6,7 +6,7 @@ import fii.css.database.persistence.managers.DisciplineManager;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
-public class DisciplineController extends AbstractController {
+public abstract class DisciplineController extends AbstractController {
     private final DisciplineManager manager;
 
     public DisciplineController() {
@@ -68,4 +68,6 @@ public class DisciplineController extends AbstractController {
 
         ctx.status(204);
     }
+
+    protected abstract DisciplineManager getManager();
 }

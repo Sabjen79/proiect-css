@@ -63,7 +63,7 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
     }
 
     private void validate(TeacherDiscipline teacherDiscipline) {
-        if(Database.getInstance().getTeacherDisciplineManager().get(teacherDiscipline.getTeacherId()) == null) {
+        if(Database.getInstance().getTeacherManager().get(teacherDiscipline.getTeacherId()) == null) {
             throw new DatabaseException("Teacher with ID '" + teacherDiscipline.getTeacherId() + "' does not exist.");
         }
 
@@ -73,8 +73,8 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
 
         for(var td : getAll()) {
             if(!td.getId().equals(teacherDiscipline.getId())
-            && td.getDisciplineId().equals(teacherDiscipline.getDisciplineId())
-            && td.getTeacherId().equals(teacherDiscipline.getTeacherId())) {
+                    && td.getDisciplineId().equals(teacherDiscipline.getDisciplineId())
+                    && td.getTeacherId().equals(teacherDiscipline.getTeacherId())) {
                 throw new DatabaseException("This association already exists.");
             }
         }

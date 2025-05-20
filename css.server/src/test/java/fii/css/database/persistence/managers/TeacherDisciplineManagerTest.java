@@ -194,7 +194,6 @@ public class TeacherDisciplineManagerTest {
 
         teacherDisciplineManager.addTeacherDiscipline(teacher.getId(), discipline.getId());
 
-        // Simulăm adăugarea unui al doilea obiect cu aceiași teacherId și disciplineId
         RuntimeException ex = assertThrows(RuntimeException.class, () ->
                 teacherDisciplineManager.addTeacherDiscipline(teacher.getId(), discipline.getId()));
         assertTrue(ex.getMessage().contains("association already exists"));
@@ -211,67 +210,13 @@ public class TeacherDisciplineManagerTest {
         teacherDisciplineManager.addTeacherDiscipline(teacher.getId(), discipline.getId());
         var td = teacherDisciplineManager.getAll().get(0);
 
-        // Eliminăm întâi relația
         teacherDisciplineManager.remove(td.getId());
 
-        // Acum ar trebui să meargă să ștergem și profesorul și disciplina
         teacherManager.remove(teacher.getId());
         disciplineManager.remove(discipline.getId());
 
         assertTrue(teacherManager.getAll().isEmpty());
         assertTrue(disciplineManager.getAll().isEmpty());
     }
-
-
-//    @Mock
-//    Database mockDatabase;
-//
-//    DisciplineManager disciplineManager;
-//    TeacherManager teacherManager;
-//    TeacherDisciplineManager teacherDisciplineManager;
-//    ScheduleManager scheduleManager;
-//
-//    MockedStatic<Database> mockedStatic;
-//
-//    @BeforeEach
-//    void setUp() {
-//        MockitoAnnotations.openMocks(this);
-//
-//        // Creează managerii pe baza unor repo-uri fake sau direct mock-uri
-//        disciplineManager = mock(DisciplineManager.class);
-//        teacherManager = mock(TeacherManager.class);
-//        teacherDisciplineManager = mock(TeacherDisciplineManager.class);
-//        scheduleManager = mock(ScheduleManager.class);
-//
-//        // Interceptează apelul la Database.getInstance()
-//        mockedStatic = mockStatic(Database.class);
-//        mockedStatic.when(Database::getInstance).thenReturn(mockDatabase);
-//
-//        // Configurează ce returnează Database.getInstance()
-//        when(mockDatabase.getDisciplineManager()).thenReturn(disciplineManager);
-//        when(mockDatabase.getTeacherManager()).thenReturn(teacherManager);
-//        when(mockDatabase.getTeacherDisciplineManager()).thenReturn(teacherDisciplineManager);
-//        when(mockDatabase.getScheduleManager()).thenReturn(scheduleManager);
-//
-//    }
-//
-//    @AfterEach
-//    void tearDown() {
-//        mockedStatic.close(); // Foarte important! Închide mock-ul static
-//    }
-
-//    @Test
-//    void testRemoveTeacherDisciplineFailsIfNotExists() {
-//
-//        doThrow(new RuntimeException("TeacherDiscipline with ID 'non-existent-id' does not exist."))
-//                .when(teacherDisciplineManager).remove("non-existent-id");
-//
-//        var ex = assertThrows(RuntimeException.class, () ->
-//                mockDatabase.getTeacherDisciplineManager().remove("non-existent-id")
-//        );
-//
-//        assertTrue(ex.getMessage().contains("does not exist"));
-//    }
-
 
 }
