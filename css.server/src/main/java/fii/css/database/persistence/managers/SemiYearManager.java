@@ -4,13 +4,14 @@ import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.SemiYear;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.SemiYearRepository;
 
 import java.util.List;
 
 public class SemiYearManager extends AbstractEntityManager<SemiYear> {
-    public SemiYearManager() {
-        super(new SemiYearRepository());
+    public SemiYearManager(AbstractRepository<SemiYear> repository) {
+        super(repository);
     }
 
     @Override
@@ -58,14 +59,14 @@ public class SemiYearManager extends AbstractEntityManager<SemiYear> {
             throw new DatabaseException("Semi-year with ID '" + id + "' does not exist.");
         }
 
-        var fgManager = Database.getInstance().facultyGroupManager;
+        var fgManager = Database.getInstance().getFacultyGroupManager();
         fgManager.getAll().forEach(fg -> {
             if(fg.getSemiYearId().equals(id)) {
                 throw new DatabaseException("Semi-year is still associated with group " + fg.getName());
             }
         });
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         sManager.getAll().forEach(s -> {
             if(s.getGroup().getIdFromAnnotation().equals(id)) {
                 throw new DatabaseException("Semi-year is still referenced in schedule");
@@ -76,7 +77,7 @@ public class SemiYearManager extends AbstractEntityManager<SemiYear> {
     }
 
     private void validate(SemiYear sy) {
-        if(sy.getName() == null || sy.getName().isBlank()) {
+        if(sy.getName().isBlank()) {
             throw new DatabaseException("Specialty cannot be empty");
         }
 
@@ -101,7 +102,7 @@ public class SemiYearManager extends AbstractEntityManager<SemiYear> {
             }
         }
 
-        for(var s : Database.getInstance().scheduleManager.getAll()) {
+        for(var s : Database.getInstance().getScheduleManager().getAll()) {
             if(s.getSemiYear().getId().equals(sy.getId())) {
                 if(s.getSemiYear().getYear() != sy.getYear()) {
                     throw new DatabaseException("Year cannot be changed while this semi-year is still referenced in schedule.");

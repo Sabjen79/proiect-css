@@ -7,6 +7,8 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
+import java.util.UUID;
+
 @Table("Schedule")
 public class Schedule extends DatabaseEntity {
     @Id
@@ -36,13 +38,28 @@ public class Schedule extends DatabaseEntity {
 
     public Schedule() {}
 
+    public Schedule(String id, String teacherId, String disciplineId, int classType, String roomId, String students_id, int dayOfWeek, int startHour) {
+        this.id = id;
+        this.teacherId = teacherId;
+        this.disciplineId = disciplineId;
+        this.classType = classType;
+        this.roomId = roomId;
+        this.students_id = students_id;
+        this.dayOfWeek = dayOfWeek;
+        this.startHour = startHour;
+    }
+
     public String getId() { return id; }
+
+    public void setId() {
+        id = UUID.randomUUID().toString();
+    }
 
     @JsonIgnore
     public Teacher getTeacher() {
         return Database
                 .getInstance()
-                .teacherManager
+                .getTeacherManager()
                 .get(teacherId);
     }
 
@@ -56,7 +73,7 @@ public class Schedule extends DatabaseEntity {
     public Discipline getDiscipline() {
         return Database
                 .getInstance()
-                .disciplineManager
+                .getDisciplineManager()
                 .get(disciplineId);
     }
 
@@ -78,7 +95,7 @@ public class Schedule extends DatabaseEntity {
     public Room getRoom() {
         return Database
             .getInstance()
-            .roomManager
+            .getRoomManager()
             .get(roomId);
     }
 
@@ -91,8 +108,8 @@ public class Schedule extends DatabaseEntity {
     @JsonIgnore
     public DatabaseEntity getGroup() {
         var manager = (getClassType() == ClassType.Course)
-                ? Database.getInstance().semiYearManager
-                : Database.getInstance().facultyGroupManager;
+                ? Database.getInstance().getSemiYearManager()
+                : Database.getInstance().getFacultyGroupManager();
 
         return manager.get(students_id);
     }
@@ -101,7 +118,7 @@ public class Schedule extends DatabaseEntity {
     public SemiYear getSemiYear() {
         return (getClassType() == ClassType.Course)
                 ? (SemiYear) getGroup()
-                : Database.getInstance().semiYearManager.get(((FacultyGroup) getGroup()).getSemiYearId());
+                : Database.getInstance().getSemiYearManager().get(((FacultyGroup) getGroup()).getSemiYearId());
     }
 
     public String getStudentsId() {

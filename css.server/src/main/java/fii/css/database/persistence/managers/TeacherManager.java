@@ -4,6 +4,7 @@ import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Teacher;
 import fii.css.database.persistence.entities.TeacherDiscipline;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 import fii.css.database.persistence.repositories.TeacherRepository;
 
@@ -12,6 +13,10 @@ import java.util.List;
 public class TeacherManager extends AbstractEntityManager<Teacher> {
     public TeacherManager() {
         super(new TeacherRepository());
+    }
+
+    public TeacherManager(AbstractRepository<Teacher> repository) {
+        this.repository = repository;
     }
 
     @Override
@@ -53,14 +58,14 @@ public class TeacherManager extends AbstractEntityManager<Teacher> {
             throw new DatabaseException("Teacher with ID " + id + " does not exist.");
         }
 
-        var tdRepo = Database.getInstance().teacherDisciplineManager;
+        var tdRepo = Database.getInstance().getTeacherDisciplineManager();
         for(var td : tdRepo.getAll()) {
             if(td.getTeacherId().equals(id)) {
                 throw new DatabaseException("Teacher is still associated with a discipline.");
             }
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         for(var s : sManager.getAll()) {
             if(s.getTeacher().getId().equals(id)) {
                 throw new DatabaseException("Teacher is still referenced in schedule.");

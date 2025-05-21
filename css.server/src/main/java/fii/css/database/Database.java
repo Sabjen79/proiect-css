@@ -1,6 +1,10 @@
 package fii.css.database;
 
 import fii.css.database.persistence.managers.*;
+import fii.css.database.persistence.repositories.FacultyGroupRepository;
+import fii.css.database.persistence.repositories.RoomRepository;
+import fii.css.database.persistence.repositories.ScheduleRepository;
+import fii.css.database.persistence.repositories.SemiYearRepository;
 
 import java.io.*;
 import java.sql.Connection;
@@ -19,7 +23,7 @@ public class Database {
     }
 
     //======================================================================//
-    private Connection connection;
+    Connection connection;
 
     public DisciplineManager disciplineManager;
     public TeacherManager teacherManager;
@@ -29,7 +33,35 @@ public class Database {
     public ScheduleManager scheduleManager;
     public TeacherDisciplineManager teacherDisciplineManager;
 
-    private Database() {}
+    public void setDisciplineManager(DisciplineManager dm) {
+        this.disciplineManager = dm;
+    }
+
+    public void setTeacherManager(TeacherManager tm) {
+        this.teacherManager = tm;
+    }
+
+    public void setTeacherDisciplineManager(TeacherDisciplineManager tdm) {
+        this.teacherDisciplineManager = tdm;
+    }
+
+    public void setScheduleManager(ScheduleManager sm) {
+        this.scheduleManager = sm;
+    }
+
+    public void setRoomManager(RoomManager rm) {
+        this.roomManager = rm;
+    }
+
+    public void setSemiYearManager(SemiYearManager sm) {
+        this.semiYearManager = sm;
+    }
+
+    public void setFacultyGroupManager(FacultyGroupManager fgm) {
+        this.facultyGroupManager = fgm;
+    }
+
+    Database() {}
 
     public Connection getConnection() { return connection; }
 
@@ -88,17 +120,17 @@ public class Database {
         }
     }
 
-    private void initializeManagers() {
+    void initializeManagers() {
         disciplineManager = new DisciplineManager();
         teacherManager = new TeacherManager();
-        roomManager = new RoomManager();
-        semiYearManager = new SemiYearManager();
-        facultyGroupManager = new FacultyGroupManager();
-        scheduleManager = new ScheduleManager();
+        roomManager = new RoomManager(new RoomRepository());
+        semiYearManager = new SemiYearManager(new SemiYearRepository());
+        facultyGroupManager = new FacultyGroupManager(new FacultyGroupRepository());
+        scheduleManager = new ScheduleManager(new ScheduleRepository());
         teacherDisciplineManager = new TeacherDisciplineManager();
     }
 
-    private boolean isDatabaseEmpty() {
+    boolean isDatabaseEmpty() {
         // query to check if there are any tables in the database
         String checkQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
         try (Statement stmt = connection.createStatement()) {
@@ -110,7 +142,7 @@ public class Database {
         }
     }
 
-    private void executeSqlScript(String resourcePath) {
+    void executeSqlScript(String resourcePath) {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream(resourcePath))))) {
 
@@ -142,7 +174,7 @@ public class Database {
         }
     }
 
-    private void importInitialData() throws SQLException, IOException {
+    void importInitialData() throws SQLException, IOException {
         var conn = getConnection();
 
         try {
@@ -186,5 +218,33 @@ public class Database {
             conn.rollback(); // roll back on any error
             throw e;
         }
+    }
+
+    public DisciplineManager getDisciplineManager() {
+        return disciplineManager;
+    }
+
+    public TeacherManager getTeacherManager() {
+        return teacherManager;
+    }
+
+    public RoomManager getRoomManager() {
+        return roomManager;
+    }
+
+    public SemiYearManager getSemiYearManager() {
+        return semiYearManager;
+    }
+
+    public FacultyGroupManager getFacultyGroupManager() {
+        return facultyGroupManager;
+    }
+
+    public ScheduleManager getScheduleManager() {
+        return scheduleManager;
+    }
+
+    public TeacherDisciplineManager getTeacherDisciplineManager() {
+        return teacherDisciplineManager;
     }
 }

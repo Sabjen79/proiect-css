@@ -5,6 +5,7 @@ import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.SemiYear;
 import fii.css.database.persistence.entities.TeacherDiscipline;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.SemiYearRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
@@ -13,6 +14,10 @@ import java.util.List;
 public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDiscipline> {
     public TeacherDisciplineManager() {
         super(new TeacherDisciplineRepository());
+    }
+
+    public TeacherDisciplineManager(AbstractRepository<TeacherDiscipline> repository) {
+        this.repository = repository;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
             throw new DatabaseException("TeacherDiscipline with ID '" + id + "' does not exist.");
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
 
         // Because disciplines and teachers are always correlated in schedule,
         // we can only check for one of them
@@ -58,18 +63,18 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
     }
 
     private void validate(TeacherDiscipline teacherDiscipline) {
-        if(Database.getInstance().teacherManager.get(teacherDiscipline.getTeacherId()) == null) {
+        if(Database.getInstance().getTeacherManager().get(teacherDiscipline.getTeacherId()) == null) {
             throw new DatabaseException("Teacher with ID '" + teacherDiscipline.getTeacherId() + "' does not exist.");
         }
 
-        if(Database.getInstance().disciplineManager.get(teacherDiscipline.getDisciplineId()) == null) {
+        if(Database.getInstance().getDisciplineManager().get(teacherDiscipline.getDisciplineId()) == null) {
             throw new DatabaseException("Discipline with ID '" + teacherDiscipline.getDisciplineId() + "' does not exist.");
         }
 
         for(var td : getAll()) {
             if(!td.getId().equals(teacherDiscipline.getId())
-            && td.getDisciplineId().equals(teacherDiscipline.getDisciplineId())
-            && td.getTeacherId().equals(teacherDiscipline.getTeacherId())) {
+                    && td.getDisciplineId().equals(teacherDiscipline.getDisciplineId())
+                    && td.getTeacherId().equals(teacherDiscipline.getTeacherId())) {
                 throw new DatabaseException("This association already exists.");
             }
         }

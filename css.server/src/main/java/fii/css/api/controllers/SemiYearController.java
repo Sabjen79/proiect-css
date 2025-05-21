@@ -11,7 +11,7 @@ public class SemiYearController extends AbstractController {
 
     public SemiYearController() {
         super("semiYears");
-        manager = Database.getInstance().semiYearManager;
+        manager = Database.getInstance().getSemiYearManager();
     }
 
     @Override

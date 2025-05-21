@@ -25,8 +25,19 @@ public class SemiYear extends DatabaseEntity {
 
     public SemiYear() {}
 
+    public SemiYear(String id, String name, int degree, int year) {
+        this.id = id;
+        this.name = name;
+        this.degree = degree;
+        this.year = year;
+    }
+
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,7 +65,7 @@ public class SemiYear extends DatabaseEntity {
     }
 
     public List<FacultyGroup> getFacultyGroups() {
-        return Database.getInstance().facultyGroupManager
+        return Database.getInstance().getFacultyGroupManager()
                 .getAll()
                 .stream()
                 .filter(fg -> fg.getSemiYearId().equals(id))

@@ -14,7 +14,7 @@ public class ScheduleController extends AbstractController {
 
     public ScheduleController() {
         super("schedules");
-        manager = Database.getInstance().scheduleManager;
+        manager = Database.getInstance().getScheduleManager();
     }
 
     @Override

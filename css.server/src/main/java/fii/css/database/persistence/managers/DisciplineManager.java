@@ -4,6 +4,7 @@ import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Degree;
 import fii.css.database.persistence.entities.Discipline;
+import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.DisciplineRepository;
 import fii.css.database.persistence.repositories.TeacherDisciplineRepository;
 
@@ -13,6 +14,10 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
     private TeacherDisciplineRepository tdRepository;
     public DisciplineManager() {
         super(new DisciplineRepository());
+    }
+
+    public DisciplineManager(AbstractRepository<Discipline> repository) {
+        this.repository = repository;
     }
 
     @Override
@@ -57,14 +62,14 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             throw new RuntimeException("Discipline with ID " + id + " does not exist.");
         }
 
-        var tdRepo = Database.getInstance().teacherDisciplineManager;
+        var tdRepo = Database.getInstance().getTeacherDisciplineManager();
         for(var td : tdRepo.getAll()) {
             if(td.getDisciplineId().equals(id)) {
                 throw new DatabaseException("Discipline is still associated with a teacher.");
             }
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         for(var s : sManager.getAll()) {
             if(s.getDiscipline().getId().equals(id)) {
                 throw new DatabaseException("Discipline is still referenced in schedule.");
@@ -98,7 +103,7 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
             }
         }
 
-        for(var s : Database.getInstance().scheduleManager.getAll()) {
+        for(var s : Database.getInstance().getScheduleManager().getAll()) {
             if(s.getDiscipline().getId().equals(discipline.getId())) {
                 if(s.getDiscipline().getYear() != discipline.getYear()) {
                     throw new DatabaseException("Year cannot be changed while the discipline is still referenced in schedule.");

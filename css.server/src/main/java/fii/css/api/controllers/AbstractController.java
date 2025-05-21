@@ -5,7 +5,7 @@ import io.javalin.Javalin;
 public abstract class AbstractController {
     public String path;
 
-    AbstractController(String path) {
+    protected AbstractController(String path) {
         this.path = "/" + path;
     }
 

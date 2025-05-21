@@ -18,6 +18,13 @@ public abstract class AbstractRepository<T extends DatabaseEntity> {
     protected final List<T> entities;
     private final Class<T> clazz;
 
+    // Constructor pentru test - nu face nimic, nu accesează DB
+    protected AbstractRepository() {
+        this.clazz = null; // sau poți face protected abstract Class<T> getClazz();
+        this.entities = new ArrayList<>();
+    }
+
+
     AbstractRepository(Class<T> clazz) {
         try {
             this.clazz = clazz;

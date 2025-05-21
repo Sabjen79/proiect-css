@@ -4,14 +4,15 @@ import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Room;
 import fii.css.database.persistence.entities.RoomType;
+import fii.css.database.persistence.entities.Teacher;
 import fii.css.database.persistence.repositories.AbstractRepository;
 import fii.css.database.persistence.repositories.RoomRepository;
 
 import java.util.List;
 
 public class RoomManager extends AbstractEntityManager<Room> {
-    public RoomManager() {
-        super(new RoomRepository());
+    public RoomManager(AbstractRepository<Room> repository) {
+        super(repository);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class RoomManager extends AbstractEntityManager<Room> {
             throw new DatabaseException("Room with ID " + id + " does not exist.");
         }
 
-        var sManager = Database.getInstance().scheduleManager;
+        var sManager = Database.getInstance().getScheduleManager();
         sManager.getAll().forEach(s -> {
             if(s.getRoom().getId().equals(id)) {
                 throw new DatabaseException("Room is still referenced in schedule.");
@@ -85,7 +86,7 @@ public class RoomManager extends AbstractEntityManager<Room> {
             }
         }
 
-        for(var s : Database.getInstance().scheduleManager.getAll()) {
+        for(var s : Database.getInstance().getScheduleManager().getAll()) {
             if(s.getRoom().getId().equals(room.getId())) {
                 if(s.getRoom().getRoomType() != room.getRoomType()) {
                     throw new DatabaseException("Room type cannot be changed while it is still referenced in schedule.");

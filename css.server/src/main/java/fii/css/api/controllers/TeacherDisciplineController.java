@@ -12,7 +12,7 @@ public class TeacherDisciplineController extends AbstractController {
 
     public TeacherDisciplineController() {
         super("teacherDisciplines");
-        manager = Database.getInstance().teacherDisciplineManager;
+        manager = Database.getInstance().getTeacherDisciplineManager();
     }
 
     @Override

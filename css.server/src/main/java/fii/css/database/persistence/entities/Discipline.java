@@ -6,6 +6,8 @@ import fii.css.database.persistence.annotations.Column;
 import fii.css.database.persistence.annotations.Id;
 import fii.css.database.persistence.annotations.Table;
 
+import java.util.UUID;
+
 @Table("Discipline")
 public class Discipline extends DatabaseEntity {
     @Id
@@ -23,8 +25,19 @@ public class Discipline extends DatabaseEntity {
 
     public Discipline() {}
 
+    public Discipline(String id, String name, int degree, int year) {
+        this.id = id;
+        this.name = name;
+        this.degree = degree;
+        this.year = year;
+    }
+
     public String getId() {
         return id;
+    }
+
+    public void setId() {
+        id = UUID.randomUUID().toString();
     }
 
     public String getName() {
