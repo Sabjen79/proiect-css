@@ -77,9 +77,9 @@ public class SemiYearManager extends AbstractEntityManager<SemiYear> {
     }
 
     private void validate(SemiYear sy) {
-        if(sy.getName().isBlank()) {
-            throw new DatabaseException("Specialty cannot be empty");
-        }
+        assert sy != null;
+        assert sy.getId() != null && !sy.getId().isBlank();
+        assert sy.getName() != null && !sy.getName().isBlank();
 
         if(sy.getYear() < 1) {
             throw new DatabaseException("Year must be greater than 0");

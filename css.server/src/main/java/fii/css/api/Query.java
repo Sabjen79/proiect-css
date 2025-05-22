@@ -36,6 +36,10 @@ public class Query {
         }
 
         try {
+            if(param.isBlank()) {
+                throw new DatabaseException("'" + name + "' cannot be empty");
+            }
+            
             return Integer.parseInt(param);
         } catch (NumberFormatException e) {
             throw new DatabaseException("'" + name + "' should be an integer");
@@ -49,7 +53,7 @@ public class Query {
             throw new DatabaseException("Query parameter '" + name + "' not found");
         }
 
-        if (param.isEmpty()) {
+        if (param.isBlank()) {
             throw new DatabaseException("'" + name + "' cannot be empty");
         }
 
