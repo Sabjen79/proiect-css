@@ -67,6 +67,13 @@ public class ScheduleManager extends AbstractEntityManager<Schedule> {
     }
 
     private void validate(Schedule schedule) {
+        assert schedule != null;
+        assert schedule.getId() != null && !schedule.getId().isBlank();
+        assert schedule.getTeacherId() != null && !schedule.getTeacherId().isBlank();
+        assert schedule.getDisciplineId() != null && !schedule.getDisciplineId().isEmpty();
+        assert schedule.getRoomId() != null && !schedule.getRoomId().isBlank();
+        assert schedule.getStudentsId() != null && !schedule.getStudentsId().isBlank();
+
         // Null Check
         if(schedule.getTeacher() == null) {
             throw new DatabaseException("Teacher not found");

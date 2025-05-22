@@ -19,6 +19,8 @@ public class Database {
     private static final Database INSTANCE = new Database();
 
     public static Database getInstance() {
+        assert INSTANCE != null : "Database instance is null";
+
         return INSTANCE;
     }
 
@@ -63,7 +65,11 @@ public class Database {
 
     Database() {}
 
-    public Connection getConnection() { return connection; }
+    public Connection getConnection() {
+        assert connection != null : "Database connection is null";
+        
+        return connection; 
+    }
 
     public void initialize() {
         try {

@@ -70,14 +70,15 @@ public class FacultyGroupManager extends AbstractEntityManager<FacultyGroup> {
     }
     
     private void validate(FacultyGroup fg) {
+        assert fg != null;
+        assert fg.getId() != null;
+        assert fg.getName() != null && !fg.getName().isBlank();
+        assert fg.getSemiYearId() != null && !fg.getSemiYearId().isBlank();
+
         var semiyear = Database.getInstance().getSemiYearManager().get(fg.getSemiYearId());
         
         if(semiyear == null) {
             throw new DatabaseException("Semi-year with ID " + fg.getSemiYearId() + " does not exist.");
-        }
-
-        if(fg.getName().isBlank()) {
-            throw new DatabaseException("Faculty group name must not be empty.");
         }
 
         for(var group : getAll()) {

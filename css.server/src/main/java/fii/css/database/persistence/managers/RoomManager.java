@@ -71,6 +71,10 @@ public class RoomManager extends AbstractEntityManager<Room> {
     }
 
     private void validate(Room room) {
+        assert room != null;
+        assert room.getId() != null && !room.getId().isBlank();
+        assert room.getName() != null && !room.getName().isBlank();
+
         if (room.getName() == null || room.getName().isBlank()) {
             throw new DatabaseException("Room name cannot be empty.");
         }

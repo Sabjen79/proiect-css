@@ -151,16 +151,16 @@ public class ScheduleManagerTest {
             mockedStatic.when(Database::getInstance).thenReturn(mockDatabase);
 
             when(mockRepository.newEntity()).thenReturn(
-                new Schedule("", "", "", 0, "", "", 0, 0)
+                new Schedule("ID", "", "", 0, "", "", 0, 0)
             );
 
             assertDoesNotThrow(() -> manager.addSchedule("t2", "d2", ClassType.Laboratory, "r2", "f1", DayOfWeek.Monday, 18));
 
             // Null/Empty Check
-            assertThrows(DatabaseException.class, () -> manager.addSchedule("", "d1", ClassType.Laboratory, "r2", "f1", DayOfWeek.Monday, 18));
-            assertThrows(DatabaseException.class, () -> manager.addSchedule("t1", "", ClassType.Laboratory, "r2", "f1", DayOfWeek.Monday, 18));
-            assertThrows(DatabaseException.class, () -> manager.addSchedule("t1", "d1", ClassType.Laboratory, "", "f1", DayOfWeek.Monday, 18));
-            assertThrows(DatabaseException.class, () -> manager.addSchedule("t1", "d1", ClassType.Laboratory, "r2", "", DayOfWeek.Monday, 18));
+            assertThrows(AssertionError.class, () -> manager.addSchedule("", "d1", ClassType.Laboratory, "r2", "f1", DayOfWeek.Monday, 18));
+            assertThrows(AssertionError.class, () -> manager.addSchedule("t1", "", ClassType.Laboratory, "r2", "f1", DayOfWeek.Monday, 18));
+            assertThrows(AssertionError.class, () -> manager.addSchedule("t1", "d1", ClassType.Laboratory, "", "f1", DayOfWeek.Monday, 18));
+            assertThrows(AssertionError.class, () -> manager.addSchedule("t1", "d1", ClassType.Laboratory, "r2", "", DayOfWeek.Monday, 18));
 
             // Hour
             assertThrows(DatabaseException.class, () -> manager.addSchedule("t1", "d1", ClassType.Course, "r1", "s1", DayOfWeek.Monday, 6));

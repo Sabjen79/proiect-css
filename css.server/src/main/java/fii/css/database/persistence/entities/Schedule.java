@@ -84,6 +84,8 @@ public class Schedule extends DatabaseEntity {
     }
 
     public ClassType getClassType() {
+        assert classType > -1 && classType < ClassType.values().length;
+
         return ClassType.fromValue(classType);
     }
 
@@ -130,6 +132,8 @@ public class Schedule extends DatabaseEntity {
     }
 
     public DayOfWeek getDayOfWeek() {
+        assert dayOfWeek > -1 && dayOfWeek < DayOfWeek.values().length;
+
         return DayOfWeek.fromValue(dayOfWeek);
     }
 
