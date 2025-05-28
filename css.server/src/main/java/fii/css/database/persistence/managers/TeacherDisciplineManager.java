@@ -63,6 +63,11 @@ public class TeacherDisciplineManager  extends AbstractEntityManager<TeacherDisc
     }
 
     private void validate(TeacherDiscipline teacherDiscipline) {
+        assert teacherDiscipline != null;
+        assert teacherDiscipline.getId() != null;
+        assert teacherDiscipline.getDisciplineId() != null;
+        assert teacherDiscipline.getTeacherId() != null;
+
         if(Database.getInstance().getTeacherManager().get(teacherDiscipline.getTeacherId()) == null) {
             throw new DatabaseException("Teacher with ID '" + teacherDiscipline.getTeacherId() + "' does not exist.");
         }

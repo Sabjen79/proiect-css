@@ -82,7 +82,7 @@ public class FacultyManagerTest {
             assertDoesNotThrow(() -> manager.addFacultyGroup("Grupa", "2"));
 
             assertThrows(DatabaseException.class, () -> manager.addFacultyGroup("Hello", "100"));
-            assertThrows(DatabaseException.class, () -> manager.addFacultyGroup("", "1"));
+            assertThrows(AssertionError.class, () -> manager.addFacultyGroup("", "1"));
             assertThrows(DatabaseException.class, () -> manager.addFacultyGroup("Group", "2"));
 
             verify(mockRepository, times(1)).persist(any(FacultyGroup.class));

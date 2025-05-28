@@ -56,6 +56,8 @@ public class Room extends DatabaseEntity{
     }
 
     public RoomType getRoomType() {
+        assert roomType > -1 && roomType < RoomType.values().length;
+
         return RoomType.fromValue(roomType);
     }
 

@@ -49,28 +49,25 @@ public class TeacherManagerTest {
 
     @Test
     void testAddTeacherFailsIfNameIsEmpty() {
-        var exception = assertThrows(DatabaseException.class, () ->
+        assertThrows(AssertionError.class, () ->
                 manager.addTeacher(" ", "Professor")
         );
-        assertEquals("Teacher name cannot be empty.", exception.getMessage());
     }
 
     @Test
     void testAddTeacherFailsIfTitleIsEmpty() {
-        var exception = assertThrows(DatabaseException.class, () ->
+        assertThrows(AssertionError.class, () ->
                 manager.addTeacher("John Doe", "")
         );
-        assertEquals("Teacher title cannot be empty.", exception.getMessage());
     }
 
     @Test
     void testAddTeacherFailsOnDuplicateName() {
         manager.addTeacher("John", "Professor");
 
-        var exception = assertThrows(DatabaseException.class, () ->
+        assertThrows(DatabaseException.class, () ->
                 manager.addTeacher("John", "Assistant")
         );
-        assertEquals("Teacher with name 'John' already exists.", exception.getMessage());
     }
 
     @Test

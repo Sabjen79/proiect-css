@@ -49,6 +49,8 @@ public class Discipline extends DatabaseEntity {
     }
 
     public Degree getDegree() {
+        assert degree > -1 && degree < Degree.values().length;
+
         return Degree.fromValue(degree);
     }
 

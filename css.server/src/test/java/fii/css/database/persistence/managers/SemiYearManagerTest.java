@@ -79,7 +79,7 @@ public class SemiYearManagerTest {
             assertDoesNotThrow(() -> manager.addStudyYear("test2", Degree.Master, 2));
 
             assertThrows(DatabaseException.class, () -> manager.addStudyYear("test", Degree.Bachelor, 5));
-            assertThrows(DatabaseException.class, () -> manager.addStudyYear("", Degree.Bachelor, 3));
+            assertThrows(AssertionError.class, () -> manager.addStudyYear("", Degree.Bachelor, 3));
             assertThrows(DatabaseException.class, () -> manager.addStudyYear("test", Degree.Master, 5));
             assertThrows(DatabaseException.class, () -> manager.addStudyYear("test", Degree.Master, -2));
             assertThrows(DatabaseException.class, () -> manager.addStudyYear("SemiYear", Degree.Bachelor, 1));

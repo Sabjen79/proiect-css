@@ -80,9 +80,9 @@ public class DisciplineManager extends AbstractEntityManager<Discipline> {
     }
 
     private void validate(Discipline discipline) {
-        if(discipline.getName() == null || discipline.getName().isBlank()) {
-            throw new DatabaseException("Discipline name cannot be empty.");
-        }
+        assert discipline != null;
+        assert discipline.getId() != null;
+        assert discipline.getName() != null && !discipline.getName().isBlank();
 
         if(discipline.getYear() < 1) {
             throw new DatabaseException("Year must be greater than 0");

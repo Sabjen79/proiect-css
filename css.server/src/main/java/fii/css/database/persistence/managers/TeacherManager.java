@@ -76,13 +76,10 @@ public class TeacherManager extends AbstractEntityManager<Teacher> {
     }
 
     private void validate(Teacher teacher) {
-        if (teacher.getName() == null || teacher.getName().isBlank()) {
-            throw new DatabaseException("Teacher name cannot be empty.");
-        }
-
-        if (teacher.getTitle() == null || teacher.getTitle().isBlank()) {
-            throw new DatabaseException("Teacher title cannot be empty.");
-        }
+        assert teacher != null;
+        assert teacher.getId() != null && !teacher.getId().isBlank();
+        assert teacher.getName() != null && !teacher.getName().isBlank();
+        assert teacher.getTitle() != null && !teacher.getTitle().isBlank();
 
         for(var t : getAll()) {
             if (!t.getId().equalsIgnoreCase(teacher.getId())
