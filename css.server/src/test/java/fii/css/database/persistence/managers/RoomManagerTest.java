@@ -1,10 +1,7 @@
 package fii.css.database.persistence.managers;
 
-import fii.css.database.Database;
 import fii.css.database.DatabaseException;
 import fii.css.database.persistence.entities.Room;
-import fii.css.database.persistence.entities.Schedule;
-import fii.css.database.persistence.repositories.FakeDisciplineRepository;
 import fii.css.database.persistence.repositories.FakeRoomRepository;
 import fii.css.database.persistence.repositories.FakeScheduleRepository;
 import org.junit.jupiter.api.BeforeEach;
