@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="" />
+    <list default="true" id="aace7db2-032d-4159-a370-8017f2842908" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2025_1_46_AM_[Changes]/database_css.drawio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2025_1_46_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2025_1_46_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fii/css/database/persistence/managers/RoomManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fii/css/database/persistence/managers/RoomManagerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -47,34 +60,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Unnamed.executor": "Run",
-    "JUnit.FacultyManagerTest.executor": "Coverage",
-    "JUnit.FacultyManagerTest.testAdd.executor": "Coverage",
-    "JUnit.RoomManagerTest.testAddRoomSuccess.executor": "Run",
-    "JUnit.ScheduleManagerTest.executor": "Coverage",
-    "JUnit.SemiYearManagerTest.executor": "Coverage",
-    "JUnit.SemiYearManagerTest.testAdd.executor": "Run",
-    "JUnit.SemiYearManagerTest.testRemove.executor": "Coverage",
-    "JUnit.SemiYearManagerTest.testUpdate.executor": "Debug",
-    "JUnit.Unnamed.executor": "Coverage",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "unit-testing",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/stefa/Desktop/calitatea sist software/proiect-css",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FacultyManagerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FacultyManagerTest.testAdd.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.RoomManagerTest.testAddRoomSuccess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScheduleManagerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SemiYearManagerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SemiYearManagerTest.testAdd.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SemiYearManagerTest.testRemove.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SemiYearManagerTest.testUpdate.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.Unnamed.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.fii.css in proiect-css.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;assertions&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stefa/Desktop/calitatea sist software/proiect-css&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.Unnamed">
+}</component>
+  <component name="RunManager" selected="JUnit.fii.css in proiect-css">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fii.css.Main" />
       <module name="proiect-css" />
@@ -92,16 +106,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="fii.css in proiect-css" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proiect-css" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fii.css.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fii.css" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Unnamed" />
       <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="JUnit.fii.css in proiect-css" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.fii.css in proiect-css" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -117,6 +151,11 @@
       <workItem from="1746392464899" duration="4315000" />
       <workItem from="1746426750059" duration="14532000" />
       <workItem from="1746694333646" duration="20000" />
+      <workItem from="1748002424063" duration="808000" />
+      <workItem from="1748370658198" duration="128000" />
+      <workItem from="1748943736514" duration="184000" />
+      <workItem from="1748943932445" duration="3803000" />
+      <workItem from="1749113148187" duration="33000" />
     </task>
     <servers />
   </component>
@@ -124,11 +163,14 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/css_server$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1747692169884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest_testUpdate.ic" NAME="SemiYearManagerTest.testUpdate Coverage Results" MODIFIED="1747686389438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>fii.css.database.persistence.managers.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/css_server$ScheduleManagerTest.ic" NAME="ScheduleManagerTest Coverage Results" MODIFIED="1747691915854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest.ic" NAME="FacultyManagerTest Coverage Results" MODIFIED="1747688724301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/css_server$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1747692169884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest_testAdd.ic" NAME="FacultyManagerTest.testAdd Coverage Results" MODIFIED="1747687828524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>fii.css.database.persistence.managers.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest_testRemove.ic" NAME="SemiYearManagerTest.testRemove Coverage Results" MODIFIED="1747684136392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -137,10 +179,10 @@
     <SUITE FILE_PATH="coverage/css_server$SemiYearManagerTest.ic" NAME="SemiYearManagerTest Coverage Results" MODIFIED="1747687952834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>fii.css.database.persistence.managers.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest_testAdd.ic" NAME="FacultyManagerTest.testAdd Coverage Results" MODIFIED="1747687828524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>fii.css.database.persistence.managers.*</FILTER>
+    <SUITE FILE_PATH="coverage/css_server$fii_css_in_proiect_css.ic" NAME="fii.css in proiect-css Coverage Results" MODIFIED="1747904346524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>fii.css.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/css_server$FacultyManagerTest.ic" NAME="FacultyManagerTest Coverage Results" MODIFIED="1747688724301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/css_server$ScheduleManagerTest.ic" NAME="ScheduleManagerTest Coverage Results" MODIFIED="1747691915854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>fii.css.database.persistence.managers.*</FILTER>
     </SUITE>
   </component>
